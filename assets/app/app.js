@@ -2,9 +2,9 @@
 
 var app = angular.module(
     'app', [
-        'ngRoute'
+        'ngRoute',
         //'ngAnimate'
-        //'mainApp.main'
+        'app.main'
     ],
     function($interpolateProvider) {
         /* INTERPOLATION
@@ -27,7 +27,7 @@ app.config(function($locationProvider, $routeProvider) {
     /*
      * Routes for the mainApp
      */
-    $routeProvider.when('/', {
+    $routeProvider.when('/.*', {
         templateUrl: '/assets/app/views/main.html',
         controller:  'appController'
     }).otherwise({redirectTo: '/404.html'});
@@ -38,8 +38,5 @@ app.config(function($locationProvider, $routeProvider) {
  * Controller
  */
 app.controller('appController', function($scope, $location) {
-    // Nothing for now. Maybe some static stuff
-//    $scope.go_to_list = function(){
-//        $location.path('/list/');
-//    }
+    $scope.greeting = 'Hola!';
 });
