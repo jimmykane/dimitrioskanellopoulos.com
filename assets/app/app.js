@@ -2,7 +2,7 @@
 
 var app = angular.module(
     'app', [
-        //'ngRoute',
+        'ngRoute'
         //'ngAnimate'
         //'mainApp.main'
     ],
