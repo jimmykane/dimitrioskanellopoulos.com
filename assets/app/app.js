@@ -9,8 +9,8 @@ var app = angular.module(
     function($interpolateProvider) {
         /* INTERPOLATION
         * Normal Angular {{}} now becomes {[{}]} so take care. */
-        $interpolateProvider.startSymbol('{[{');
-        $interpolateProvider.endSymbol('}]}');
+//        $interpolateProvider.startSymbol('{[{');
+//        $interpolateProvider.endSymbol('}]}');
     }
 );
 
@@ -27,8 +27,8 @@ app.config(function($locationProvider, $routeProvider) {
     /*
      * Routes for the mainApp
      */
-    $routeProvider.when('/.*', {
-        templateUrl: '/assets/app/views/main.html',
+    $routeProvider.when('/', {
+        templateUrl: '/assets/app/views/modules/main.html',
         controller:  'appController'
     }).otherwise({redirectTo: '/404.html'});
 });
