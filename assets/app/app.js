@@ -1,17 +1,18 @@
 "use strict";
 
 var app = angular.module(
-    'mainApp', [
-        'ngRoute',
-        'ngAnimate',
-        'app.main'
+    'app', [
+        //'ngRoute',
+        //'ngAnimate'
+        //'mainApp.main'
     ],
-//    function($interpolateProvider) {
-//        /* INTERPOLATION
-//        * Normal Angular {{}} now becomes {[{}]} so take care. */
-//        $interpolateProvider.startSymbol('{[{');
-//        $interpolateProvider.endSymbol('}]}');
-//    });
+    function($interpolateProvider) {
+        /* INTERPOLATION
+        * Normal Angular {{}} now becomes {[{}]} so take care. */
+        $interpolateProvider.startSymbol('{[{');
+        $interpolateProvider.endSymbol('}]}');
+    }
+);
 
 /**
  * Config
@@ -28,7 +29,7 @@ app.config(function($locationProvider, $routeProvider) {
      */
     $routeProvider.when('/', {
         templateUrl: '/assets/app/views/main.html',
-        controller:  'mainAppController'
+        controller:  'appController'
     }).otherwise({redirectTo: '/404.html'}); // stub for production
 });
 
@@ -36,7 +37,7 @@ app.config(function($locationProvider, $routeProvider) {
 /**
  * Controller
  */
-app.controller('mainAppController', function($scope, $location) {
+app.controller('appController', function($scope, $location) {
     // Nothing for now. Maybe some static stuff
 //    $scope.go_to_list = function(){
 //        $location.path('/list/');
