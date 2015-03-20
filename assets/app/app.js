@@ -5,13 +5,7 @@ var app = angular.module(
         'ngRoute',
         //'ngAnimate'
         'app.main'
-    ],
-    function($interpolateProvider) {
-        /* INTERPOLATION
-        * Normal Angular {{}} now becomes {[{}]} so take care. */
-//        $interpolateProvider.startSymbol('{[{');
-//        $interpolateProvider.endSymbol('}]}');
-    }
+    ]
 );
 
 /**
@@ -30,7 +24,7 @@ app.config(function($locationProvider, $routeProvider) {
     $routeProvider.when('/', {
         templateUrl: '/assets/app/views/modules/main.html',
         controller:  'appController'
-    }).otherwise({redirectTo: '/404.html'});
+    }).otherwise({redirectTo: '/404'});
 });
 
 

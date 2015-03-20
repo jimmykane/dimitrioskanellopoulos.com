@@ -11,7 +11,7 @@ import webapp2
 app = webapp2.WSGIApplication(
     [
         # Essential handlers
-        ('/.*', server.RootPage),
+        ('/', server.RootPage),
     ], debug=True, config=config.config)
 
 
