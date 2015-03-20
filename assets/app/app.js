@@ -22,14 +22,6 @@ app.config(function($locationProvider, $routeProvider) {
      */
     $routeProvider.when('/', {
         templateUrl: '/assets/app/views/modules/main.html',
-        controller:  'appController'
+        controller:  'mainController'
     }).otherwise({redirectTo: '/404'});
-});
-
-
-/**
- * Controller
- */
-app.controller('appController', function($scope) {
-    $scope.test = 'Hola!';
 });
