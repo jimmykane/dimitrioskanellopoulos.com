@@ -3,7 +3,6 @@
 var app = angular.module(
     'app', [
         'ngRoute',
-        //'ngAnimate'
         'app.main'
     ]
 );
@@ -31,6 +30,6 @@ app.config(function($locationProvider, $routeProvider) {
 /**
  * Controller
  */
-app.controller('appController', function($scope, $location) {
-    $scope.greeting = 'Hola!';
+app.controller('appController', function($scope) {
+    $scope.test = 'Hola!';
 });
