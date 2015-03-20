@@ -22,9 +22,6 @@ libraries:
 
 handlers:
 
-- url: /_ah/login_required
-  script: login_required.app
-
 - url: /assets
   static_dir: assets
 
@@ -38,7 +35,7 @@ handlers:
   upload: assets/img/favicon.png
 
 - url: /admin/.*
-  script: google.appengine.ext.admin.application
+  script: $PYTHON_LIB/google/appengine/ext/admin
   login: admin
 
 - url: .*
