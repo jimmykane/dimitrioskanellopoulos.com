@@ -33,9 +33,6 @@ handlers:
   static_files: assets/img/favicon.png
   upload: assets/img/favicon.png
 
-- url: /admin/.*
-  script: $PYTHON_LIB/google/appengine/ext/admin
-  login: admin
 
 - url: .*
   script: main.app
