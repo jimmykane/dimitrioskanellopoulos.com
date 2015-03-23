@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('app.jsonService', ['ngResource']).factory('JsonService', function($resource) {
+angular.module('app.jsonService', ['ngResource']).factory('jsonService', function($resource) {
     alert(1);
   return $resource('cats.json');
 });

@@ -1,6 +1,6 @@
 "use strict";
 
 
-angular.module('app.main').controller('infoController', function($scope, JsonService) {
+angular.module('app.main').controller('infoController', function($scope, jsonService) {
 
 });
