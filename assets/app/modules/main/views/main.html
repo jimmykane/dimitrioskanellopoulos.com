@@ -9,8 +9,7 @@
 
         <div data-ng-controller="infoController">
             <ul>
-                <!-- Should have service with ngrepeat and get the data via the info -->
-                {{ links }}
+                <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
             </ul>
         </div>
 
