@@ -3,7 +3,9 @@
 var app = angular.module(
     'app', [
         'ngRoute',
-        'app.main'
+        'ngResource',
+        'app.main',
+        'app.jsonService'
     ]
 );
 
