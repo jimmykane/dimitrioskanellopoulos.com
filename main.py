@@ -3,7 +3,7 @@
 @contact: jimmykane9@gmail.com
 '''
 import logging
-from controllers import server
+from controllers import server, auth, metrics
 from config import config
 import webapp2
 
@@ -12,6 +12,14 @@ app = webapp2.WSGIApplication(
     [
         # Essential handlers
         ('/', server.RootPage),
+
+        # Auth handlers
+        ('/auth/runkeeper', auth.RunkeeperAuthHandler),
+
+
+        # Metrics handlers
+        ('/metrics/runkeeper', metrics.RunkeeperMetricsHandler),
+
     ], debug=True, config=config.config)
 
 

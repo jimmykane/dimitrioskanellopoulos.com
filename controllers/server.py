@@ -3,10 +3,6 @@
 @contact: jimmykane9@gmail.com
 '''
 import os
-import re
-import logging
-import config
-import json
 
 import webapp2
 import jinja2
