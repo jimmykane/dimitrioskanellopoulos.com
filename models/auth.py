@@ -20,4 +20,6 @@ class CodeAuth(ndb.Expando, DictModel, NDBCommonModel):
 class RunkeeperAuth(CodeAuth):
 
     code = ndb.StringProperty()
+    token_type = ndb.StringProperty()
+    access_token = ndb.StringProperty()
     pass
