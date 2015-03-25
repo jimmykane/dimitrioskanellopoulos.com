@@ -5,13 +5,18 @@
         <p>This website is open source (kinda) and available on <a
                 href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">GitHub</a></p>
 
-        <p>-= Contact - Social Networks =-</p>
-
         <div data-ng-controller="infoController">
+            <p>-= Contact - Social Networks =-</p>
             <ul>
                 <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
             </ul>
         </div>
 
+        <div data-ng-controller="experimentsController">
+            <p>-= Previous Work - Experiments  =-</p>
+            <ul>
+                <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
+            </ul>
+        </div>
     </div>
 </div>
