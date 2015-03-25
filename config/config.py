@@ -19,7 +19,7 @@ project = {
             'client_id': 'af2312a9c256448394b6782279842339',
             'client_secret': 'dc43a89ef2d045d6a6323a41132b553c',
             'urls': {
-                 'redirect_uri': 'http://dimitrioskanellopoulos.com/auth/runkeeper_callback',
+                 'redirect_uri': 'http://localhost:8080/auth/runkeeper_callback',
                  'authorization_url': 'https://runkeeper.com/apps/authorize',
                  'access_token_url': 'https://runkeeper.com/apps/token',
                  'deauthorization_url': 'https://runkeeper.com/apps/de-authorize',

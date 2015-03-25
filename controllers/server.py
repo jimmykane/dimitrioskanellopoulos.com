@@ -1,13 +1,7 @@
-'''
-@author: Dimitrios Kanellopoulos
-@contact: jimmykane9@gmail.com
-'''
 import os
 
 import webapp2
 import jinja2
-
-from google.appengine.ext import ndb
 
 
 class RootPage(webapp2.RequestHandler):
@@ -15,7 +9,7 @@ class RootPage(webapp2.RequestHandler):
         jinja_environment = self.jinja_environment
         template = jinja_environment.get_template("/index.html")
         # Add analytics and render template
-        self.response.out.write(template.render({"project": self.app.config.get('project')}))
+        self.response.out.write(template.render({"project": self.app.config['project']}))
 
 
     @property

@@ -1,7 +1,3 @@
-"""
-@author: Dimitrios Kanellopoulos
-@contact: jimmykane9@gmail.com
-"""
 import logging
 
 from google.appengine.ext import ndb

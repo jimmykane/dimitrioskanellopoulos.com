@@ -1,7 +1,3 @@
-'''
-@author: Dimitrios Kanellopoulos
-@contact: jimmykane9@gmail.com
-'''
 import logging
 from controllers import server, auth, metrics
 from config import config
@@ -15,6 +11,7 @@ app = webapp2.WSGIApplication(
 
         # Auth handlers
         ('/auth/runkeeper', auth.RunkeeperAuthHandler),
+        ('/auth/runkeeper_callback', auth.RunkeeperAuthCallbackHandler),
 
 
         # Metrics handlers
