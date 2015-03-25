@@ -19,7 +19,7 @@ class RootPage(webapp2.RequestHandler):
         jinja_environment = self.jinja_environment
         template = jinja_environment.get_template("/index.html")
         # Add analytics and render template
-        self.response.out.write(template.render({"analytics": self.app.config.get('api_keys').get('analytics')}))
+        self.response.out.write(template.render({"project": self.app.config.get('project')}))
 
 
     @property
