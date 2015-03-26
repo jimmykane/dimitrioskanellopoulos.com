@@ -60,6 +60,7 @@ class RunkeeperAuthCallbackHandler(AuthCallbackHandler):
                 access_token=access_token_data['access_token'],
                 token_type=access_token_data['token_type']
             ).put()
+            self.response.out.write('Success')
 
     def get_user_id(self, access_token_data):
         result = urlfetch.fetch(
