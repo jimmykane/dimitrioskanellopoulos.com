@@ -6,11 +6,11 @@ from google.appengine.ext import ndb
 ''' Class to help with dict conversions '''
 class DictModel():
 
-    '''
+    """
     From a dict make an entity. You need the parent
     First check if the properties are in the class definition
     Dictionary key names represent property names
-    '''
+    """
     @classmethod
     def entity_from_dict(cls, parent_key, dict):
         valid_properties = {}
@@ -35,7 +35,7 @@ class NDBCommonModel:
 
     """
     Find if is the last child from the parent.
-    Usefull if you want to check if it's last entry in a box,slide,post
+    Useful if you want to check if it's last entry in a box,slide,post
     """
     @classmethod
     def is_the_only_remaining_child(cls, key):

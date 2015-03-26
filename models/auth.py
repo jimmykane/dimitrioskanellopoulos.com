@@ -3,7 +3,6 @@ from models.ndb_models import *
 from google.appengine.ext import ndb
 
 
-
 class CodeAuth(ndb.Expando, DictModel, NDBCommonModel):
 
     # title = ndb.StringProperty()
@@ -16,6 +15,7 @@ class CodeAuth(ndb.Expando, DictModel, NDBCommonModel):
     # edit_date = ndb.DateTimeProperty(auto_now=True)
     # available = ndb.BooleanProperty(default=True)
     pass
+
 
 class RunkeeperAuth(CodeAuth):
 
