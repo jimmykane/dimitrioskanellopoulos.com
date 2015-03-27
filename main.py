@@ -10,12 +10,6 @@ app = webapp2.WSGIApplication(
         ('/', server.RootPage),
 
         # Auth handlers
-        ('/auth/runkeeper', auth.RunkeeperAuthHandler),
-        ('/auth/runkeeper_callback', auth.RunkeeperAuthCallbackHandler),
-
-
-        # Metrics handlers /metrics/(service)/(user)/(action)
-        (r'/metrics/runkeeper/(.*)/(.*)', metrics.RunkeeperMetricsHandler),
 
     ], debug=True, config=config.config)
 
