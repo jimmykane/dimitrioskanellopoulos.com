@@ -24,12 +24,11 @@ class AuthCallbackHandler(webapp2.RequestHandler):
 
 
 class RunkeeperAuthHandler(AuthHandler):
-
     def get(self):
         self.redirect(self.get_auth_url())
 
     def get_auth_url(self):
-        return\
+        return \
             self.app.config['project']['api_keys']['runkeeper']['urls']['authorization_url'] \
             + '?' \
             + 'client_id=' + self.app.config['project']['api_keys']['runkeeper']['client_id'] \
@@ -40,7 +39,6 @@ class RunkeeperAuthHandler(AuthHandler):
 
 
 class RunkeeperAuthCallbackHandler(AuthCallbackHandler):
-
     def get(self):
         if self.request.params.get('error'):
             self.request.response.out.write(self.request.params.get('error'))
@@ -50,16 +48,14 @@ class RunkeeperAuthCallbackHandler(AuthCallbackHandler):
             access_token_data = self.request_access_token(code=self.request.params.get('code'))
             if not access_token_data:
                 return
-            # Now lets request the user to do a get or insert and have a key
-            RunkeeperAuthModel(
+            # Get or insert the model update tokens etc
+            runkeeper_auth_model = RunkeeperAuthModel.get_or_insert(str(self.get_user_id(access_token_data)['userID']))
+            runkeeper_auth_model.populate(
                 access_token=access_token_data['access_token'],
                 token_type=access_token_data['token_type']
             )
-            RunkeeperAuthModel.get_or_insert(
-                str(self.get_user_id(access_token_data)['userID']),
-                access_token=access_token_data['access_token'],
-                token_type=access_token_data['token_type']
-            ).put()
+            runkeeper_auth_model.put()
+            # Write the result
             self.response.out.write('Success')
 
     def get_user_id(self, access_token_data):
@@ -81,7 +77,7 @@ class RunkeeperAuthCallbackHandler(AuthCallbackHandler):
     def request_access_token(self, code):
         result = urlfetch.fetch(
             url=self.app.config['project']['api_keys']['runkeeper']['urls']['access_token_url'],
-            payload= urllib.urlencode({
+            payload=urllib.urlencode({
                 'grant_type': 'authorization_code',
                 'code': code,
                 'client_id': self.app.config['project']['api_keys']['runkeeper']['client_id'],
