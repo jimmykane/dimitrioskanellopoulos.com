@@ -73,7 +73,6 @@ class RunkeeperAuthCallbackHandler(AuthCallbackHandler):
             return False
         return json.loads(result.content)
 
-
     def request_access_token(self, code):
         result = urlfetch.fetch(
             url=self.app.config['project']['api_keys']['runkeeper']['urls']['access_token_url'],

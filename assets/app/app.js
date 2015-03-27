@@ -23,7 +23,7 @@ app.config(function($locationProvider, $routeProvider) {
      * Routes for the mainApp
      */
     $routeProvider.when('/', {
-        templateUrl: '/assets/app/modules/main/views/main.html',
+        templateUrl: '/assets/app/modules/main/templates/main.html',
         controller:  'mainController'
     }).otherwise({redirectTo: '/404'});
 });
