@@ -1,11 +1,12 @@
 # Secrets
-/config/api_keys_dev.json
+config/api_keys_dev.json
+config/api_keys.json
 
 *.py[co]
 *.pyc
 
 # Libs
-/lib
+lib
 
 
 # IDEs
@@ -15,4 +16,5 @@
 .pydevproject
 .project
 .settings*
+
 
