@@ -26,13 +26,13 @@ config = {
 }
 
 
-def is_dev_server(self):
+def is_dev_server():
     return os.environ['SERVER_SOFTWARE'].startswith('Dev')
 
 
 def get_api_keys():
 
-    file_handler = os.path.join('.', 'api_keys_dev.json') if is_dev_server() else os.path.join('.', 'api_keys.json')
+    file_handler = os.path.join(os.path.dirname(__file__), 'api_keys_dev.json') if is_dev_server() else os.path.join('.', 'api_keys.json')
     try:
         with open(file_handler) as json_file:
             return json.load(json_file)
