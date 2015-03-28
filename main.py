@@ -1,5 +1,5 @@
 import logging
-from controllers import server, auth, metrics
+from controllers import server, humanapi, metrics
 from config import config
 import webapp2
 
@@ -9,7 +9,8 @@ app = webapp2.WSGIApplication(
         # Essential handlers
         ('/', server.RootPage),
 
-        # Auth handlers
+        # Human API  handlers
+        ('/auth/humanapi_auth', humanapi.HumanAPIAuthHandler),
 
     ], debug=True, config=config.config)
 
