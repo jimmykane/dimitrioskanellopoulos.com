@@ -4,10 +4,13 @@ import json
 
 import webapp2
 
+
 from google.appengine.api import urlfetch
+from webapp2 import uri_for
+
 from config.config import get_api_keys
 from externalapis import humanapi
-from webapp2 import uri_for
+from models.auth import HumanAPIAuthModel
 
 class HumanAPIAuthHandler(object):
 
@@ -24,7 +27,13 @@ class HumanAPIAuthCallHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
         self.redirect(self.get_humanapi_auth().get_authorize_url('http://localhost:8080/auth/humanapi_auth_callback'))
 
 
-class HumanAPIAuthCallBackHandler(webapp2.RequestHandler):
+class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
 
     def get(self):
+        if not self.request.get('code'):
+            self.response.out.write('Error')
+            return
+
+        session = self.get_humanapi_auth().get_auth_session(self.request.get('code'))
+        HumanAPIAuthModel()
         pass

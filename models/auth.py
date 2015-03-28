@@ -5,10 +5,10 @@ from google.appengine.ext import ndb
 
 class AuthenticationModel(ndb.Expando, DictModel, NDBCommonModel):
 
+    access_token = ndb.StringProperty(required=True)
     creation_date = ndb.DateTimeProperty(auto_now_add=True)
     edit_date = ndb.DateTimeProperty(auto_now=True)
 
 class HumanAPIAuthModel(AuthenticationModel):
 
-    token_type = ndb.StringProperty()
-    access_token = ndb.StringProperty()
+    access_token_key = ndb.StringProperty(required=True)
