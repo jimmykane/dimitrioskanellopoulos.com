@@ -10,7 +10,7 @@ from webapp2 import uri_for
 
 from config.config import get_api_keys
 from externalapis import humanapi
-from models.auth import HumanAPIAuthModel
+from models.users import HumanAPIUser
 
 class HumanAPIAuthHandler(object):
 
@@ -35,5 +35,6 @@ class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
             return
 
         session = self.get_humanapi_auth().get_auth_session(self.request.get('code'))
-        HumanAPIAuthModel()
+        
+        HumanAPIUser.get_or_insert()
         pass
