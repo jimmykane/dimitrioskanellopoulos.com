@@ -6,7 +6,7 @@ import webapp2
 
 from google.appengine.api import urlfetch
 from models.auth import HumanAPIAuthModel
-from humanapi import get_authorize_url, get_auth_session
+from humanapi.api import Auth
 
 class AuthHandler(webapp2.RequestHandler):
     pass
