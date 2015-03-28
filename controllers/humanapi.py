@@ -38,9 +38,10 @@ class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
         if not self.request.get('code'):
             self.response.out.write('Error')
             return
-        auth_session = self.get_humanapi_auth().get_auth_session(self.request.get('code'))
+        auth_session = self.get_humanapi_auth().get_auth_session(self.request.get('code'), scope='activities')
         UserHumanAPI = self.get_human_api(auth_session.access_token)
         user_humanapi_profile = UserHumanAPI.profile.get()
+        t = UserHumanAPI.activity.list()
         HumanAPIUser.get_or_insert(
             user_humanapi_profile['userId'],
             email=user_humanapi_profile['email'],
