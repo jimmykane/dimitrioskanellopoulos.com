@@ -1,3 +1,7 @@
+import os
+import json
+
+
 project = {
     'title': 'Dimitrios Kanellopoulos',
     'domain': 'dimitrioskanellopoulos.com',
@@ -13,9 +17,24 @@ project = {
             'image': 'https://www.gravatar.com/avatar/50eda10b9e16333f9e9cd3b8f1e0918a?s=500&d=identicon&r=PG'
         },
     },
+    'google_analytics': 'UA-61188889-1'
 }
 
 
 config = {
     'project': project,
 }
+
+
+def is_dev_server(self):
+    return os.environ['SERVER_SOFTWARE'].startswith('Dev')
+
+
+def get_api_keys():
+
+    file_handler = os.path.join('.', 'api_keys_dev.json') if is_dev_server() else os.path.join('.', 'api_keys.json')
+    try:
+        with open(file_handler) as json_file:
+            return json.load(json_file)
+    except Exception as e:
+        return False
