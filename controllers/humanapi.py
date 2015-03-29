@@ -40,7 +40,7 @@ class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
             return
 
         # Get the auth session
-        humanapi_session = self.get_humanapi_auth().get_auth_session(self.request.get('code'), scope='')
+        humanapi_session = self.get_humanapi_auth().get_auth_session(self.request.get('code'))
 
         # Get the API
         users_humanapi = self.get_human_api(humanapi_session.access_token)
