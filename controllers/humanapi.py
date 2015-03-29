@@ -47,6 +47,22 @@ class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
 
         # Get the profile
         users_humanapi_profile = users_humanapi.profile.get()
+        users_humanapi_human = users_humanapi.human.get()
+        users_humanapi_activities = users_humanapi.activity.list()
+
+        result = urlfetch.fetch(
+            url='https://user.humanapi.co/v1/connect/publictokens',
+            payload=json.dumps({
+                'humanId': users_humanapi_profile['humanId'],
+                'clientId': get_api_keys()['humanapi']['client_id'],
+                'clientSecret': get_api_keys()['humanapi']['client_secret'],
+            }),
+            method=urlfetch.POST,
+            headers={'Content-Type': 'application/json'}
+        )
+
+        if result.status_code != 200:
+            self.response.out.write('Error')
 
         # Create a or retrieve the user
         humanapi_user = HumanAPIUser.get_or_insert(
@@ -54,11 +70,18 @@ class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
             email=users_humanapi_profile['email'],
             human_id=users_humanapi_profile['humanId'],
             access_token=humanapi_session.access_token,
-            access_token_key=humanapi_session.access_token_key
+            access_token_key=humanapi_session.access_token_key,
+            public_token=json.loads(result.content)['publicToken']
         )
 
-        # Update the user with new tokens
-        humanapi_user.populate(access_token=humanapi_session.access_token, access_token_key=humanapi_session.access_token_key)
+        # Update the user with new tokens if needed @todo check object
+        humanapi_user.populate(
+            email=users_humanapi_profile['email'],
+            human_id=users_humanapi_profile['humanId'],
+            access_token=humanapi_session.access_token,
+            access_token_key=humanapi_session.access_token_key,
+            public_token=json.loads(result.content)['publicToken']
+        )
         humanapi_user.put()
 
         pass

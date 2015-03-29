@@ -12,3 +12,4 @@ class AuthenticationModel(ndb.Expando, DictModel, NDBCommonModel):
 class HumanAPIAuthModel(AuthenticationModel):
 
     access_token_key = ndb.StringProperty(required=True)
+    public_token = ndb.StringProperty(required=True)
