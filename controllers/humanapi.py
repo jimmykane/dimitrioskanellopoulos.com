@@ -38,16 +38,27 @@ class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
         if not self.request.get('code'):
             self.response.out.write('Error')
             return
-        auth_session = self.get_humanapi_auth().get_auth_session(self.request.get('code'), scope='activities')
-        UserHumanAPI = self.get_human_api(auth_session.access_token)
-        user_humanapi_profile = UserHumanAPI.profile.get()
-        t = UserHumanAPI.activity.list()
-        HumanAPIUser.get_or_insert(
-            user_humanapi_profile['userId'],
-            email=user_humanapi_profile['email'],
-            human_id=user_humanapi_profile['humanId'],
-            access_token=auth_session.access_token,
-            access_token_key=auth_session.access_token_key
+
+        # Get the auth session
+        humanapi_session = self.get_humanapi_auth().get_auth_session(self.request.get('code'), scope='')
+
+        # Get the API
+        users_humanapi = self.get_human_api(humanapi_session.access_token)
+
+        # Get the profile
+        users_humanapi_profile = users_humanapi.profile.get()
+
+        # Create a or retrieve the user
+        humanapi_user = HumanAPIUser.get_or_insert(
+            users_humanapi_profile['userId'],
+            email=users_humanapi_profile['email'],
+            human_id=users_humanapi_profile['humanId'],
+            access_token=humanapi_session.access_token,
+            access_token_key=humanapi_session.access_token_key
         )
+
+        # Update the user with new tokens
+        humanapi_user.populate(access_token=humanapi_session.access_token, access_token_key=humanapi_session.access_token_key)
+        humanapi_user.put()
 
         pass
