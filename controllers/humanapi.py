@@ -29,7 +29,7 @@ class HumanAPIAuthHandler(object):
 class HumanAPIAuthCallHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
 
     def get(self):
-        self.redirect(self.get_humanapi_auth().get_authorize_url('http://localhost:8080/auth/humanapi_auth_callback'))
+        self.redirect(self.get_humanapi_auth().get_authorize_url(uri_for('humanapi_auth_callback')))
 
 
 class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
