@@ -16,5 +16,5 @@ class HumanAPIUser(User, HumanAPIAuthModel):
     human_id = ndb.StringProperty(required=True)
 
 
-class RunkeeperUser(User, RunkeeperUser):
+class RunkeeperUser(User, RunkeeperAuthModel):
     pass

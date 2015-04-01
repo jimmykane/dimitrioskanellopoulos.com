@@ -32,7 +32,7 @@ class HumanAPIAuthCallHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
         self.redirect(self.get_humanapi_auth().get_authorize_url(uri_for('humanapi_auth_callback')))
 
 
-class HumanAPIAuthCallBackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
+class HumanAPIAuthCallbackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
 
     def get(self):
         if not self.request.get('code'):
