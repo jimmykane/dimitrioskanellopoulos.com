@@ -32,23 +32,24 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
             self.request.response.out.write(self.request.params.get('error'))
             return
 
-        if self.request.params.get('code'):
-            access_token_data = self.request_access_token(code=self.request.params.get('code'))
-            if not access_token_data:
-                return
-            # Get or insert the model update tokens etc
-            runkeeper_auth_model = RunkeeperUser.get_or_insert(
-                str(self.get_user_id(access_token_data)['userID']),
-                access_token=access_token_data['access_token'],
-                token_type=access_token_data['token_type']
-            )
-            runkeeper_auth_model.populate(
-                access_token=access_token_data['access_token'],
-                token_type=access_token_data['token_type']
-            )
-            runkeeper_auth_model.put()
-            # Write the result
-            self.response.out.write('Success')
+        if not self.request.params.get('code'):
+            return
+        # Get the auth session
+        runkeeper_auth_session = self.get_runkeeper_auth().get_auth_session(self.request.get('code'), self.request.host_url + uri_for('runkeeper_auth_callback'))
+
+        # Get or insert the model update tokens etc
+        runkeeper_auth_model = RunkeeperUser.get_or_insert(
+            str(self.get_user_id(access_token_data)['userID']),
+            access_token=access_token_data['access_token'],
+            token_type=access_token_data['token_type']
+        )
+        runkeeper_auth_model.populate(
+            access_token=access_token_data['access_token'],
+            token_type=access_token_data['token_type']
+        )
+        runkeeper_auth_model.put()
+        # Write the result
+        self.response.out.write('Success')
 
     def get_user_id(self, access_token_data):
         result = urlfetch.fetch(
