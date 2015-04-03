@@ -7,28 +7,23 @@ import webapp2
 from google.appengine.api import urlfetch
 from webapp2 import uri_for
 
-
 from config.config import get_api_keys
 from models.users import RunkeeperUser
 from authentication.runkeeper import RunkeeperAuth
 
+
 class RunkeeperAuthHandler(object):
-    pass
+    @classmethod
+    def get_runkeeper_auth(cls):
+        return RunkeeperAuth(
+            client_id=get_api_keys()['runkeeper']['client_id'],
+            client_secret=get_api_keys()['runkeeper']['client_secret']
+        )
 
 
 class RunkeeperAuthCallHandler(RunkeeperAuthHandler, webapp2.RequestHandler):
     def get(self):
-        self.redirect(str(self.get_auth_url()))
-
-    def get_auth_url(self):
-        return \
-            get_api_keys()['runkeeper']['urls']['authorization_url'] \
-            + '?' \
-            + 'client_id=' + get_api_keys()['runkeeper']['client_id'] \
-            + '&' \
-            + 'response_type=code' \
-            + '&' \
-            + 'redirect_uri=' + self.request.host_url + uri_for('runkeeper_auth_callback')
+        self.redirect(self.get_runkeeper_auth().get_authorize_url(self.request.host_url + uri_for('runkeeper_auth_callback')))
 
 
 class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler):

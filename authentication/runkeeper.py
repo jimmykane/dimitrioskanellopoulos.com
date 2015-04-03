@@ -13,8 +13,8 @@ class RunkeeperAuth(OAuth2Service):
             client_id=client_id,
             client_secret=client_secret,
             name='runkeeper',
-            authorize_url=get_api_keys()['runkeeper']['urls']['authorization_url'],
-            access_token_url=get_api_keys()['runkeeper']['urls']['access_token_url']
+            authorize_url=str(get_api_keys()['runkeeper']['urls']['authorization_url']),
+            access_token_url=str(get_api_keys()['runkeeper']['urls']['access_token_url'])
         )
 
     def get_authorize_url(self, redirect_uri):
