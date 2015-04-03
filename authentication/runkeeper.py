@@ -8,7 +8,8 @@ class RunkeeperAuth(OAuth2Service):
     def __init__(self, client_id, client_secret):
         if (client_id or client_secret) is None:
             raise Exception('The client_id and client_secret are required')
-        OAuth2Service.__init__(self,
+        OAuth2Service.__init__(
+            self,
             client_id=client_id,
             client_secret=client_secret,
             name='runkeeper',
@@ -23,8 +24,11 @@ class RunkeeperAuth(OAuth2Service):
         )
 
     def get_auth_session(self, code, redirect_uri, grant_type='authorization_code'):
-        return super(RunkeeperAuth, self).get_auth_session(data={
-            'grant_type': grant_type,
-            'code': code,
-            'redirect_uri': redirect_uri
-        }, decoder=json.loads)
+        return super(RunkeeperAuth, self).get_auth_session(
+            data={
+                'grant_type': grant_type,
+                'code': code,
+                'redirect_uri': redirect_uri
+            },
+            decoder=json.loads
+        )
