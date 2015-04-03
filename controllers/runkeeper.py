@@ -5,8 +5,11 @@ import json
 import webapp2
 
 from google.appengine.api import urlfetch
+from webapp2 import uri_for
+
 
 from config.config import get_api_keys
+from models.users import RunkeeperUser
 
 
 class RunkeeperAuthHandler(object):
@@ -15,7 +18,7 @@ class RunkeeperAuthHandler(object):
 
 class RunkeeperAuthCallHandler(RunkeeperAuthHandler, webapp2.RequestHandler):
     def get(self):
-        self.redirect(self.get_auth_url())
+        self.redirect(str(self.get_auth_url()))
 
     def get_auth_url(self):
         return \
@@ -25,7 +28,7 @@ class RunkeeperAuthCallHandler(RunkeeperAuthHandler, webapp2.RequestHandler):
             + '&' \
             + 'response_type=code' \
             + '&' \
-            + 'redirect_uri=' + get_api_keys()['runkeeper']['urls']['redirect_uri']
+            + 'redirect_uri=' + self.request.host_url + uri_for('runkeeper_auth_callback')
 
 
 class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler):
@@ -39,7 +42,11 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
             if not access_token_data:
                 return
             # Get or insert the model update tokens etc
-            runkeeper_auth_model = RunkeeperAuthModel.get_or_insert(str(self.get_user_id(access_token_data)['userID']))
+            runkeeper_auth_model = RunkeeperUser.get_or_insert(
+                str(self.get_user_id(access_token_data)['userID']),
+                access_token=access_token_data['access_token'],
+                token_type=access_token_data['token_type']
+            )
             runkeeper_auth_model.populate(
                 access_token=access_token_data['access_token'],
                 token_type=access_token_data['token_type']
@@ -65,13 +72,13 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
 
     def request_access_token(self, code):
         result = urlfetch.fetch(
-            url=self.app.config['project']['api_keys']['runkeeper']['urls']['access_token_url'],
+            url=get_api_keys()['runkeeper']['urls']['access_token_url'],
             payload=urllib.urlencode({
                 'grant_type': 'authorization_code',
                 'code': code,
-                'client_id': self.app.config['project']['api_keys']['runkeeper']['client_id'],
-                'client_secret': self.app.config['project']['api_keys']['runkeeper']['client_secret'],
-                'redirect_uri': self.app.config['project']['api_keys']['runkeeper']['urls']['redirect_uri']
+                'client_id': get_api_keys()['runkeeper']['client_id'],
+                'client_secret': get_api_keys()['runkeeper']['client_secret'],
+                'redirect_uri': self.request.host_url + uri_for('runkeeper_auth_callback')
             }),
             method=urlfetch.POST,
             headers={'Content-Type': 'application/x-www-form-urlencoded'}

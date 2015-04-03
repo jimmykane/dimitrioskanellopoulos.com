@@ -17,4 +17,6 @@ class HumanAPIAuthModel(AuthenticationModel):
 
 
 class RunkeeperAuthModel(AuthenticationModel):
-    pass
+
+    access_token = ndb.StringProperty(required=True)
+    token_type = ndb.StringProperty(required=True)
