@@ -10,7 +10,7 @@ from webapp2 import uri_for
 
 from config.config import get_api_keys
 from models.users import RunkeeperUser
-from authentication import runkeeper
+from authentication.runkeeper import RunkeeperAuth
 
 class RunkeeperAuthHandler(object):
     pass
