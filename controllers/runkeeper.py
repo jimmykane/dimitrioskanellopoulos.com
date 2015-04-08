@@ -1,9 +1,12 @@
+import json
 import webapp2
+
 from webapp2 import uri_for
 
 from config.config import get_api_keys
 from models.users import RunkeeperUser
 from lib.apis.runkeeperapi import RunkeeperAPI
+from lib.apis.authentication.runkeeper import RunkeeperAuth
 
 class RunkeeperAuthHandler(object):
     @classmethod
@@ -30,7 +33,11 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         # Get the auth session
         runkeeper_auth_session = self.get_runkeeper_auth().get_auth_session(self.request.get('code'), self.request.host_url + uri_for('runkeeper_auth_callback'))
 
-        runkeeper_api = RunkeeperAPI(access_token=runkeeper_auth_session.access_token, access_token_type='', debug=True)
+        runkeeper_api = RunkeeperAPI(
+            access_token=runkeeper_auth_session.access_token,
+            access_token_type=json.loads(runkeeper_auth_session.access_token_response._content)['token_type'],
+            debug=True
+        )
         # Get or insert the model update tokens etc
         pass
         runkeeper_auth_model = RunkeeperUser.get_or_insert(

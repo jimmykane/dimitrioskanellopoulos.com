@@ -20,11 +20,13 @@ class RunkeeperAPI(object):
     headers_content_type = 'application/x-www-form-urlencoded'
     headers_accept = 'application/vnd.com.runkeeper'
 
-    def __init__(self, access_token=None, access_token_type=None, debug=False):
+    def __init__(self, access_token, access_token_type, debug=False):
         self.logger = Logger(
             'Runkeeper API',
             logging.INFO if debug else logging.DEBUG
         )
+        self.access_token = access_token
+        self.access_token_type = access_token_type
 
     def _get_headers(self, call):
         return {
