@@ -17,4 +17,11 @@ class HumanAPIUser(User, HumanAPIAuthModel):
 
 
 class RunkeeperUser(User, RunkeeperAuthModel):
+
+    email = ndb.StringProperty(required=True)
+
+    # Since he was inserted like so
+    @property
+    def user_id(self):
+        return self.key.id()
     pass

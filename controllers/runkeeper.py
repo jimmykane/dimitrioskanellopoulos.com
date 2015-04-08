@@ -38,16 +38,12 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
             access_token_type=json.loads(runkeeper_auth_session.access_token_response._content)['token_type'],
             debug=True
         )
+        a = runkeeper_api.get_user()
+
         # Get or insert the model update tokens etc
-        pass
         runkeeper_auth_model = RunkeeperUser.get_or_insert(
-            str(self.get_user_id(access_token_data)['userID']),
-            access_token=access_token_data['access_token'],
-            token_type=access_token_data['token_type']
         )
         runkeeper_auth_model.populate(
-            access_token=access_token_data['access_token'],
-            token_type=access_token_data['token_type']
         )
         runkeeper_auth_model.put()
         # Write the result

@@ -38,7 +38,7 @@ class RunkeeperAPI(object):
     def _query(self, call):
         result = urlfetch.fetch(
             # Can have some mapping or pattern
-            url=call + '/',
+            url='user/',
             method=urlfetch.GET,
             # should add headers
             headers=self._get_headers(call)
@@ -50,5 +50,5 @@ class RunkeeperAPI(object):
 
 
     @property
-    def get_user(self, access_token_data):
+    def get_user(self):
         return self._query('user')
