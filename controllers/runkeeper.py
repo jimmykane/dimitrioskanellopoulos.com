@@ -9,8 +9,7 @@ from webapp2 import uri_for
 
 from config.config import get_api_keys
 from models.users import RunkeeperUser
-from authentication.runkeeper import RunkeeperAuth
-
+from externalapis.runkeeperapi import RunkeeperAPI
 
 class RunkeeperAuthHandler(object):
     @classmethod
@@ -37,7 +36,9 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         # Get the auth session
         runkeeper_auth_session = self.get_runkeeper_auth().get_auth_session(self.request.get('code'), self.request.host_url + uri_for('runkeeper_auth_callback'))
 
+        runkeeper_api = RunkeeperAPI(access_token=runkeeper_auth_session.access_token, access_token_type='', debug=True)
         # Get or insert the model update tokens etc
+        pass
         runkeeper_auth_model = RunkeeperUser.get_or_insert(
             str(self.get_user_id(access_token_data)['userID']),
             access_token=access_token_data['access_token'],
@@ -50,23 +51,3 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         runkeeper_auth_model.put()
         # Write the result
         self.response.out.write('Success')
-
-    def request_access_token(self, code):
-        result = urlfetch.fetch(
-            url=get_api_keys()['runkeeper']['urls']['access_token_url'],
-            payload=urllib.urlencode({
-                'grant_type': 'authorization_code',
-                'code': code,
-                'client_id': get_api_keys()['runkeeper']['client_id'],
-                'client_secret': get_api_keys()['runkeeper']['client_secret'],
-                'redirect_uri': self.request.host_url + uri_for('runkeeper_auth_callback')
-            }),
-            method=urlfetch.POST,
-            headers={'Content-Type': 'application/x-www-form-urlencoded'}
-        )
-        if not result.status_code == 200:
-            self.request.response.out.write(result.content)
-            return False
-
-        # Should check for error
-        return json.loads(result.content)
