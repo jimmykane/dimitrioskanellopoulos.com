@@ -37,9 +37,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
             self.request.get('code'),
             self.request.host_url + uri_for('runkeeper_auth_callback')
         )
-        access_token = runkeeper_auth_session.access_token,
-        # Hm?
-        access_token = str(access_token),
+        access_token = runkeeper_auth_session.access_token
         access_token_type = json.loads(runkeeper_auth_session.access_token_response._content)['token_type']
 
         runkeeper_api = RunkeeperAPI(
@@ -63,6 +61,8 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         )
         # Update
         runkeeper_auth_model.populate(
+            access_token=access_token,
+            access_token_type=access_token_type,
             name=runkeeper_user_profile['name'],
             profile=runkeeper_user_profile['profile'],
             large_picture=runkeeper_user_profile['large_picture']
