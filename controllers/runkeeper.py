@@ -33,13 +33,18 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        runkeeper_auth_session = self.get_runkeeper_auth().get_auth_session(self.request.get('code'),
-                                                                            self.request.host_url + uri_for(
-                                                                                'runkeeper_auth_callback'))
+        runkeeper_auth_session = self.get_runkeeper_auth().get_auth_session(
+            self.request.get('code'),
+            self.request.host_url + uri_for('runkeeper_auth_callback')
+        )
+        access_token = runkeeper_auth_session.access_token,
+        # Hm?
+        access_token = access_token[0],
+        access_token_type = json.loads(runkeeper_auth_session.access_token_response._content)['token_type']
 
         runkeeper_api = RunkeeperAPI(
-            access_token=runkeeper_auth_session.access_token,
-            access_token_type=json.loads(runkeeper_auth_session.access_token_response._content)['token_type'],
+            access_token=access_token,
+            access_token_type=access_token_type,
             debug=True
         )
         runkeeper_user = runkeeper_api.get_user()
@@ -48,9 +53,21 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
 
         # Get or insert the model update tokens etc
         runkeeper_auth_model = RunkeeperUser.get_or_insert(
+            str(runkeeper_user['userID']),
+            access_token=access_token,
+            access_token_type=access_token_type,
+            name=runkeeper_user_profile['name'],
+            profile=runkeeper_user_profile['profile'],
+            large_picture=runkeeper_user_profile['large_picture']
+
         )
+        # Update
         runkeeper_auth_model.populate(
+            name=runkeeper_user_profile['name'],
+            profile=runkeeper_user_profile['profile'],
+            large_picture=runkeeper_user_profile['large_picture']
         )
+        # Write blind again
         runkeeper_auth_model.put()
         # Write the result
         self.response.out.write('Success')

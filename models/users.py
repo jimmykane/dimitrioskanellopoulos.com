@@ -18,7 +18,9 @@ class HumanAPIUser(User, HumanAPIAuthModel):
 
 class RunkeeperUser(User, RunkeeperAuthModel):
 
-    email = ndb.StringProperty(required=True)
+    name = ndb.StringProperty(required=True)
+    profile = ndb.StringProperty(required=True)
+    large_picture = ndb.StringProperty()
 
     # Since he was inserted like so
     @property

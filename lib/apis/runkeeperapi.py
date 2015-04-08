@@ -49,5 +49,5 @@ class RunkeeperAPI(object):
     def get_user(self):
         return self._query('user')
 
-    def get_user(self):
+    def get_user_profile(self):
         return self._query('profile')
