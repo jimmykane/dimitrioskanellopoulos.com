@@ -2,10 +2,8 @@ import sys
 import logging
 import json
 
-
 from lib.logger import Logger
 from google.appengine.api import urlfetch
-
 
 
 class RunkeeperAPI(object):
@@ -38,7 +36,7 @@ class RunkeeperAPI(object):
     def _query(self, call):
         result = urlfetch.fetch(
             # Can have some mapping or pattern
-            url='user/',
+            url=self.runkeeper_api_root + call + '/',
             method=urlfetch.GET,
             # should add headers
             headers=self._get_headers(call)
@@ -48,7 +46,8 @@ class RunkeeperAPI(object):
             return False
         return json.loads(result.content)
 
-
-    @property
     def get_user(self):
         return self._query('user')
+
+    def get_user(self):
+        return self._query('profile')
