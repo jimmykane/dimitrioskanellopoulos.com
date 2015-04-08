@@ -39,7 +39,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         )
         access_token = runkeeper_auth_session.access_token,
         # Hm?
-        access_token = access_token[0],
+        access_token = str(access_token),
         access_token_type = json.loads(runkeeper_auth_session.access_token_response._content)['token_type']
 
         runkeeper_api = RunkeeperAPI(
