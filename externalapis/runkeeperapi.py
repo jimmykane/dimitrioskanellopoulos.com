@@ -1,7 +1,11 @@
+import sys
 import logging
 import json
 
+
+from lib.logger import Logger
 from google.appengine.api import urlfetch
+
 
 
 class RunkeeperAPI(object):
@@ -17,10 +21,10 @@ class RunkeeperAPI(object):
     headers_accept = 'application/vnd.com.runkeeper'
 
     def __init__(self, access_token=None, access_token_type=None, debug=False):
-        if debug:
-            self.level = logging.INFO
-        else:
-            self.level = logging.DEBUG
+        self.logger = Logger(
+            'Runkeeper API',
+            logging.INFO if debug else logging.DEBUG
+        )
 
     def _get_headers(self, call):
         return {
@@ -38,7 +42,7 @@ class RunkeeperAPI(object):
             headers=self._get_headers(call)
         )
         if not result.status_code == 200:
-            logging(self.level, result.content)
+            self.logger.log(self.level, result.content)
             return False
         return json.loads(result.content)
 

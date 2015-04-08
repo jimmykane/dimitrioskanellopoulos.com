@@ -6,7 +6,7 @@ config/api_keys.json
 *.pyc
 
 # Libs
-lib
+vendor
 
 
 # IDEs

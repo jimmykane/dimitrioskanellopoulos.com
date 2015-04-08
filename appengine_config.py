@@ -6,5 +6,5 @@ WSGI applications specified in app.yaml are loaded.
 
 from google.appengine.ext import vendor
 
-# Add any libraries installed in the "lib" folder.
-vendor.add('lib')
+# Add any libraries installed in the "vendor" folder.
+vendor.add('vendor')
