@@ -51,21 +51,6 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         # Write the result
         self.response.out.write('Success')
 
-    def get_user_id(self, access_token_data):
-        result = urlfetch.fetch(
-            url='https://api.runkeeper.com/user/',
-            method=urlfetch.GET,
-            headers={
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/vnd.com.runkeeper.User+json',
-                'Authorization': access_token_data['token_type'] + ' ' + access_token_data['access_token']
-            }
-        )
-        if not result.status_code == 200:
-            self.request.response.out.write(result.content)
-            return False
-        return json.loads(result.content)
-
     def request_access_token(self, code):
         result = urlfetch.fetch(
             url=get_api_keys()['runkeeper']['urls']['access_token_url'],
