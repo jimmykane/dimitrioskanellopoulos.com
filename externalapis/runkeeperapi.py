@@ -3,8 +3,8 @@ import json
 
 from google.appengine.api import urlfetch
 
-class RunkeeperAPI(object):
 
+class RunkeeperAPI(object):
     # Set by init
     access_token = None
     access_token_type = None
@@ -29,15 +29,20 @@ class RunkeeperAPI(object):
             'Authorization': self.access_token_type + ' ' + self.access_token
         }
 
+    def _query(self, call):
+        result = urlfetch.fetch(
+            # Can have some mapping or pattern
+            url=call + '/',
+            method=urlfetch.GET,
+            # should add headers
+            headers=self._get_headers(call)
+        )
+        if not result.status_code == 200:
+            logging(self.level, result.content)
+            return False
+        return json.loads(result.content)
+
 
     @property
     def get_user(self, access_token_data):
-            result = urlfetch.fetch(
-                url='user/',
-                method=urlfetch.GET,
-                #should add headers
-            )
-            if not result.status_code == 200:
-                self.request.response.out.write(result.content)
-                return False
-            return json.loads(result.content)
+        return self._query('user')
