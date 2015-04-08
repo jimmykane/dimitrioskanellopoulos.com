@@ -1,15 +1,11 @@
-import logging
-import urllib
 import json
 
 import webapp2
-
-
 from google.appengine.api import urlfetch
 from webapp2 import uri_for
 
 from config.config import get_api_keys
-from externalapis import humanapi as humanAPI
+from lib.apis import humanapi as humanAPI
 from models.users import HumanAPIUser
 
 class HumanAPIAuthHandler(object):

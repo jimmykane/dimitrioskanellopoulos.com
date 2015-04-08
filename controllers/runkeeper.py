@@ -1,15 +1,9 @@
-import logging
-import urllib
-import json
-
 import webapp2
-
-from google.appengine.api import urlfetch
 from webapp2 import uri_for
 
 from config.config import get_api_keys
 from models.users import RunkeeperUser
-from externalapis.runkeeperapi import RunkeeperAPI
+from lib.apis.runkeeperapi import RunkeeperAPI
 
 class RunkeeperAuthHandler(object):
     @classmethod
