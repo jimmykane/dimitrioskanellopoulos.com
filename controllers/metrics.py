@@ -14,4 +14,8 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
             access_token_type=runkeeper_user.access_token_type,
             debug=True
         )
+        user = runkeeper_api.get_user()
+        profile = runkeeper_api.get_user_profile()
+        weight_measurements = runkeeper_api.get_user_weight_feed()
+        records = runkeeper_api.get_user_records()
         pass

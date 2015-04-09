@@ -15,7 +15,7 @@ class RunkeeperAPI(object):
     data_format = 'json'
 
     # Headers
-    headers_content_type = 'application/x-www-form-urlencoded'
+    headers_content_type = 'application/vnd.com.runkeeper'
     headers_accept = 'application/vnd.com.runkeeper'
 
     def __init__(self, access_token, access_token_type, debug=False):
@@ -23,26 +23,30 @@ class RunkeeperAPI(object):
             'Runkeeper API',
             logging.INFO if debug else logging.DEBUG
         )
+        self.level = logging.INFO if debug else logging.DEBUG
         self.access_token = access_token
         self.access_token_type = access_token_type
 
     def _get_headers(self, call):
-        return {
-            'Content-Type': self.headers_content_type,
-            'Accept': self.headers_accept + '.' + call + '+' + self.data_format,
+        a = {
+            'Content-Type': self.headers_accept + '.' + call + '+' + self.data_format,
+            #'Accept': self.headers_accept + '.' + call + '+' + self.data_format,
             'Authorization': self.access_token_type + ' ' + self.access_token
         }
+        return a
 
     def _query(self, call):
+        url = self.runkeeper_api_root + '/' + call
         result = urlfetch.fetch(
             # Can have some mapping or pattern
-            url=self.runkeeper_api_root + call + '/',
+            url=self.runkeeper_api_root + '/' + call ,
             method=urlfetch.GET,
             # should add headers
             headers=self._get_headers(call)
         )
         if not result.status_code == 200:
-            self.logger.log(self.level, result.content)
+            # Byuggy @todo kill
+            # self.logger.log(self.level, str(result.content))
             return False
         return json.loads(result.content)
 
@@ -51,3 +55,9 @@ class RunkeeperAPI(object):
 
     def get_user_profile(self):
         return self._query('profile')
+
+    def get_user_weight_feed(self):
+        return self._query('FitnessActivityFeed')
+
+    def get_user_records(self):
+        return self._query('Records')
