@@ -52,7 +52,22 @@ class RunkeeperAPI(object):
     def get_user(self):
         # @todo create the following properties from the user iteratable
         # Should return user
-        return self._query('user')
+        return RunkeeperUser(self)
 
     def get_user_profile(self):
         return self._query('profile')
+
+
+class RunkeeperUser(object):
+    def __init__(self, master):
+        self.master = master
+        #Get the user methods and set the attributes
+        for user_method, url in master._query('user').iteritems():
+            if user_method == 'userID':
+                continue
+            setattr(
+                self,
+                user_method,
+                master._query(url)
+            )
+        pass

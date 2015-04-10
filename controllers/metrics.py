@@ -9,6 +9,7 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         runkeeper_user_model = RunkeeperUserModel.get_by_id(user_id)
         if not runkeeper_user_model:
             self.response.out.write('No user found')
+            return
         runkeeper_api = RunkeeperAPI(
             access_token=runkeeper_user_model.access_token,
             access_token_type=runkeeper_user_model.access_token_type,
