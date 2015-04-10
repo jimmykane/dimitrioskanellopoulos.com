@@ -10,6 +10,7 @@ class RunkeeperAPI(object):
     # Set by init
     access_token = None
     access_token_type = None
+    debug_level = logging.DEBUG
 
     runkeeper_api_root = 'https://api.runkeeper.com/'
     data_format = 'json'
@@ -23,7 +24,7 @@ class RunkeeperAPI(object):
             'Runkeeper API',
             logging.INFO if debug else logging.DEBUG
         )
-        self.level = logging.INFO if debug else logging.DEBUG
+        self.debug_level = logging.INFO if debug else logging.DEBUG
         self.access_token = access_token
         self.access_token_type = access_token_type
 
@@ -44,18 +45,14 @@ class RunkeeperAPI(object):
         )
         if not result.status_code == 200:
             # Byuggy @todo kill
-            # self.logger.log(self.level, str(result.content))
+            # self.logger.log(self.debug_level, str(result.content))
             return False
         return json.loads(result.content)
 
     def get_user(self):
+        # @todo create the following properties from the user iteratable
+        # Should return user
         return self._query('user')
 
     def get_user_profile(self):
         return self._query('profile')
-
-    def get_user_weight(self):
-        return self._query('weight')
-
-    def get_user_records(self):
-        return self._query('records')

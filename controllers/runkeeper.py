@@ -4,7 +4,7 @@ import webapp2
 from webapp2 import uri_for
 
 from config.config import get_api_keys
-from models.users import RunkeeperUser
+from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
 from lib.apis.authentication.runkeeper import RunkeeperAuth
 
@@ -50,7 +50,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
 
 
         # Get or insert the model update tokens etc
-        runkeeper_auth_model = RunkeeperUser.get_or_insert(
+        runkeeper_auth_model = RunkeeperUserModel.get_or_insert(
             str(runkeeper_user['userID']),
             access_token=access_token,
             access_token_type=access_token_type,

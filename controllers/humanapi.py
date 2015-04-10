@@ -6,7 +6,7 @@ from webapp2 import uri_for
 
 from config.config import get_api_keys
 from lib.apis import humanapi as humanAPI
-from models.users import HumanAPIUser
+from models.users import HumanAPIUserModelModel
 
 class HumanAPIAuthHandler(object):
 
@@ -61,7 +61,7 @@ class HumanAPIAuthCallbackHandler(HumanAPIAuthHandler, webapp2.RequestHandler):
             self.response.out.write('Error')
 
         # Create a or retrieve the user
-        humanapi_user = HumanAPIUser.get_or_insert(
+        humanapi_user = HumanAPIUserModelModel.get_or_insert(
             users_humanapi_profile['userId'],
             email=users_humanapi_profile['email'],
             human_id=users_humanapi_profile['humanId'],

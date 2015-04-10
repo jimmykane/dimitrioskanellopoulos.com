@@ -1,12 +1,12 @@
 
-from models.users import RunkeeperUser
+from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
 import webapp2
 
 
 class RunkeeperMetricsHandler(webapp2.RequestHandler):
     def get(self, user_id):
-        runkeeper_user_model = RunkeeperUser.get_by_id(user_id)
+        runkeeper_user_model = RunkeeperUserModel.get_by_id(user_id)
         if not runkeeper_user_model:
             self.response.out.write('No user found')
         runkeeper_api = RunkeeperAPI(
@@ -16,7 +16,5 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         )
         runkeeper_user = runkeeper_api.get_user()
         runkeeper_user_profile = runkeeper_api.get_user_profile()
-        runkeeper_user_weight_measurements = runkeeper_api.get_user_weight()
-        runkeeper_user_records = runkeeper_api.get_user_records()
 
         pass
