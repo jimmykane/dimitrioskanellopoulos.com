@@ -35,7 +35,7 @@ class RunkeeperAPI(object):
             'Authorization': self.access_token_type + ' ' + self.access_token
         }
 
-    def _query(self, call):
+    def query(self, call):
         result = urlfetch.fetch(
             # Can have some mapping or pattern
             url=self.runkeeper_api_root + '/' + call ,
@@ -55,19 +55,21 @@ class RunkeeperAPI(object):
         return RunkeeperUser(self)
 
     def get_user_profile(self):
-        return self._query('profile')
+        return self.query('profile')
 
 
 class RunkeeperUser(object):
     def __init__(self, master):
         self.master = master
         #Get the user methods and set the attributes
-        for user_method, url in master._query('user').iteritems():
+        for user_method, call in master.query('user').iteritems():
             if user_method == 'userID':
                 continue
             setattr(
                 self,
                 user_method,
-                master._query(url)
+                self._query(call)
             )
-        pass
+
+    def _query(self, call):
+        return self.master.query(call)
