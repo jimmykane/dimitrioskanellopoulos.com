@@ -54,22 +54,27 @@ class RunkeeperAPI(object):
         # Should return user
         return RunkeeperUser(self)
 
-    def get_user_profile(self):
-        return self.query('profile')
-
-
 class RunkeeperUser(object):
+
+    user_id = None
+
     def __init__(self, master):
         self.master = master
         # Get the user methods and set the attributes
         for user_method, call in self.master.query('user').iteritems():
             if user_method == 'userID':
+                # Assign the userID to the object
+                self.user_id = call
                 continue
             setattr(
                 self,
                 user_method,
                 self.master.query(call)
             )
+
+    def get_user_id(self):
+        return self.user_id
+
 
     def query(self, call):
         return self.master(call)
