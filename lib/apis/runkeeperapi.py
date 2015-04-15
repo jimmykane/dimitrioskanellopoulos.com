@@ -66,6 +66,7 @@ class RunkeeperUser(object):
                 # Assign the userID to the object
                 self.user_id = call
                 continue
+            # Should not get the value but bind a method
             setattr(
                 self,
                 user_method,
