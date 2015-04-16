@@ -12,8 +12,10 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
     // Get some
     $http.get('/metrics/runkeeper/' + userId + '/weight')
         .success(function(data, status, headers, config) {
+            // @todo check to improve this
+            var weight = data.items[0].weight || data;
             // Get the 1st one
-            $scope.metrics.push({Weight: data.items[0].weight});
+            $scope.metrics.push({Weight: weight});
         })
         .error(function(data, status, headers, config) {
             // log error

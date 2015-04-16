@@ -33,7 +33,7 @@ def is_dev_server():
 def get_api_keys():
     file_handler = os.path.join(os.path.dirname(__file__), 'api_keys_dev.json') \
         if is_dev_server() \
-        else os.path.join('.', 'api_keys.json')
+        else os.path.join(os.path.dirname(__file__), 'api_keys.json')
     try:
         with open(file_handler) as json_file:
             return json.load(json_file)
