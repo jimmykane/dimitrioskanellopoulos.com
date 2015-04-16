@@ -1,8 +1,11 @@
 import json
 
+from config.config import is_dev_server
 from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
+
 import webapp2
+
 
 
 """
@@ -30,7 +33,7 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
     def get(self, user_id, call):
 
         # If its not allowed gto
-        if call in self.disallowed_calls:
+        if not is_dev_server() and call in self.disallowed_calls:
             self.response.out.write('Call not allowed')
             return
 
