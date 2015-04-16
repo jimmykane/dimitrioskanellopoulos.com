@@ -1,6 +1,6 @@
 import logging
 
-from controllers import server, humanapi, runkeeper, metrics
+from controllers import server, runkeeper, metrics
 from config import config
 
 import webapp2
@@ -10,10 +10,6 @@ app = webapp2.WSGIApplication(
     [
         # Essential handlers
         webapp2.Route('/', handler=server.RootPage),
-
-        # Human API Auth handlers
-        webapp2.Route('/auth/humanapi_auth_call', handler=humanapi.HumanAPIAuthCallHandler, name='humanapi_auth_call'),
-        webapp2.Route('/auth/humanapi_auth_callback', handler=humanapi.HumanAPIAuthCallbackHandler, name='humanapi_auth_callback'),
 
         # Runkeeper API Auth handlers
         webapp2.Route('/auth/runkeeper_auth_call', handler=runkeeper.RunkeeperAuthCallHandler, name='runkeeper_auth_call'),

@@ -10,12 +10,6 @@ class AuthenticationModel(ndb.Expando, DictModel, NDBCommonModel):
     edit_date = ndb.DateTimeProperty(auto_now=True)
 
 
-class HumanAPIAuthModel(AuthenticationModel):
-
-    access_token_key = ndb.StringProperty(required=True)
-    public_token = ndb.StringProperty(required=True)
-
-
 class RunkeeperAuthModel(AuthenticationModel):
 
     access_token = ndb.StringProperty(required=True)

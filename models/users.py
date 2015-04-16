@@ -10,12 +10,6 @@ class UserModel(ndb.Expando, DictModel, NDBCommonModel):
     edit_date = ndb.DateTimeProperty(auto_now=True)
 
 
-class HumanAPIUserModelModel(UserModel, HumanAPIAuthModel):
-
-    email = ndb.StringProperty(required=True)
-    human_id = ndb.StringProperty(required=True)
-
-
 class RunkeeperUserModel(UserModel, RunkeeperAuthModel):
 
     name = ndb.StringProperty(required=True)
