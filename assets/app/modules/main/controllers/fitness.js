@@ -7,14 +7,14 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
 
     $scope.metrics = [];
 
-    // @todo check if this should be a resource
+    // @todo check if this should be a resource and moved to service
 
     // Get some
     $http.get('/metrics/runkeeper/' + userId + '/weight')
         .success(function(data, status, headers, config) {
             debugger;
             // Get the 1st one
-            $scope.metrics.push({weight: data.items[0].weight});
+            $scope.metrics.push({Weight: data.items[0].weight});
         })
         .error(function(data, status, headers, config) {
             // log error

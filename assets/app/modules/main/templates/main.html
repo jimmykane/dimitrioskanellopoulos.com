@@ -22,9 +22,9 @@
         <!-- @todo This should be moved to separate template -->
          <div data-ng-controller="fitnessController">
             <p>-= Fitness Data (Powered via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</p>
-            <ul>
-                <li data-ng-repeat="metric in metrics"><a href="{{ metric.value }}" target="_blank">{{ metric.title }}</a></li>
-            </ul>
+              <ul data-ng-repeat="metric in metrics">
+                  <li><span data-ng-repeat="(metricName, metricValue) in metric">{{ metricName }}: {{ metricValue }}</span></li>
+              </ul>
         </div>
 
     </div>
