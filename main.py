@@ -22,8 +22,6 @@ app = webapp2.WSGIApplication(
         # Metrics
         webapp2.Route(r'/metrics/runkeeper/<user_id:\d+>', handler=metrics.RunkeeperMetricsHandler, name='runkeeper_metrics'),
 
-
-
     ], debug=True, config=config.config)
 
 
