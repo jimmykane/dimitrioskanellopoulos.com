@@ -12,7 +12,6 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
     // Get some
     $http.get('/metrics/runkeeper/' + userId + '/weight')
         .success(function(data, status, headers, config) {
-            debugger;
             // Get the 1st one
             $scope.metrics.push({Weight: data.items[0].weight});
         })
