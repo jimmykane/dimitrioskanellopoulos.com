@@ -16,7 +16,7 @@ app = webapp2.WSGIApplication(
         webapp2.Route('/auth/runkeeper_auth_callback', handler=runkeeper.RunkeeperAuthCallbackHandler, name='runkeeper_auth_callback'),
 
         # Metrics
-        webapp2.Route(r'/metrics/runkeeper/<user_id:\d+>/<call:\w+>', handler=metrics.RunkeeperMetricsHandler, name='runkeeper_metrics'),
+        webapp2.Route(r'/metrics/runkeeper/<user_id:\d+>/<call:[\w\/]+>', handler=metrics.RunkeeperMetricsHandler, name='runkeeper_metrics'),
 
     ], debug=True, config=config.config)
 
