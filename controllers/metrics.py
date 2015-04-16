@@ -59,12 +59,10 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
             self.response.out.write('Unknown call')
             return
 
-        # @todo check caching etc
-
         # Run the call and echo it
         self.response.out.write(
             json.dumps(
-                self.get_call_result_from_cache(call, getattr(runkeeper_user, call)())
+                self.get_call_result_from_cache(call, getattr(runkeeper_user, call)(), False)
             )
         )
 
