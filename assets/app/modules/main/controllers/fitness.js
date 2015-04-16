@@ -7,7 +7,7 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
 
     $scope.metrics = [];
 
-    // @todo check if this should be a resource and moved to service
+    // @todo check if this should be a resource and moved to service and promise
 
     // Get some
     $http.get('/metrics/runkeeper/' + userId + '/weight')
