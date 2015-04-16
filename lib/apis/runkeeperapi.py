@@ -61,7 +61,6 @@ class RunkeeperUser(object):
     def __init__(self, master):
         self.master = master
         # Get the user methods and set the attributes
-        b= self.master.query('user')
         for user_method, call in self.master.query('user').iteritems():
             if user_method == 'userID':
                 # Assign the userID to the object
