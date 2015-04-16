@@ -18,5 +18,13 @@
                 <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
             </ul>
         </div>
+
+         <div data-ng-controller="fitnessController">
+            <p>-= Fitness Data (Powered via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</p>
+            <ul>
+                <li data-ng-repeat="metric in metrics"><a href="{{ metric.value }}" target="_blank">{{ metric.title }}</a></li>
+            </ul>
+        </div>
+
     </div>
 </div>
