@@ -1,19 +1,61 @@
+import json
 
 from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
 import webapp2
 
 
+"""
+Acts like a proxy with caching
+"""
 class RunkeeperMetricsHandler(webapp2.RequestHandler):
-    def get(self, user_id):
+
+    # @todo implement this better with auth scopes...
+    disallowed_calls = [
+        'team',
+        'diabetes',
+        # 'background_activities',
+        # 'fitness_activities',
+        'nutrition',
+        'profile',
+        # 'records',
+        # 'general_measurements',
+        # 'settings',
+        # 'weight',
+        # 'change_log',
+        'strength_training_activities',
+        # 'sleep',
+    ]
+
+    def get(self, user_id, call):
+
+        # If its not allowed gto
+        if call in self.disallowed_calls:
+            self.response.out.write('Call not allowed')
+            return
+
+        # Get the user from DB
         runkeeper_user_model = RunkeeperUserModel.get_by_id(user_id)
         if not runkeeper_user_model:
             self.response.out.write('No user found')
             return
+
+        # Get the API
         runkeeper_api = RunkeeperAPI(
             access_token=runkeeper_user_model.access_token,
             access_token_type=runkeeper_user_model.access_token_type,
             debug=True
         )
+
+        # Get the user from Runkeeper
         runkeeper_user = runkeeper_api.get_user()
-        self.response.out.write(runkeeper_user.profile())
+
+        # Check if the call is listed
+        if not hasattr(runkeeper_user, call):
+            self.response.out.write('Unknown call')
+            return
+
+        # @todo check caching etc
+
+        # Run the call and echo it
+        self.response.out.write(json.dumps(getattr(runkeeper_user, call)()))
