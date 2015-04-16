@@ -5,6 +5,7 @@ from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
 
 import webapp2
+from google.appengine.api import memcache
 
 
 
@@ -61,4 +62,16 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         # @todo check caching etc
 
         # Run the call and echo it
-        self.response.out.write(json.dumps(getattr(runkeeper_user, call)()))
+        self.response.out.write(
+            json.dumps(
+                self.get_call_result_from_cache(call, getattr(runkeeper_user, call)())
+            )
+        )
+
+    def get_call_result_from_cache(self, call, data, invalidate=True):
+        cached_data = memcache.get('key')
+        if not invalidate and cached_data is not None:
+            return cached_data
+        else:
+            memcache.add(call, data, 60)
+            return data
