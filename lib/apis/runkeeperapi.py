@@ -70,12 +70,8 @@ class RunkeeperUser(object):
             setattr(
                 self,
                 user_method,
-                self.master.query(call)
+                lambda call=call: self.master.query(call)
             )
 
     def get_user_id(self):
         return self.user_id
-
-
-    def query(self, call):
-        return self.master(call)

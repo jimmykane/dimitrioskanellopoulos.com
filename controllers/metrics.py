@@ -16,5 +16,5 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
             debug=True
         )
         runkeeper_user = runkeeper_api.get_user()
-        a = runkeeper_user.profile
+        self.response.out.write(runkeeper_user.profile())
         pass

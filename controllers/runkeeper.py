@@ -47,7 +47,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
         )
         runkeeper_user = runkeeper_api.get_user()
         # test = runkeeper_user.call('')
-        runkeeper_user_profile = runkeeper_user.profile
+        runkeeper_user_profile = runkeeper_user.profile()
 
         # Get or insert the model update tokens etc
         runkeeper_auth_model = RunkeeperUserModel.get_or_insert(
