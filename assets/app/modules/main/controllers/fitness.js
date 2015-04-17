@@ -12,10 +12,21 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
     // Get some
     $http.get('/metrics/runkeeper/' + userId + '/weight')
         .success(function(data, status, headers, config) {
-            // @todo check to improve this
-            var weight = data.items[0].weight || data;
-            // Get the 1st one
-            $scope.metrics.push({Weight: weight});
+            // Find weight and fat percentage if possible
+            var weight;
+            var fatPercent;
+            for (var weightMeasurement in data.items){
+                if (!weight && data.items[weightMeasurement].weight){
+                    weight = data.items[weightMeasurement].weight;
+                }
+                if (!fatPercent && data.items[weightMeasurement].fat_percent){
+                    fatPercent = data.items[weightMeasurement].fat_percent;
+                }
+            }
+            $scope.metrics.push({
+                Weight: weight,
+                FatPercentage: fatPercent
+            });
         })
         .error(function(data, status, headers, config) {
             // log error
