@@ -24,8 +24,8 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
                 }
             }
             $scope.metrics.push({
-                Weight: weight,
-                FatPercentage: fatPercent
+                Weight: weight + 'Kg',
+                'Body Fat': fatPercent + '%'
             });
         })
         .error(function(data, status, headers, config) {
