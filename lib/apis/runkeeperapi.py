@@ -12,7 +12,7 @@ class RunkeeperAPI(object):
     access_token_type = None
     debug_level = logging.DEBUG
 
-    runkeeper_api_root = 'https://api.runkeeper.com/'
+    runkeeper_api_root = 'https://api.runkeeper.com'
     data_format = 'json'
 
     # Headers
@@ -35,10 +35,11 @@ class RunkeeperAPI(object):
             'Authorization': self.access_token_type + ' ' + self.access_token
         }
 
-    def query(self, call):
+    def query(self, call, id_=None):
+        url = self.runkeeper_api_root + call + ('/' + id_ if id_ else '')
         result = urlfetch.fetch(
             # Can have some mapping or pattern
-            url=self.runkeeper_api_root + '/' + call ,
+            url=self.runkeeper_api_root + call + ('/' + id_ if id_ else ''),
             method=urlfetch.GET,
             # should add headers
             headers=self._get_headers(call)
@@ -61,7 +62,7 @@ class RunkeeperUser(object):
     def __init__(self, master):
         self.master = master
         # Get the user methods and set the attributes
-        for user_method, call in self.master.query('user').iteritems():
+        for user_method, call in self.master.query('/user').iteritems():
             if user_method == 'userID':
                 # Assign the userID to the object
                 self.user_id = call
@@ -70,7 +71,7 @@ class RunkeeperUser(object):
             setattr(
                 self,
                 user_method,
-                lambda call=call: self.master.query(call)
+                lambda id_=None, call=call : self.master.query(call, id_)
             )
 
     def get_user_id(self):

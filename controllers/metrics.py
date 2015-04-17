@@ -31,7 +31,7 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         # 'sleep',
     ]
 
-    def get(self, user_id, call):
+    def get(self, user_id, call, id_=None):
 
         # If its not allowed gto
         if not is_dev_server() and call in self.disallowed_calls:
@@ -62,7 +62,7 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         # Run the call and echo it
         self.response.out.write(
             json.dumps(
-                self.get_call_result_from_cache(call, getattr(runkeeper_user, call)())
+                self.get_call_result_from_cache(call, getattr(runkeeper_user, call)(id_))
             )
         )
 
