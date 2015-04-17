@@ -73,6 +73,12 @@ class RunkeeperUser(object):
                 user_method,
                 lambda id_=None, call=call: self.master.query(call, id_)
             )
+            # add them also with the camelcase
+            setattr(
+                self,
+                call[1:],
+                lambda id_=None, call=call: self.master.query(call, id_)
+            )
 
     def get_user_id(self):
         return self.user_id

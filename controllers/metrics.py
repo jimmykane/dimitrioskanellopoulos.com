@@ -71,5 +71,5 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         if not invalidate and cached_data is not None:
             return cached_data
         else:
-            memcache.add(cache_id, data, 600)
+            memcache.add(cache_id, data, 3600)
             return data
