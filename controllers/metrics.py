@@ -62,14 +62,14 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         # Run the call and echo it
         self.response.out.write(
             json.dumps(
-                self.get_call_result_from_cache(call, getattr(runkeeper_user, call)(id_))
+                self.get_call_result_from_cache(call + (id_ if id_ else ''), getattr(runkeeper_user, call)(id_))
             )
         )
 
-    def get_call_result_from_cache(self, call, data, invalidate=False):
-        cached_data = memcache.get(call)
+    def get_call_result_from_cache(self, cache_id, data, invalidate=False):
+        cached_data = memcache.get(cache_id)
         if not invalidate and cached_data is not None:
             return cached_data
         else:
-            memcache.add(call, data, 600)
+            memcache.add(cache_id, data, 600)
             return data
