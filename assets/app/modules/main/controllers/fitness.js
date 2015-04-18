@@ -33,9 +33,10 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
         });
 
     // Get latest activity
-    $http.get('/metrics/runkeeper/' + userId + '/fitness_activities')
+    $http.get('/metrics/runkeeper/' + userId + '/fitnessActivities')
         .success(function (data, status, headers, config) {
             // get the 1st
+            debugger;
             // @todo move these elsewhere
             // Get latest activity
             $http.get('/metrics/runkeeper/' + userId + data.items[0].uri)
