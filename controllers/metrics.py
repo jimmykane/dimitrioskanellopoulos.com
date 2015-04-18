@@ -59,17 +59,15 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
             self.response.out.write('Unknown call')
             return
 
-        # Run the call and echo it
-        self.response.out.write(
-            json.dumps(
-                self.get_call_result_from_cache(call + (id_ if id_ else ''), getattr(runkeeper_user, call)(id_))
-            )
-        )
+        # Check if we can get from the cache
+        response = memcache.get(self.get_cache_key(user_id, call, id_))
+        if not response:
+            # If not found write to cache
+            response = getattr(runkeeper_user, call)(id_)
+            memcache.add(self.get_cache_key(user_id, call, id_), response, 3600)
 
-    def get_call_result_from_cache(self, cache_id, data, invalidate=False):
-        cached_data = memcache.get(cache_id)
-        if not invalidate and cached_data is not None:
-            return cached_data
-        else:
-            memcache.add(cache_id, data, 3600)
-            return data
+        # Run the call and echo it
+        self.response.out.write(json.dumps(response))
+
+    def get_cache_key(self, user_id, call, id_=None):
+        return str(user_id) + str(call) + (id_ if id_ else '')
