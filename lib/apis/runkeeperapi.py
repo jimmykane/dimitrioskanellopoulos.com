@@ -67,12 +67,6 @@ class RunkeeperUser(object):
                 # Assign the userID to the object
                 self.user_id = call
                 continue
-            # Should not get the value but bind a method
-            setattr(
-                self,
-                user_method,
-                lambda id_=None, call=call: self.master.query(call, id_)
-            )
             # add them also with the camelcase
             setattr(
                 self,
