@@ -36,7 +36,7 @@ class RunkeeperAPI(object):
         }
 
     def query(self, call, id_=None):
-        url = self.runkeeper_api_root + call + ('/' + id_ if id_ else '')
+        urlfetch.set_default_fetch_deadline(60)
         result = urlfetch.fetch(
             # Can have some mapping or pattern
             url=self.runkeeper_api_root + call + ('/' + id_ if id_ else ''),
