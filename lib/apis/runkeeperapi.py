@@ -71,7 +71,7 @@ class RunkeeperUser(object):
             setattr(
                 self,
                 call[1:],
-                lambda id_=None: self.master.query(call, id_)
+                lambda id_=None, _call=call: self.master.query(_call, id_)
             )
 
     def get_user_id(self):
