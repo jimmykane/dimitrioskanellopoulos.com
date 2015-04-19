@@ -56,6 +56,4 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
         .error(function (data, status, headers, config) {
             // log error
         });
-
-
 });
