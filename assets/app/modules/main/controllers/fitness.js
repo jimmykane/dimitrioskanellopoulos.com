@@ -45,7 +45,7 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
                         'Latest Activity Distance': Math.round(data.total_distance/1000) + 'Km',
                         'Latest Activity Start Time': data.start_time,
                         'Latest Activity Calories': data.total_calories + 'Kcal',
-                        'Latest Activity Duration': Math.round(data.duration/60) + 'sec'
+                        'Latest Activity Duration': (data.duration/60) + 'min'
                     });
                 })
                 .error(function (data, status, headers, config) {
