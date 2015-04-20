@@ -12,7 +12,7 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
     fitnessService.getUserWeightMeasurements = function (userId) {
         var deffered = $q.defer();
         // Get some weight
-        $http.get('/metrics/runkeeper/' + userId + '/weight')
+        $http.get('/metrics/runkeeper/' + userId + '/weightMeasurements')
             .success(function (data, status, headers, config) {
                 debugger;
 
@@ -21,22 +21,8 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
                     return;
                 }
 
-                var weight;
-                var fatPercent;
-                for (var weightMeasurement in data.items) {
-                    // Break if they are there
-                    if (weight && fatPercent){
-                        break;
-                    }
-                    if (!weight && data.items[weightMeasurement].weight) {
-                        weight = data.items[weightMeasurement].weight;
-                    }
-                    if (!fatPercent && data.items[weightMeasurement].fat_percent) {
-                        fatPercent = data.items[weightMeasurement].fat_percent;
-                    }
-                }
-                weightMeasurements.weight = weight + 'Kg';
-                weightMeasurements.fatPercent = fatPercent + '%';
+                weightMeasurements.weight = data['weight'] + 'Kg';
+                weightMeasurements.fatPercent = data['fat_percent'] + '%';
 
                 deffered.resolve(status);
             })

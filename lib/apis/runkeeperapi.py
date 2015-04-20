@@ -74,9 +74,26 @@ class RunkeeperUser(object):
                 lambda id_=None, _call=call: self.master.query(_call, id_)
             )
 
+        # Set the other attributes
+        # @todo feels this should be elsewhere
+        setattr(self, 'weightMeasurements', self.get_weight_measurements)
+
     def get_user_id(self):
         return self.user_id
 
-    @property
     def get_latest_activity(self):
         pass
+
+    def get_weight_measurements(self):
+        weight = None
+        fat_percent = None
+        # @todo optimize
+        for item in self.weight()['items']:
+            if not weight:
+                weight = item.get('weight')
+            if not fat_percent:
+                fat_percent = item.get('fat_percent')
+        return {
+            'weight': weight,
+            'fat_percent': fat_percent
+        }
