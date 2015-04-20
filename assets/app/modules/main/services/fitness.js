@@ -21,9 +21,10 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
                     return;
                 }
 
-                weightMeasurements.weight = data['weight'] + 'Kg';
-                weightMeasurements.fatPercent = data['fat_percent'] + '%';
+                //weightMeasurements.weight = data.weight;
+                //weightMeasurements.fatPercent = data.fat_percent;
 
+                angular.extend(weightMeasurements, data);
                 deffered.resolve(status);
             })
             .error(function (data, status, headers, config) {
