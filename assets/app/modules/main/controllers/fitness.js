@@ -6,7 +6,7 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
     var userId = '29509824';
     $scope.metrics = [];
 
-    $scope.weightMeaurements = fitnessService.weightMeasurements();
+    $scope.weightMeasurements = fitnessService.weightMeasurements();
     fitnessService.getUserWeightMeasurements(userId);
 
     // @todo check to inject weight via service
