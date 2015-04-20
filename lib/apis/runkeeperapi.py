@@ -76,3 +76,7 @@ class RunkeeperUser(object):
 
     def get_user_id(self):
         return self.user_id
+
+    @property
+    def get_latest_activity(self):
+        pass
