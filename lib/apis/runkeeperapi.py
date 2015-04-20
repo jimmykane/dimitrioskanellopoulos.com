@@ -31,7 +31,7 @@ class RunkeeperAPI(object):
     def _get_headers(self, call):
         return {
             'Content-Type': self.headers_accept + '.' + call + '+' + self.data_format,
-            #'Accept': self.headers_accept + '.' + call + '+' + self.data_format,
+            # 'Accept': self.headers_accept + '.' + call + '+' + self.data_format,
             'Authorization': self.access_token_type + ' ' + self.access_token
         }
 
@@ -55,8 +55,8 @@ class RunkeeperAPI(object):
         # Should return user
         return RunkeeperUser(self)
 
-class RunkeeperUser(object):
 
+class RunkeeperUser(object):
     user_id = None
 
     def __init__(self, master):
@@ -77,12 +77,22 @@ class RunkeeperUser(object):
         # Set the other attributes
         # @todo feels this should be elsewhere
         setattr(self, 'weightMeasurements', self.get_weight_measurements)
+        setattr(self, 'latestActivity', self.get_latest_activity)
 
     def get_user_id(self):
         return self.user_id
 
+    """
+    Wrapper to pass the latest and save data
+    """
+
     def get_latest_activity(self):
-        pass
+        return self.fitnessActivities()['items'][0]
+
+
+    """
+    Wrapper to do partial logic and save data
+    """
 
     def get_weight_measurements(self):
         weight = None
