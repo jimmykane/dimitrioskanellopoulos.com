@@ -4,8 +4,10 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
 
     // Stub here to get my personal data
     var userId = '29509824';
-
     $scope.metrics = [];
+
+    $scope.weightMeaurements = fitnessService.weightMeasurements();
+    fitnessService.getUserWeightMeasurements(userId);
 
     // @todo check to inject weight via service
 
@@ -33,4 +35,5 @@ angular.module('app.main').controller('fitnessController', function($scope, $htt
         .error(function (data, status, headers, config) {
             // log error
         });
+
 });
