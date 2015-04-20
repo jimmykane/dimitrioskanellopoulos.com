@@ -56,7 +56,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
             access_token_type=access_token_type,
             name=runkeeper_user_profile['name'],
             profile=runkeeper_user_profile['profile'],
-            large_picture=runkeeper_user_profile['large_picture']
+            large_picture=runkeeper_user_profile.get('large_picture')
         )
 
         # Update
@@ -65,7 +65,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler, webapp2.RequestHandler)
             access_token_type=access_token_type,
             name=runkeeper_user_profile['name'],
             profile=runkeeper_user_profile['profile'],
-            large_picture=runkeeper_user_profile['large_picture']
+            large_picture=runkeeper_user_profile.get('large_picture')
         )
 
         # Write blind again
