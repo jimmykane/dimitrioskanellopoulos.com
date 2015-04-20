@@ -32,8 +32,8 @@
                 </li>
             </ul>
             <h3>Activity Feed</h3>
-            <ul data-ng-repeat="metric in metrics">
-                <li data-ng-repeat="(metricName, metricValue) in metric">{{ metricName }}: {{ metricValue }}</li>
+            <ul>
+                <li data-ng-repeat="(name, value) in latestActivity">{{ name }}: {{ value }}</li>
             </ul>
         </div>
 

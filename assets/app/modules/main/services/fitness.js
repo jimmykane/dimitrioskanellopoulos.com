@@ -46,7 +46,7 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
                 }
 
                 // Do stuff here again
-                latestActivity = data;
+                angular.extend(latestActivity, data);
                 deffered.resolve(status);
             })
             .error(function (data, status, headers, config) {
