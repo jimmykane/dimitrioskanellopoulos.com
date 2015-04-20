@@ -37,7 +37,7 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
     fitnessService.getUserLatestActivity = function (userId) {
         var deffered = $q.defer();
         // Get some weight
-        $http.get('/metrics/runkeeper/' + userId + '/weight')
+        $http.get('/metrics/runkeeper/' + userId + '/latestActivity')
             .success(function (data, status, headers, config) {
                 debugger;
                 if (status !== 200) {
@@ -46,7 +46,7 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
                 }
 
                 // Do stuff here again
-
+                latestActivity = data;
                 deffered.resolve(status);
             })
             .error(function (data, status, headers, config) {
