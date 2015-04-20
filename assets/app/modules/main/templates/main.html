@@ -6,25 +6,35 @@
                 href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">GitHub</a></p>
 
         <div data-ng-controller="infoController">
-            <p>-= Contact - Social Networks =-</p>
+            <h2>-= Contact - Social Networks =-</h2>
             <ul>
                 <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
             </ul>
         </div>
 
         <div data-ng-controller="experimentsController">
-            <p>-= Previous Work - Experiments =-</p>
+            <h2>-= Previous Work - Experiments =-</h2>
             <ul>
                 <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
             </ul>
         </div>
 
         <!-- @todo This should be moved to separate template -->
-         <div data-ng-controller="fitnessController">
-            <p>-= Fitness Data (Powered via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</p>
-              <ul data-ng-repeat="metric in metrics">
-                  <li data-ng-repeat="(metricName, metricValue) in metric">{{ metricName }}: {{ metricValue }}</li>
-              </ul>
+        <div data-ng-controller="fitnessController">
+            <h2>-= Fitness Data (Powered via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</h2>
+            <h3>Weight Measurements</h3>
+            <ul>
+                <li>
+                    Weight: {{ weightMeasurements.weight }}
+                </li>
+                 <li>
+                    Body Fat: {{ weightMeasurements.fatPercent }}
+                </li>
+            </ul>
+            <h3>Activity Feed</h3>
+            <ul data-ng-repeat="metric in metrics">
+                <li data-ng-repeat="(metricName, metricValue) in metric">{{ metricName }}: {{ metricValue }}</li>
+            </ul>
         </div>
 
     </div>
