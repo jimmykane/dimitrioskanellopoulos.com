@@ -62,8 +62,8 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
         # Check if we can get from the cache
         response = memcache.get(self.get_cache_key(user_id, call, id_))
         if not response:
-            # If not found write to cache
-            response = getattr(runkeeper_user, call)(id_)
+            # If not found call and write to cache
+            response = getattr(runkeeper_user, call)()
             memcache.add(self.get_cache_key(user_id, call, id_), response, 36000)
 
         # Run the call and echo it
