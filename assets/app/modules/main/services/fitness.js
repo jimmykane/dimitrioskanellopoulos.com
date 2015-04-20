@@ -14,16 +14,11 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
         // Get some weight
         $http.get('/metrics/runkeeper/' + userId + '/weightMeasurements')
             .success(function (data, status, headers, config) {
-                debugger;
-
                 if (status !== 200) {
                     deffered.resolve(data.status);
                     return;
                 }
-
-                //weightMeasurements.weight = data.weight;
-                //weightMeasurements.fatPercent = data.fat_percent;
-
+                // Extend with new data
                 angular.extend(weightMeasurements, data);
                 deffered.resolve(status);
             })
@@ -39,13 +34,11 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
         // Get some weight
         $http.get('/metrics/runkeeper/' + userId + '/latestActivity')
             .success(function (data, status, headers, config) {
-                debugger;
                 if (status !== 200) {
                     deffered.resolve(data.status);
                     return;
                 }
-
-                // Do stuff here again
+                // Extend with new data
                 angular.extend(latestActivity, data);
                 deffered.resolve(status);
             })
