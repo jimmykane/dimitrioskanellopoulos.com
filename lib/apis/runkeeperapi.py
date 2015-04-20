@@ -87,9 +87,14 @@ class RunkeeperUser(object):
     """
 
     def get_latest_activity(self):
-        return self.fitnessActivities()['items'][0]
-
-
+        latest_activity = self.fitnessActivities()['items'][0]
+        return {
+            'Latest Activity': latest_activity['type'],
+            'Latest Activity Distance': latest_activity['total_distance']/1000 + 'Km',
+            'Latest Activity Start Time': latest_activity['start_time'],
+            'Latest Activity Calories': latest_activity['total_calories'] + 'Kcal',
+            'Latest Activity Duration': latest_activity['duration']/60 + 'min'
+        }
     """
     Wrapper to do partial logic and save data
     """
