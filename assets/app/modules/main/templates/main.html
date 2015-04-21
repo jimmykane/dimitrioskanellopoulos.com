@@ -1,9 +1,10 @@
 <div>
-    <h1>Currently work is in progress</h1>
+    <h1>Welcome visitor</h1>
 
     <div>
-        <p>This website is open source (kinda) and available on <a
-                href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">GitHub</a></p>
+        <div>
+            <p>I am Dimitrios Kanellopoulos, a being and this is a my personal website</p>
+        </div>
 
         <div data-ng-controller="infoController">
             <h2>-= Contact - Social Networks =-</h2>
@@ -58,6 +59,10 @@
                     <li data-ng-repeat="record in records"><b>{{ record.activity_type }}</b>: <span data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span></li>
                 </ul>
             </div>
+        </div>
+
+        <div>
+            Project info: <a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a>
         </div>
 
     </div>
