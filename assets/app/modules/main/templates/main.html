@@ -23,29 +23,34 @@
         <div data-ng-controller="fitnessController">
             <h2>-= Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</h2>
 
-            <h3>Weight Measurements</h3>
-            <ul>
-                <li>
-                    <b>Weight</b>: {{ weightMeasurements.weight }} kg
-                </li>
-                <li>
-                    <b>Body Fat</b>: {{ weightMeasurements.fat_percent }} %
-                </li>
-            </ul>
-            <h3>Activity Feed</h3>
+            <div data-ng-if="weightMeasurements.weight">
+                <h3>Weight Measurements</h3>
+                <ul>
+                    <li>
+                        <b>Weight</b>: {{ weightMeasurements.weight }} kg
+                    </li>
+                    <li>
+                        <b>Body Fat</b>: {{ weightMeasurements.fat_percent }} %
+                    </li>
+                </ul>
+            </div>
 
-            <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
-            <ul>
-                <li>
-                    <b>Distance</b>: {{ latestActivity.total_distance/1000 }} km
-                </li>
-                <li>
-                    <b>Duration</b>: {{ latestActivity.duration/60 }} min
-                </li>
-                <li>
-                    <b>Calories</b>: {{ latestActivity.total_calories }} kcal
-                </li>
-            </ul>
+            <div data-ng-if="latestActivity.type">
+                <h3>Activity Feed</h3>
+
+                <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
+                <ul>
+                    <li>
+                        <b>Distance</b>: {{ latestActivity.total_distance/1000 }} km
+                    </li>
+                    <li>
+                        <b>Duration</b>: {{ latestActivity.duration/60 }} min
+                    </li>
+                    <li>
+                        <b>Calories</b>: {{ latestActivity.total_calories }} kcal
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>
