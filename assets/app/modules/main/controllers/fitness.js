@@ -7,15 +7,12 @@ angular.module('app.main').controller('fitnessController', function ($scope, $ht
     $scope.metrics = [];
 
     // Weight
-    $scope.weightMeasurements = fitnessService.weightMeasurements();
-    fitnessService.getUserWeightMeasurements(userId);
+    $scope.getWeightMeasurements = fitnessService.getWeightMeasurements(userId);
 
     // Latest Activity
-    $scope.latestActivity = fitnessService.latestActivity();
-    fitnessService.getUserLatestActivity(userId);
+    $scope.latestActivity = fitnessService.getLatestActivity(userId);
 
     // Activities Records
-    $scope.activitiesRecords = fitnessService.activitiesRecords();
-    fitnessService.getUserActivitiesRecords(userId);
+    $scope.records = fitnessService.getActivityRecords(userId);
 
 });
