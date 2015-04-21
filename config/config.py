@@ -20,7 +20,6 @@ project = {
     'google_analytics': 'UA-61188889-1'
 }
 
-
 config = {
     'project': project,
 }

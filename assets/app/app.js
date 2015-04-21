@@ -12,7 +12,7 @@ var app = angular.module(
 /**
  * Config
  */
-app.config(function($locationProvider, $routeProvider) {
+app.config(function ($locationProvider, $routeProvider) {
     /*
      * Enabled HTML5 mode. Probably will not support
      * any browser especially < IE10
@@ -24,6 +24,6 @@ app.config(function($locationProvider, $routeProvider) {
      */
     $routeProvider.when('/', {
         templateUrl: '/assets/app/modules/main/templates/main.html',
-        controller:  'mainController'
+        controller: 'mainController'
     }).otherwise({redirectTo: '/404'});
 });

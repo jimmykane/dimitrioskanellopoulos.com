@@ -4,13 +4,15 @@ from google.appengine.ext import ndb
 
 
 ''' Class to help with dict conversions '''
-class DictModel():
 
+
+class DictModel():
     """
     From a dict make an entity. You need the parent
     First check if the properties are in the class definition
     Dictionary key names represent property names
     """
+
     @classmethod
     def entity_from_dict(cls, parent_key, dict):
         valid_properties = {}
@@ -18,8 +20,8 @@ class DictModel():
             if cls_property in dict:
                 valid_properties.update({cls_property: dict[cls_property]})
         # Update the id from the dict Not sure if needed
-        if 'id' in dict: # if creating a new entity
-                valid_properties['id'] = dict['id']
+        if 'id' in dict:  # if creating a new entity
+            valid_properties['id'] = dict['id']
         # Add the parent
         valid_properties['parent'] = parent_key
         try:
@@ -31,12 +33,14 @@ class DictModel():
 
 
 ''' Class to help with shared model functions '''
-class NDBCommonModel:
 
+
+class NDBCommonModel:
     """
     Find if is the last child from the parent.
     Useful if you want to check if it's last entry in a box,slide,post
     """
+
     @classmethod
     def is_the_only_remaining_child(cls, key):
         related_keys_count = cls.query(ancestor=key.parent()).count(keys_only=True)

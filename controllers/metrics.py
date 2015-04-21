@@ -8,12 +8,12 @@ import webapp2
 from google.appengine.api import memcache
 
 
-
 """
 Acts like a proxy with caching
 """
-class RunkeeperMetricsHandler(webapp2.RequestHandler):
 
+
+class RunkeeperMetricsHandler(webapp2.RequestHandler):
     # @todo implement this better with auth scopes...
     disallowed_calls = [
         'team',

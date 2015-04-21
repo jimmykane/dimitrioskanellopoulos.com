@@ -39,7 +39,7 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
                     return;
                 }
                 // Extend with new data
-                angular.extend(latestActivity,data);
+                angular.extend(latestActivity, data);
                 deffered.resolve(status);
             })
             .error(function (data, status, headers, config) {
@@ -49,11 +49,11 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
         return deffered.promise;
     };
 
-    fitnessService.weightMeasurements = function(){
+    fitnessService.weightMeasurements = function () {
         return weightMeasurements;
     };
 
-    fitnessService.latestActivity = function(){
+    fitnessService.latestActivity = function () {
         return latestActivity;
     };
 

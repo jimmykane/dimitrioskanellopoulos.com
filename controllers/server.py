@@ -18,6 +18,6 @@ class RootPage(webapp2.RequestHandler):
             loader=jinja2.FileSystemLoader(
                 os.path.join(os.path.dirname(__file__),
                              '../templates'
-                ))
+                             ))
         )
         return jinja_environment

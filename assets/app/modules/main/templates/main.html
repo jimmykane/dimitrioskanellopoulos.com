@@ -22,16 +22,18 @@
         <!-- @todo This should be moved to separate template -->
         <div data-ng-controller="fitnessController">
             <h2>-= Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</h2>
+
             <h3>Weight Measurements</h3>
             <ul>
                 <li>
                     <b>Weight</b>: {{ weightMeasurements.weight }} kg
                 </li>
-                 <li>
+                <li>
                     <b>Body Fat</b>: {{ weightMeasurements.fat_percent }} %
                 </li>
             </ul>
             <h3>Activity Feed</h3>
+
             <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
             <ul>
                 <li>
