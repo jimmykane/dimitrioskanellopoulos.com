@@ -52,7 +52,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div data-ng-if="activitiesRecords[0]">
                 <h3>Overall Records</h3>
                 <ul>
                     <li data-ng-repeat="activityRecord in activitiesRecords"><b>{{ activityRecord.activity_type }}</b>: <span data-ng-repeat="stat in activityRecord.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span></li>
