@@ -41,7 +41,7 @@
                 <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
                 <ul>
                     <li>
-                        <b>Distance</b>: {{ latestActivity.total_distance/1000 }} km
+                        <b>Distance</b>: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
                     </li>
                     <li>
                         <b>Duration</b>: {{ latestActivity.duration/60 }} min
@@ -49,6 +49,13 @@
                     <li>
                         <b>Calories</b>: {{ latestActivity.total_calories }} kcal
                     </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Overall Records</h3>
+                <ul>
+                    <li data-ng-repeat="activityRecord in activitiesRecords"><b>{{ activityRecord.activity_type }}</b>: <span data-ng-repeat="stat in activityRecord.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span></li>
                 </ul>
             </div>
         </div>

@@ -14,4 +14,8 @@ angular.module('app.main').controller('fitnessController', function ($scope, $ht
     $scope.latestActivity = fitnessService.latestActivity();
     fitnessService.getUserLatestActivity(userId);
 
+    // Activities Records
+    $scope.activitiesRecords = fitnessService.activitiesRecords();
+    fitnessService.getUserActivitiesRecords(userId);
+
 });
