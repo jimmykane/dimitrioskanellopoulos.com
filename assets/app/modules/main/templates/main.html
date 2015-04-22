@@ -1,8 +1,9 @@
 <div class="flex-container bordered">
-    <header class="header">Dimitrios Kanellopoulos</header>
+    <header class="header"><b>Dimitrios Kanellopoulos</b></header>
     <article class="main">
         <p>
             Hi there!<br/>
+            <br/>
             I am Dimitrios Kanellopoulos, a being and this is a my personal website.<br/>
             Here you will find information about me and a small showcase of my attributes.<br/>
             <br/>
@@ -37,7 +38,7 @@
                     Distance: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
                 </li>
                 <li>
-                    Duration: {{ latestActivity.duration/60 }} min
+                    Duration: {{ (latestActivity.duration/60).toFixed(2) }} min
                 </li>
                 <li>
                     Calories: {{ latestActivity.total_calories }} kcal
