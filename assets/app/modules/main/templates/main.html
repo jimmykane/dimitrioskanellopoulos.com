@@ -1,6 +1,6 @@
-<div class="flex-container">
+<div class="flex-container bordered">
     <header class="header">Dimitrios Kanellopoulos</header>
-    <article class="main bordered">
+    <article class="main">
         <p>
             Hi there!<br/>
             I am Dimitrios Kanellopoulos, a being and this is a my personal website.<br/>
@@ -10,14 +10,14 @@
         </p>
     </article>
 
-    <aside class="aside aside-1 bordered" data-ng-controller="infoController">
+    <aside class="aside aside-1" data-ng-controller="socialLinksController">
         <p><b>Contact - Social Networks</b></p>
         <ul>
             <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
         </ul>
     </aside>
 
-    <aside class="aside aside-2 bordered" data-ng-controller="fitnessController">
+    <aside class="aside aside-2" data-ng-controller="fitnessController">
         <p><b>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</b></p>
         <div data-ng-if="weightMeasurements.weight">
             <ul>
@@ -54,7 +54,7 @@
         </div>
     </aside>
 
-    <footer class="footer bordered">
+    <footer class="footer">
         <p><b>Project info</b></p>
         <p><a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a></p>
     </footer>
