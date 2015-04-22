@@ -11,47 +11,43 @@
     </article>
 
     <aside class="aside aside-1 bordered" data-ng-controller="infoController">
-        <p>Contact - Social Networks</p>
+        <p><b>Contact - Social Networks</b></p>
         <ul>
             <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
         </ul>
     </aside>
 
     <aside class="aside aside-2 bordered" data-ng-controller="fitnessController">
-        <p>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</p>
+        <p><b>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</b></p>
         <div data-ng-if="weightMeasurements.weight">
-            <p>Weight Measurements</p>
             <ul>
                 <li>
-                    <b>Weight</b>: {{ weightMeasurements.weight }} kg
+                    Weight: {{ weightMeasurements.weight }} kg
                 </li>
                 <li>
-                    <b>Body Fat</b>: {{ weightMeasurements.fat_percent }} %
+                    Body Fat: {{ weightMeasurements.fat_percent }} %
                 </li>
             </ul>
         </div>
 
         <div data-ng-if="latestActivity.type">
-            <p>Activity Feed</p>
-
-            <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
+            <p>{{ latestActivity.type }} {{ latestActivity.start_time }}</p>
             <ul>
                 <li>
-                    <b>Distance</b>: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
+                    Distance: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
                 </li>
                 <li>
-                    <b>Duration</b>: {{ latestActivity.duration/60 }} min
+                    Duration: {{ latestActivity.duration/60 }} min
                 </li>
                 <li>
-                    <b>Calories</b>: {{ latestActivity.total_calories }} kcal
+                    Calories: {{ latestActivity.total_calories }} kcal
                 </li>
             </ul>
         </div>
 
         <div data-ng-if="records[0]">
-            <p>Overall Records</p>
             <ul>
-                <li data-ng-repeat="record in records"><b>{{ record.activity_type }}</b>: <span
+                <li data-ng-repeat="record in records">{{ record.activity_type }}: <span
                         data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span>
                 </li>
             </ul>
@@ -59,7 +55,7 @@
     </aside>
 
     <footer class="footer bordered">
-        <p>Project info</p>
+        <p><b>Project info</b></p>
         <p><a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a></p>
     </footer>
 
