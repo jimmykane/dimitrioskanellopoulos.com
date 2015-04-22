@@ -20,27 +20,27 @@
     flex: 1 100%;
 }
 
+.main {
+    text-align: left;
+    background: rgb(63, 195, 255);
+}
+
 .aside{
 
 }
 
-.footer {
-    background: lightgreen;
-}
-
-.main {
-    text-align: left;
-    background: deepskyblue;
-}
-
 .aside-1 {
     text-align: left;
-    background: gold;
+    background: rgb(255, 218, 0);
 }
 
 .aside-2 {
     text-align: left;
-    background: hotpink;
+    background: rgb(255, 155, 0);
+}
+
+.footer {
+    background: rgb(149, 214, 65);
 }
 
 @media all and (min-width: 600px) {
@@ -108,4 +108,8 @@ ul.columns__4 {
     -webkit-column-gap: 10px;
     column-count: 4;
     column-gap: 10px;
+}
+
+.float--right{
+    float: right;
 }

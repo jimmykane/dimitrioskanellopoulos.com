@@ -4,14 +4,13 @@
 <div class="flex-container bordered">
     <header class="header"><b>Dimitrios Kanellopoulos</b></header>
     <article class="main">
+        <p><b>Welcome visitor</b></p>
+        <p>Hi there!</p>
         <p>
-            Hi there!<br/>
-            <br/>
             I am Dimitrios Kanellopoulos, a being and this is a my personal website.<br/>
             Here you will find information about me and a small showcase of my attributes.<br/>
-            <br/>
-            Have fun ;-)
         </p>
+        <p>Have fun ;-)</p>
     </article>
 
     <aside class="aside aside-1" data-ng-controller="socialLinksController">
@@ -24,7 +23,7 @@
     <aside class="aside aside-2" data-ng-controller="fitnessController">
         <p><b>Fitness Data</b> <span style="font-size: 0.6em;">powered by <a href="https://runkeeper.com" target="_blank">Runkeeper</a></span></p>
         <div class="border--bottom" data-ng-if="weightMeasurements.weight">
-            <p>Body</p>
+            <p>Body Measurements</p>
             <ul class="columns__2">
                 <li>
                     Weight: {{ weightMeasurements.weight }}kg
@@ -56,7 +55,7 @@
         <div data-ng-if="records[0]">
             <p>Records</p>
             <ul class="columns__2">
-                <li data-ng-repeat="record in records">{{ record.activity_type }}: <span
+                <li data-ng-repeat="record in records" style="font-size: 0.8em;">{{ record.activity_type }}: <span
                         data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }}km</span>
                 </li>
             </ul>
@@ -66,6 +65,12 @@
     <footer class="footer">
         <p><b>Project info</b></p>
         <p><a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a></p>
+        <p>
+            <a href="http://angularjs.org/" target="_blank"><img width="50" src="/assets/img/angularjs_logo.png" title="Uses AngularJS"/></a>
+            <a href="http://nl.wikipedia.org/wiki/HTML5" target="_blank"><img width="100" src="/assets/img/html_css3.png" title="Uses HTML5 & CSS3"/></a>
+            <a href="http://www.python.org/" target="_blank"><img width="100" src="/assets/img/python.png" title="Uses Python"/></a>
+            <a href="https://cloud.google.com/" target="_blank"><img width="150" src="/assets/img/google_cloud_platform.png" title="Uses Google Cloud Platform"/></a>
+        </p>
     </footer>
 
 </div>
