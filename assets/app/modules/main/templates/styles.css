@@ -41,10 +41,6 @@
 .aside-2 {
     text-align: left;
     background: hotpink;
-    -moz-transition: 1.4s;
-    -o-transition: 1.4s;
-    -webkit-transition: 1.4s;
-    transition: 1.4s;
 }
 
 @media all and (min-width: 600px) {
@@ -81,6 +77,10 @@
 
 .border--bottom{
     border-bottom: 1px ridge midnightblue;
+}
+
+li{
+    margin-bottom: 4px;
 }
 
 ul.columns__2 {
