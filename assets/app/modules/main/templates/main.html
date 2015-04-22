@@ -11,20 +11,16 @@
     </article>
 
     <aside class="aside aside-1 bordered" data-ng-controller="infoController">
-        <header>
-            <h1>Contact - Social Networks</h1>
-        </header>
+        <p>Contact - Social Networks</p>
         <ul>
             <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
         </ul>
     </aside>
 
     <aside class="aside aside-2 bordered" data-ng-controller="fitnessController">
-        <header>
-            <h1>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</h1>
-        </header>
+        <p>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</p>
         <div data-ng-if="weightMeasurements.weight">
-            <h3>Weight Measurements</h3>
+            <p>Weight Measurements</p>
             <ul>
                 <li>
                     <b>Weight</b>: {{ weightMeasurements.weight }} kg
@@ -36,7 +32,7 @@
         </div>
 
         <div data-ng-if="latestActivity.type">
-            <h3>Activity Feed</h3>
+            <p>Activity Feed</p>
 
             <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
             <ul>
@@ -53,7 +49,7 @@
         </div>
 
         <div data-ng-if="records[0]">
-            <h3>Overall Records</h3>
+            <p>Overall Records</p>
             <ul>
                 <li data-ng-repeat="record in records"><b>{{ record.activity_type }}</b>: <span
                         data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span>
@@ -63,9 +59,7 @@
     </aside>
 
     <footer class="footer bordered">
-        <header>
-            <h1>Project info</h1>
-        </header>
+        <p>Project info</p>
         <p><a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a></p>
     </footer>
 
