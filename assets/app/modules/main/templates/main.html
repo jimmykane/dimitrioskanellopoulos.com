@@ -1,5 +1,5 @@
-<div class="container">
-    <div>
+<div class="flex-container">
+    <div class="flex-item bordered">
         <header>
             <h1>Welcome visitor</h1>
         </header>
@@ -12,7 +12,7 @@
         </p>
     </div>
 
-    <div data-ng-controller="infoController">
+    <div class="flex-item bordered" data-ng-controller="infoController">
         <header>
             <h1>Contact - Social Networks</h1>
         </header>
@@ -21,7 +21,7 @@
         </ul>
     </div>
 
-    <div data-ng-controller="experimentsController">
+    <div class="flex-item bordered" data-ng-controller="experimentsController">
         <header>
             <h1>Previous Work - Experiments</h1>
         </header>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- @todo This should be moved to separate template -->
-    <div data-ng-controller="fitnessController">
+    <div class="flex-item bordered" data-ng-controller="fitnessController">
         <header>
             <h1>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</h1>
         </header>
@@ -74,8 +74,11 @@
         </div>
     </div>
 
-    <div>
-        Project info: <a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a>
+    <div class="flex-item bordered">
+        <header>
+            <h1>Project info</h1>
+        </header>
+        <p><a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a></p>
     </div>
 
 </div>
