@@ -1,75 +1,81 @@
-<div>
-    <h1>Welcome visitor</h1>
+<div class="container">
+    <div>
+        <header>
+            <h1>Welcome visitor</h1>
+        </header>
+        <p>
+            Hi there!<br/>
+            I am Dimitrios Kanellopoulos, a being and this is a my personal website.<br/>
+            Here you will find information about me and a small showcase of my attributes.<br/>
+            <br/>
+            Have fun ;-)
+        </p>
+    </div>
+
+    <div data-ng-controller="infoController">
+        <header>
+            <h1>Contact - Social Networks</h1>
+        </header>
+        <ul>
+            <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
+        </ul>
+    </div>
+
+    <div data-ng-controller="experimentsController">
+        <header>
+            <h1>Previous Work - Experiments</h1>
+        </header>
+        <ul>
+            <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
+        </ul>
+    </div>
+
+    <!-- @todo This should be moved to separate template -->
+    <div data-ng-controller="fitnessController">
+        <header>
+            <h1>Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>)</h1>
+        </header>
+        <div data-ng-if="weightMeasurements.weight">
+            <h3>Weight Measurements</h3>
+            <ul>
+                <li>
+                    <b>Weight</b>: {{ weightMeasurements.weight }} kg
+                </li>
+                <li>
+                    <b>Body Fat</b>: {{ weightMeasurements.fat_percent }} %
+                </li>
+            </ul>
+        </div>
+
+        <div data-ng-if="latestActivity.type">
+            <h3>Activity Feed</h3>
+
+            <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
+            <ul>
+                <li>
+                    <b>Distance</b>: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
+                </li>
+                <li>
+                    <b>Duration</b>: {{ latestActivity.duration/60 }} min
+                </li>
+                <li>
+                    <b>Calories</b>: {{ latestActivity.total_calories }} kcal
+                </li>
+            </ul>
+        </div>
+
+        <div data-ng-if="records[0]">
+            <h3>Overall Records</h3>
+            <ul>
+                <li data-ng-repeat="record in records"><b>{{ record.activity_type }}</b>: <span
+                        data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div>
-        <div>
-            <p>
-                Hi there!<br/>
-                I am Dimitrios Kanellopoulos, a being and this is a my personal website.<br/>
-                Here you will find information about me and a small showcase of my attributes.<br/>
-                <br/>
-                Have fun ;-)
-            </p>
-        </div>
-
-        <div data-ng-controller="infoController">
-            <h2>-= Contact - Social Networks =-</h2>
-            <ul>
-                <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
-            </ul>
-        </div>
-
-        <div data-ng-controller="experimentsController">
-            <h2>-= Previous Work - Experiments =-</h2>
-            <ul>
-                <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
-            </ul>
-        </div>
-
-        <!-- @todo This should be moved to separate template -->
-        <div data-ng-controller="fitnessController">
-            <h2>-= Fitness Data (Via <a href="https://runkeeper.com" target="_blank">Runkeeper</a>) =-</h2>
-
-            <div data-ng-if="weightMeasurements.weight">
-                <h3>Weight Measurements</h3>
-                <ul>
-                    <li>
-                        <b>Weight</b>: {{ weightMeasurements.weight }} kg
-                    </li>
-                    <li>
-                        <b>Body Fat</b>: {{ weightMeasurements.fat_percent }} %
-                    </li>
-                </ul>
-            </div>
-
-            <div data-ng-if="latestActivity.type">
-                <h3>Activity Feed</h3>
-
-                <p><b>{{ latestActivity.type }}</b> {{ latestActivity.start_time }}</p>
-                <ul>
-                    <li>
-                        <b>Distance</b>: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
-                    </li>
-                    <li>
-                        <b>Duration</b>: {{ latestActivity.duration/60 }} min
-                    </li>
-                    <li>
-                        <b>Calories</b>: {{ latestActivity.total_calories }} kcal
-                    </li>
-                </ul>
-            </div>
-
-            <div data-ng-if="records[0]">
-                <h3>Overall Records</h3>
-                <ul>
-                    <li data-ng-repeat="record in records"><b>{{ record.activity_type }}</b>: <span data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <div>
-            Project info: <a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a>
-        </div>
-
+        Project info: <a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a>
     </div>
+
 </div>
