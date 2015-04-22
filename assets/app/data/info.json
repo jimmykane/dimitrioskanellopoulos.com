@@ -1,4 +1,22 @@
 [
-  {"title": "Google+", "url": "//plus.google.com/+DimitriosKanellopoulos/about"},
-  {"title": "Linkedin", "url": "//nl.linkedin.com/in/dimitrioskanellopoulos"}
+  {
+    "title": "Email",
+    "url": "mailto:jimmykane9@gmail.com"
+  },
+  {
+    "title": "Github",
+    "url": "//github.com/jimmykane"
+  },
+  {
+    "title": "Google+",
+    "url": "//plus.google.com/+DimitriosKanellopoulos/about"
+  },
+  {
+    "title": "Facebook",
+    "url": "//facebook.com/tyflos"
+  },
+  {
+    "title": "Linkedin",
+    "url": "//nl.linkedin.com/in/dimitrioskanellopoulos"
+  }
 ]
