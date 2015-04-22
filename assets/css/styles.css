@@ -1,5 +1,5 @@
 body {
-  padding: 2em;
+    padding: 2em;
 }
 
 .flex-container {
@@ -14,60 +14,61 @@ body {
     text-align: center;
 }
 
-.flex-container  > * {
-  padding: 10px;
-  flex: 1 100%;
+.flex-container > * {
+    padding: 10px;
+    flex: 1 100%;
 }
 
 .header {
-  background: tomato;
+    background: tomato;
 }
 
 .footer {
-  background: lightgreen;
+    background: lightgreen;
 }
 
 .main-info {
-  text-align: left;
-  background: deepskyblue;
+    text-align: left;
+    background: deepskyblue;
 }
 
 .aside-1 {
-  background: gold;
+        text-align: left;
+    background: gold;
 }
 
 .aside-2 {
-  background: hotpink;
+    text-align: left;
+    background: hotpink;
 }
 
 @media all and (min-width: 600px) {
-  .aside {
-    flex: 1 auto;
-  }
+    .aside {
+        flex: 1 auto;
+    }
 }
+
 @media all and (min-width: 800px) {
-  .main {
-    flex: 3 0px;
-  }
+    .main {
+        flex: 3 0px;
+    }
 
-  .aside-1 {
-    order: 1;
-  }
+    .aside-1 {
+        order: 1;
+    }
 
-  .main {
-    order: 2;
-  }
+    .main {
+        order: 2;
+    }
 
-  .aside-2 {
-    order: 3;
-  }
+    .aside-2 {
+        order: 3;
+    }
 
-  .footer {
-    order: 4;
-  }
+    .footer {
+        order: 4;
+    }
 }
-
-
 
 .bordered {
     border: 1px solid black;
