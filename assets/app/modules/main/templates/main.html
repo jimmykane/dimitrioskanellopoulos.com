@@ -16,43 +16,48 @@
 
     <aside class="aside aside-1" data-ng-controller="socialLinksController">
         <p><b>Contact - Social Networks</b></p>
-        <ul>
+        <ul class="columns__2">
             <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
         </ul>
     </aside>
 
     <aside class="aside aside-2" data-ng-controller="fitnessController">
         <p><b>Fitness Data</b> <span style="font-size: 0.6em;">powered by <a href="https://runkeeper.com" target="_blank">Runkeeper</a></span></p>
-        <div data-ng-if="weightMeasurements.weight">
-            <ul>
+        <div class="border--bottom" data-ng-if="weightMeasurements.weight">
+            <p>Body</p>
+            <ul class="columns__2">
                 <li>
-                    Weight: {{ weightMeasurements.weight }} kg
+                    Weight: {{ weightMeasurements.weight }}kg
                 </li>
                 <li>
-                    Body Fat: {{ weightMeasurements.fat_percent }} %
+                    Body Fat: {{ weightMeasurements.fat_percent }}%
                 </li>
             </ul>
         </div>
 
         <div data-ng-if="latestActivity.type">
-            <p>{{ latestActivity.type }} {{ latestActivity.start_time }}</p>
-            <ul>
-                <li>
-                    Distance: {{ (latestActivity.total_distance/1000).toFixed(2) }} km
-                </li>
-                <li>
-                    Duration: {{ (latestActivity.duration/60).toFixed(2) }} min
-                </li>
-                <li>
-                    Calories: {{ latestActivity.total_calories }} kcal
-                </li>
-            </ul>
+            <p>Latest activity I did was {{ latestActivity.type }} at {{ latestActivity.start_time }}</p>
+
+            <div class="border--bottom">
+                <ul class="columns__3">
+                    <li>
+                        Distance: {{ (latestActivity.total_distance/1000).toFixed(2) }}km
+                    </li>
+                    <li>
+                        Duration: {{ (latestActivity.duration/60).toFixed(2) }}min
+                    </li>
+                    <li>
+                        Calories: {{ latestActivity.total_calories }}kcal
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div data-ng-if="records[0]">
-            <ul>
+            <p>Records</p>
+            <ul class="columns__2">
                 <li data-ng-repeat="record in records">{{ record.activity_type }}: <span
-                        data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }} km</span>
+                        data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">{{ (stat.value/1000).toFixed(2) }}km</span>
                 </li>
             </ul>
         </div>
