@@ -6,7 +6,7 @@ project = {
     'title': 'Dimitrios Kanellopoulos',
     'domain': 'dimitrioskanellopoulos.com',
     'meta': {
-        'description': 'My personal website',
+        'description': 'Personal website of Dimitrios Kanellopoulos',
         'keywords': 'Dimitrios Kanellopoulos, Dimitrios, Kanellopoulos',
         'author': 'Dimitrios Kanellopoulos',
         'theme_color': '#3FC3FF',
