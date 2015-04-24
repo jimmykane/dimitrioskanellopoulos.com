@@ -9,7 +9,7 @@ project = {
         'description': 'My personal website',
         'keywords': 'Dimitrios Kanellopoulos, Dimitrios, Kanellopoulos',
         'author': 'Dimitrios Kanellopoulos',
-        'theme-color': '#3FC3FF',
+        'theme_color': '#3FC3FF',
         'og': {
             'title': 'Dimitrios Kanellopoulos',
             'description': 'My personal website',
