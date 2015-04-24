@@ -9,6 +9,7 @@ project = {
         'description': 'My personal website',
         'keywords': 'Dimitrios Kanellopoulos, Dimitrios, Kanellopoulos',
         'author': 'Dimitrios Kanellopoulos',
+        'theme-color': '#3FC3FF',
         'og': {
             'title': 'Dimitrios Kanellopoulos',
             'description': 'My personal website',
@@ -23,7 +24,6 @@ project = {
 config = {
     'project': project,
 }
-
 
 def is_dev_server():
     return os.environ['SERVER_SOFTWARE'].startswith('Dev')
