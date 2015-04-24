@@ -4,7 +4,6 @@ angular.module('app.main').controller('fitnessController', function ($scope, $ht
 
     // Stub here to get my personal data
     var userId = '29509824';
-    $scope.metrics = [];
 
     // Weight
     $scope.weightMeasurements = fitnessService.getWeightMeasurements(userId);
