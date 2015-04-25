@@ -1,6 +1,6 @@
 import logging
 
-from controllers import server, runkeeper, metrics
+from controllers import server, runkeeper, metrics, apis
 from config import config
 
 import webapp2
@@ -36,6 +36,13 @@ app = webapp2.WSGIApplication(
             r'/metrics/runkeeper/<user_id:\d+>/<call:\w+>/<id_:\d+>',
             handler=metrics.RunkeeperMetricsHandler,
             name='runkeeper_metrics'
+        ),
+
+        # Google+
+        webapp2.Route(
+            r'/apis/google+/<user_id:\d+>/<call:\w+>/<id_:\d+>',
+            handler=apis.GooglePlusAPIHandler,
+            name='google+_api'
         ),
 
     ], debug=True, config=config.config)
