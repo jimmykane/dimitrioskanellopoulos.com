@@ -11,7 +11,7 @@ project = {
         'author': 'Dimitrios Kanellopoulos',
         'theme_color': '#3FC3FF',
         'og': {
-            'title': 'Dimitrios Kanellopoulos',
+            'title': 'Personal website of Dimitrios Kanellopoulos',
             'description': 'My personal website',
             'type': 'website',
             'url': 'http://dimitrioskanellopoulos.com',
