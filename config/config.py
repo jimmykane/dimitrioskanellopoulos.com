@@ -12,7 +12,7 @@ project = {
         'theme_color': '#3FC3FF',
         'og': {
             'title': 'Personal website of Dimitrios Kanellopoulos',
-            'description': 'My personal website',
+            'description': 'Personal website of Dimitrios Kanellopoulos',
             'type': 'website',
             'url': 'http://dimitrioskanellopoulos.com',
             'image': 'https://www.gravatar.com/avatar/50eda10b9e16333f9e9cd3b8f1e0918a?s=500&d=identicon&r=PG'
