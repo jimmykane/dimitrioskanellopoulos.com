@@ -4,12 +4,12 @@ from config.config import is_dev_server
 
 import webapp2
 from google.appengine.api import memcache
-from oauth2client.appengine import OAuth2DecoratorFromClientSecrets
-
-
-decorator = OAuth2DecoratorFromClientSecrets(
-    'client_secrets.json',
-    scope='https://www.googleapis.com/auth/calendar')
+# from oauth2client.appengine import OAuth2DecoratorFromClientSecrets
+#
+#
+# decorator = OAuth2DecoratorFromClientSecrets(
+#     'client_secrets.json',
+#     scope='https://www.googleapis.com/auth/calendar')
 
 
 class GooglePlusAPIHandler(webapp2.RequestHandler):
