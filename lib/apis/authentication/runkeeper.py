@@ -23,9 +23,4 @@ class RunkeeperAuth(object):
         return self.flow.step1_get_authorize_url()
 
     def get_auth_session(self, code):
-        self.flow.step2_exchange(code=code)
-            # data={
-            #     'grant_type': grant_type,
-            #     'code': code,
-            #     'redirect_uri': redirect_uri
-            # },
+        return self.flow.step2_exchange(code=code)

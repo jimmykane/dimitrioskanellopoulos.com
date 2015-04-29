@@ -40,7 +40,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
             code=self.request.get('code')
         )
         access_token = runkeeper_auth_session.access_token
-        access_token_type = json.loads(runkeeper_auth_session.access_token_response._content)['token_type']
+        access_token_type = runkeeper_auth_session.token_response['token_type']
 
         runkeeper_api = RunkeeperAPI(
             access_token=access_token,
