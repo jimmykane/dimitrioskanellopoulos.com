@@ -1,27 +1,26 @@
 import json
 
-from rauth import OAuth2Service
+from oauth2client.client import OAuth2WebServerFlow
 from config.config import get_api_keys
 
 
-class RunkeeperAuth(OAuth2Service):
-    def __init__(self, client_id, client_secret):
-        if (client_id or client_secret) is None:
+class RunkeeperAuth(object):
+    def __init__(self, client_id, client_secret, redirect_uri):
+        if (client_id or client_secret or redirect_uri) is None:
             raise Exception('The client_id and client_secret are required')
-        OAuth2Service.__init__(
-            self,
+        self.flow = OAuth2WebServerFlow(
             client_id=client_id,
             client_secret=client_secret,
-            name='runkeeper',
-            authorize_url=str(get_api_keys()['runkeeper']['urls']['authorization_url']),
-            access_token_url=str(get_api_keys()['runkeeper']['urls']['access_token_url'])
+            scope='',
+            redirect_uri=redirect_uri,
+            user_agent=None,
+            auth_uri=str(get_api_keys()['runkeeper']['urls']['authorization_url']),
+            token_uri=str(get_api_keys()['runkeeper']['urls']['access_token_url']),
+            revoke_uri=None
         )
 
-    def get_authorize_url(self, redirect_uri):
-        return super(RunkeeperAuth, self).get_authorize_url(
-            response_type='code',
-            redirect_uri=redirect_uri
-        )
+    def get_authorize_url(self):
+        return self.flow.step1_get_authorize_url()
 
     def get_auth_session(self, code, redirect_uri, grant_type='authorization_code'):
         return super(RunkeeperAuth, self).get_auth_session(
