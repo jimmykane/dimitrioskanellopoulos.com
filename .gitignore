@@ -1,6 +1,8 @@
 # Secrets
 config/api_keys_dev.json
 config/api_keys.json
+config/client_secrets.json
+config/client_secrets_dev.json
 
 *.py[co]
 *.pyc
