@@ -9,7 +9,6 @@ from lib.apis.authentication.runkeeper import RunkeeperAuth
 
 
 class RunkeeperAuthHandler(webapp2.RequestHandler):
-
     pass
 
 
@@ -33,9 +32,12 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        runkeeper_auth_session = self.get_runkeeper_auth.get_auth_session(
-            self.request.get('code'),
-            self.request.host_url + uri_for('runkeeper_auth_callback')
+        runkeeper_auth_session = RunkeeperAuth(
+            client_id=get_api_keys()['runkeeper']['client_id'],
+            client_secret=get_api_keys()['runkeeper']['client_secret'],
+            redirect_uri=self.request.host_url + uri_for('runkeeper_auth_callback')
+        ).get_auth_session(
+            code=self.request.get('code')
         )
         access_token = runkeeper_auth_session.access_token
         access_token_type = json.loads(runkeeper_auth_session.access_token_response._content)['token_type']

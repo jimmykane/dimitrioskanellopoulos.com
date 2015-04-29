@@ -22,12 +22,10 @@ class RunkeeperAuth(object):
     def get_authorize_url(self):
         return self.flow.step1_get_authorize_url()
 
-    def get_auth_session(self, code, redirect_uri, grant_type='authorization_code'):
-        return super(RunkeeperAuth, self).get_auth_session(
-            data={
-                'grant_type': grant_type,
-                'code': code,
-                'redirect_uri': redirect_uri
-            },
-            decoder=json.loads
-        )
+    def get_auth_session(self, code):
+        self.flow.step2_exchange(code=code)
+            # data={
+            #     'grant_type': grant_type,
+            #     'code': code,
+            #     'redirect_uri': redirect_uri
+            # },
