@@ -1,10 +1,8 @@
-import json
-
 from config.config import is_dev_server
 from models.users import RunkeeperUserModel
+from controllers.json_application import JSONReplyHandler
 from lib.apis.runkeeperapi import RunkeeperAPI
 
-import webapp2
 from google.appengine.api import memcache
 
 
@@ -13,7 +11,7 @@ Acts like a proxy with caching
 """
 
 
-class RunkeeperMetricsHandler(webapp2.RequestHandler):
+class RunkeeperMetricsHandler(JSONReplyHandler):
     # @todo implement this better with auth scopes...
     disallowed_calls = [
         'team',
@@ -67,7 +65,7 @@ class RunkeeperMetricsHandler(webapp2.RequestHandler):
             self.add_to_memcache(self.get_cache_key(user_id, call, id_), response)
 
         # Run the call and echo it
-        self.response.out.write(json.dumps(response))
+        self.json_dumps_response(response)
 
     def get_cache_key(self, user_id, call, id_=None):
         return str(user_id) + str(call) + (id_ if id_ else '')
