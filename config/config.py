@@ -38,3 +38,9 @@ def get_api_keys():
             return json.load(json_file)
     except Exception as e:
         return False
+
+
+def get_client_secrets_filename():
+    return os.path.join(os.path.dirname(__file__), 'client_secrets_dev.json') \
+        if is_dev_server() \
+        else os.path.join(os.path.dirname(__file__), 'client_secrets.json')
