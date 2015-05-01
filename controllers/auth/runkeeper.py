@@ -2,25 +2,30 @@ import json
 import webapp2
 
 from webapp2 import uri_for
-from config.config import get_api_keys
 from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
-from lib.apis.authentication.runkeeper import RunkeeperAuth
+from oauth2client.client import OAuth2WebServerFlow
+from config.config import get_api_keys
 
 
 class RunkeeperAuthHandler(webapp2.RequestHandler):
+    def get_oauth_flow(self):
+        return OAuth2WebServerFlow(
+            client_id=get_api_keys()['runkeeper']['client_id'],
+            client_secret=get_api_keys()['runkeeper']['client_secret'],
+            scope='',
+            redirect_uri=self.request.host_url + uri_for('runkeeper_auth_callback'),
+            user_agent=None,
+            auth_uri=str(get_api_keys()['runkeeper']['urls']['authorization_url']),
+            token_uri=str(get_api_keys()['runkeeper']['urls']['access_token_url']),
+            revoke_uri=None
+        )
     pass
 
 
 class RunkeeperAuthCallHandler(RunkeeperAuthHandler):
     def get(self):
-        self.redirect(
-            RunkeeperAuth(
-                client_id=get_api_keys()['runkeeper']['client_id'],
-                client_secret=get_api_keys()['runkeeper']['client_secret'],
-                redirect_uri=self.request.host_url + uri_for('runkeeper_auth_callback')
-            ).get_authorize_url()
-        )
+        self.redirect(str(self.get_oauth_flow().step1_get_authorize_url()))
 
 
 class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
@@ -32,13 +37,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        runkeeper_auth_session = RunkeeperAuth(
-            client_id=get_api_keys()['runkeeper']['client_id'],
-            client_secret=get_api_keys()['runkeeper']['client_secret'],
-            redirect_uri=self.request.host_url + uri_for('runkeeper_auth_callback')
-        ).get_auth_session(
-            code=self.request.get('code')
-        )
+        runkeeper_auth_session = self.get_oauth_flow().step2_exchange(code=self.request.get('code'))
         access_token = runkeeper_auth_session.access_token
         access_token_type = runkeeper_auth_session.token_response['token_type']
 
