@@ -37,9 +37,9 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        runkeeper_auth_session = self.get_oauth2_flow().step2_exchange(code=self.request.get('code'))
-        access_token = runkeeper_auth_session.access_token
-        access_token_type = runkeeper_auth_session.token_response['token_type']
+        credentials = self.get_oauth2_flow().step2_exchange(code=self.request.get('code'))
+        access_token = credentials.access_token
+        access_token_type = credentials.token_response['token_type']
 
         runkeeper_api = RunkeeperAPI(
             access_token=access_token,
