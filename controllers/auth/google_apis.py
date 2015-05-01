@@ -3,7 +3,6 @@ import webapp2
 
 from webapp2 import uri_for
 from config.config import get_client_secrets_filename
-from lib.apis.authentication.runkeeper import RunkeeperAuth
 
 
 from oauth2client.client import flow_from_clientsecrets
@@ -12,18 +11,19 @@ from oauth2client.client import flow_from_clientsecrets
 
 
 class GoogleAuthHandler(webapp2.RequestHandler):
+    def get_oauth2_flow(self):
+        return flow_from_clientsecrets(
+            get_client_secrets_filename(),
+            scope='https://www.googleapis.com/auth/calendar',
+            redirect_uri=self.request.host_url + uri_for('google_auth_callback')
+        )
     pass
 
 
 class GoogleAuthCallHandler(GoogleAuthHandler):
 
     def get(self):
-        flow = flow_from_clientsecrets(
-            get_client_secrets_filename(),
-            scope='https://www.googleapis.com/auth/calendar',
-            redirect_uri=self.request.host_url + uri_for('google_auth_callback')
-        )
-        self.redirect(str(flow.step1_get_authorize_url()))
+        self.redirect(str(self.get_oauth2_flow().step1_get_authorize_url()))
         pass
 
 
