@@ -14,7 +14,7 @@ class GoogleAuthHandler(webapp2.RequestHandler):
     def get_oauth2_flow(self):
         return flow_from_clientsecrets(
             get_client_secrets_filename(),
-            scope='https://www.googleapis.com/auth/calendar',
+            scope='https://www.googleapis.com/auth/plus.login',
             redirect_uri=self.request.host_url + uri_for('google_auth_callback')
         )
     pass
@@ -36,13 +36,7 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        runkeeper_auth_session = RunkeeperAuth(
-            client_id=get_api_keys()['runkeeper']['client_id'],
-            client_secret=get_api_keys()['runkeeper']['client_secret'],
-            redirect_uri=self.request.host_url + uri_for('runkeeper_auth_callback')
-        ).get_auth_session(
-            code=self.request.get('code')
-        )
+        google_auth_session = self.get_oauth2_flow().step2_exchange(self.request.params.get('code'))
         access_token = runkeeper_auth_session.access_token
         access_token_type = runkeeper_auth_session.token_response['token_type']
 
