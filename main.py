@@ -2,8 +2,8 @@ import logging
 
 import webapp2
 
-from controllers import server, runkeeper, metrics, apis
-from controllers.auth import google_apis
+from controllers import server, metrics, apis
+from controllers.auth import google_apis, runkeeper
 from config import config
 
 
