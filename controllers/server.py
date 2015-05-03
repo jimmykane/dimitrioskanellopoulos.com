@@ -4,7 +4,7 @@ import webapp2
 import jinja2
 
 
-class RootPage(webapp2.RequestHandler):
+class RootPageHandler(webapp2.RequestHandler):
     def get(self):
         jinja_environment = self.jinja_environment
         template = jinja_environment.get_template("/index.html")

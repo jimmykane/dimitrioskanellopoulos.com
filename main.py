@@ -12,7 +12,7 @@ app = webapp2.WSGIApplication(
         # Essential handlers
         webapp2.Route(
             '/',
-            handler=server.RootPage
+            handler=server.RootPageHandler
         ),
 
         # Authentication Google
