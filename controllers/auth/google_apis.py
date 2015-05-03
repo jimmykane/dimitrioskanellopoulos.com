@@ -10,9 +10,10 @@ from oauth2client.client import flow_from_clientsecrets
 
 
 class GoogleAuthHandler(webapp2.RequestHandler):
-    def get_oauth2_flow(self):
+    def get_oauth2_flow(self, scope=None):
         return flow_from_clientsecrets(
             get_client_secrets_filename(),
+            # Should use the above var but now is off due to sec concerns
             scope='https://www.googleapis.com/auth/plus.login',
             redirect_uri=self.request.host_url + uri_for('google_auth_callback')
         )
@@ -21,7 +22,7 @@ class GoogleAuthHandler(webapp2.RequestHandler):
 
 class GoogleAuthCallHandler(GoogleAuthHandler):
 
-    def get(self):
+    def get(self, scope):
         self.redirect(str(self.get_oauth2_flow().step1_get_authorize_url()))
         pass
 

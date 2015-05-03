@@ -17,7 +17,7 @@ app = webapp2.WSGIApplication(
 
         # Authentication Google
         webapp2.Route(
-            '/auth/google_auth_call',
+            '/auth/google_auth_call/<scope:\w+>',
             handler=google_apis.GoogleAuthCallHandler,
             name='google_auth_callback'
         ),
