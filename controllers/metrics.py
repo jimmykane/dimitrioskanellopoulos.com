@@ -42,7 +42,6 @@ class RunkeeperMetricsHandler(JSONReplyHandler):
             self.response.out.write('No user found')
             return
 
-        a = runkeeper_user_model.credentials.token_response['access_token']
         # Get the API
         runkeeper_api = RunkeeperAPI(
             access_token=runkeeper_user_model.credentials.token_response['access_token'],
