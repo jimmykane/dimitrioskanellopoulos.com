@@ -20,6 +20,7 @@ class RunkeeperAPI(object):
     headers_accept = 'application/vnd.com.runkeeper'
 
     def __init__(self, access_token, access_token_type, debug=False):
+        # @todo should use credentials. Consider
         self.logger = Logger(
             'Runkeeper API',
             logging.INFO if debug else logging.DEBUG
