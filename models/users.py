@@ -1,8 +1,7 @@
-import logging
-from models.ndb_models import *
+from models.ndb_models import DictModel, NDBCommonModel
+from models.auth import RunkeeperAuthModel, GooglePlusAuthModel
 from google.appengine.ext import ndb
 
-from models.auth import *
 
 
 class UserModel(ndb.Expando, DictModel, NDBCommonModel):
@@ -20,4 +19,9 @@ class RunkeeperUserModel(UserModel, RunkeeperAuthModel):
     def user_id(self):
         return self.key.id()
 
+
+class GooglePlusUserModel(UserModel, GooglePlusAuthModel):
+    # name = ndb.StringProperty(required=True)
+    # profile = ndb.StringProperty(required=True)
+    # large_picture = ndb.StringProperty()
     pass

@@ -12,7 +12,15 @@ app = webapp2.WSGIApplication(
         # Essential handlers
         webapp2.Route(
             '/',
-            handler=server.RootPage
+            handler=server.RootPageHandler
+        ),
+        webapp2.Route(
+            '/login',
+            handler=server.LoginHandler
+        ),
+        webapp2.Route(
+            '/logout',
+            handler=server.LogoutHandler
         ),
 
         # Authentication Google
@@ -28,7 +36,6 @@ app = webapp2.WSGIApplication(
         ),
 
         # Authentication Runkeeper
-
         webapp2.Route(
             '/auth/runkeeper_auth_call',
             handler=runkeeper.RunkeeperAuthCallHandler,
