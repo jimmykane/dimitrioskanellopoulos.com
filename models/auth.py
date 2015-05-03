@@ -1,6 +1,6 @@
 from models.ndb_models import DictModel, NDBCommonModel
 from google.appengine.ext import ndb
-from oauth2client.appengine import CredentialsProperty
+from oauth2client.appengine import CredentialsNDBProperty
 
 
 class AuthenticationModel(ndb.Expando, DictModel, NDBCommonModel):
@@ -14,4 +14,4 @@ class RunkeeperAuthModel(AuthenticationModel):
 
 
 class GooglePlusAuthModel(AuthenticationModel):
-    credentials = CredentialsProperty(required=True)
+    credentials = CredentialsNDBProperty(required=True)
