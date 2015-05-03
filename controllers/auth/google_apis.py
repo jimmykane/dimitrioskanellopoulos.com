@@ -54,10 +54,10 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
         google_plus_profile = google_plus_service.people().get(userId='me').execute()
         # Create a user based on the id of the app user and store the google plus id
         google_plus_user = GooglePlusUserModel.get_or_insert(
-            UserModel.get_by_id(users.get_current_user().runkeeper_user_id()).key.id(),
+            UserModel.get_by_id(users.get_current_user().user_id()).key.id(),
             credentials=google_credentials,
-            google_plus_id=google_plus_profile['id']
+            google_plus_user_id=google_plus_profile['id']
         )
-        google_plus_user.poppulate(credentials=google_credentials)
+        google_plus_user.populate(credentials=google_credentials)
         google_plus_user.put()
         self.response.out.write('Success')
