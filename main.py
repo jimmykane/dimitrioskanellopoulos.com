@@ -2,7 +2,7 @@ import logging
 
 import webapp2
 
-from controllers import server, metrics, apis, login
+from controllers import server, metrics, apis
 from controllers.auth import google_apis, runkeeper
 from config import config
 
@@ -16,11 +16,11 @@ app = webapp2.WSGIApplication(
         ),
         webapp2.Route(
             '/login',
-            handler=login.LoginHandler
+            handler=server.LoginHandler
         ),
         webapp2.Route(
             '/logout',
-            handler=login.LogoutHandler
+            handler=server.LogoutHandler
         ),
 
         # Authentication Google
