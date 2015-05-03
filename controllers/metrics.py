@@ -1,6 +1,6 @@
 from config.config import is_dev_server
 from models.users import RunkeeperUserModel
-from controllers.json_application import JSONReplyHandler
+from controllers.server import JSONReplyHandler
 from lib.apis.runkeeperapi import RunkeeperAPI
 
 from google.appengine.api import memcache

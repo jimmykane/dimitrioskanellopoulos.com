@@ -1,5 +1,6 @@
 import os
 import logging
+import json
 
 from models.users import UserModel
 
@@ -21,6 +22,14 @@ def register_required(handler_method):
         handler_method(self, *args, **kwargs)
 
     return check_register
+
+
+class JSONReplyHandler(webapp2.RequestHandler):
+
+    def json_dumps_response(self, response):
+        self.response.headers.add_header('Access-Control-Allow-Origin', '*')
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(json.dumps(response))
 
 
 class RootPageHandler(webapp2.RequestHandler):
