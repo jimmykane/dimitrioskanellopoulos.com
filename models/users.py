@@ -21,7 +21,6 @@ class RunkeeperUserModel(UserModel, RunkeeperAuthModel):
 
 
 class GooglePlusUserModel(UserModel, GooglePlusAuthModel):
-    # name = ndb.StringProperty(required=True)
+    google_plus_id = ndb.StringProperty(required=True)
     # profile = ndb.StringProperty(required=True)
     # large_picture = ndb.StringProperty()
-    pass
