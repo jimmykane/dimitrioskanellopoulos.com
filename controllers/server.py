@@ -31,9 +31,7 @@ class LoginHandler(webapp2.RequestHandler):
 
     @login_required
     def get(self):
-        user = users.get_current_user()
-        user = UserModel.get_or_insert(user.user_id())
-    pass
+        user = UserModel.get_or_insert(users.get_current_user().user_id())
 
 
 class LogoutHandler(webapp2.RequestHandler):
