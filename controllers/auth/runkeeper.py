@@ -46,7 +46,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
             return
         # Get the auth session
         runkeeper_credentials = self.get_oauth2_flow().step2_exchange(code=self.request.get('code'))
-        access_token = runkeeper_credentials.access_token
+        access_token = runkeeper_credentials.token_response['access_token']
         access_token_type = runkeeper_credentials.token_response['token_type']
 
         runkeeper_api = RunkeeperAPI(

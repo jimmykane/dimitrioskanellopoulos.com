@@ -37,15 +37,16 @@ class RunkeeperMetricsHandler(JSONReplyHandler):
             return
 
         # Get the user from DB
-        runkeeper_user_model = RunkeeperUserModel.get_by_id(user_id)
+        runkeeper_user_model = RunkeeperUserModel.query().filter(RunkeeperUserModel.runkeeper_user_id == user_id).get()
         if not runkeeper_user_model:
             self.response.out.write('No user found')
             return
 
+        a = runkeeper_user_model.credentials.token_response['access_token']
         # Get the API
         runkeeper_api = RunkeeperAPI(
-            access_token=runkeeper_user_model.access_token,
-            access_token_type=runkeeper_user_model.access_token_type,
+            access_token=runkeeper_user_model.credentials.token_response['access_token'],
+            access_token_type=runkeeper_user_model.credentials.token_response['token_type'],
             debug=True
         )
 
