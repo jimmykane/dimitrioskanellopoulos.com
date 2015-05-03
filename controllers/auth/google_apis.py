@@ -42,38 +42,5 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
         # Get the auth session
         google_credentials = self.get_oauth2_flow().step2_exchange(self.request.params.get('code'))
         service = build('plus', 'v1', credentials=google_credentials)
-        google_request = service.people().get(userId='me').execute()
-        pass
-        # runkeeper_api = RunkeeperAPI(
-        #     access_token=access_token,
-        #     access_token_type=access_token_type,
-        #     debug=True
-        # )
-        # runkeeper_user = runkeeper_api.get_user()
-        # # test = runkeeper_user.call('')
-        # runkeeper_user_profile = runkeeper_user.profile()
-        #
-        # # Get or insert the model update tokens etc
-        # runkeeper_auth_model = RunkeeperUserModel.get_or_insert(
-        #     str(runkeeper_user.user_id),
-        #     access_token=access_token,
-        #     access_token_type=access_token_type,
-        #     name=runkeeper_user_profile['name'],
-        #     profile=runkeeper_user_profile['profile'],
-        #     large_picture=runkeeper_user_profile.get('large_picture')
-        # )
-        #
-        # # Update
-        # runkeeper_auth_model.populate(
-        #     access_token=access_token,
-        #     access_token_type=access_token_type,
-        #     name=runkeeper_user_profile['name'],
-        #     profile=runkeeper_user_profile['profile'],
-        #     large_picture=runkeeper_user_profile.get('large_picture')
-        # )
-        #
-        # # Write blind again
-        # runkeeper_auth_model.put()
-
-        # Write the result
+        googleplus_profile = service.people().get(userId='me').execute()
         self.response.out.write('Success')
