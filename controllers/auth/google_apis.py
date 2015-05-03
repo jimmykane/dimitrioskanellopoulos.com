@@ -1,9 +1,12 @@
 import webapp2
-import pickle,json
+
+from models.users import GooglePlusUserModel, UserModel
 
 from webapp2 import uri_for
 from config.config import get_client_secrets_filename
 from apiclient.discovery import build
+
+from google.appengine.api import users
 
 from oauth2client.client import flow_from_clientsecrets
 from webapp2_extras.appengine.users import login_required
@@ -39,8 +42,16 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
 
         if not self.request.params.get('code'):
             return
-        # Get the auth session
+        # Get Credentials
         google_credentials = self.get_oauth2_flow().step2_exchange(self.request.params.get('code'))
-        service = build('plus', 'v1', credentials=google_credentials)
-        googleplus_profile = service.people().get(userId='me').execute()
+        # Build the Service
+        google_plus_service = build('plus', 'v1', credentials=google_credentials)
+        # Get the profile
+        google_plus_profile = google_plus_service.people().get(userId='me').execute()
+        # Create a user based on the id of the app user and store the google plus id
+        google_plus_user = GooglePlusUserModel.get_or_insert(
+            UserModel.get_by_id(users.get_current_user().user_id()).key.id(),
+            credentials=google_credentials,
+            google_plus_id=google_plus_profile['id']
+        )
         self.response.out.write('Success')
