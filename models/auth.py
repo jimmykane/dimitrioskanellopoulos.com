@@ -1,5 +1,4 @@
-import logging
-from models.ndb_models import *
+from models.ndb_models import DictModel, NDBCommonModel
 from google.appengine.ext import ndb
 from oauth2client.appengine import CredentialsProperty
 

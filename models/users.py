@@ -1,4 +1,7 @@
-from models.auth import *
+from models.ndb_models import DictModel, NDBCommonModel
+from models.auth import RunkeeperAuthModel, GooglePlusAuthModel
+from google.appengine.ext import ndb
+
 
 
 class UserModel(ndb.Expando, DictModel, NDBCommonModel):
