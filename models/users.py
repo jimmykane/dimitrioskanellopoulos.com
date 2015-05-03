@@ -10,17 +10,8 @@ class UserModel(ndb.Expando, DictModel, NDBCommonModel):
 
 
 class RunkeeperUserModel(UserModel, RunkeeperAuthModel):
-    name = ndb.StringProperty(required=True)
-    profile = ndb.StringProperty(required=True)
-    large_picture = ndb.StringProperty()
-
-    # Since he was inserted like so
-    @property
-    def user_id(self):
-        return self.key.id()
+    runkeeper_user_id = ndb.StringProperty(required=True)
 
 
 class GooglePlusUserModel(UserModel, GooglePlusAuthModel):
-    google_plus_id = ndb.StringProperty(required=True)
-    # profile = ndb.StringProperty(required=True)
-    # large_picture = ndb.StringProperty()
+    google_plus_user_id = ndb.StringProperty(required=True)

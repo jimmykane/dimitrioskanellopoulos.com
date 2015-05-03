@@ -9,8 +9,7 @@ class AuthenticationModel(ndb.Expando, DictModel, NDBCommonModel):
 
 
 class RunkeeperAuthModel(AuthenticationModel):
-    access_token = ndb.StringProperty(required=True)
-    access_token_type = ndb.StringProperty(required=True)
+    credentials = CredentialsNDBProperty(required=True)
 
 
 class GooglePlusAuthModel(AuthenticationModel):

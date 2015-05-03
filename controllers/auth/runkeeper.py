@@ -1,9 +1,15 @@
 import json
+
+from controllers.server import register_required
+
 import webapp2
+
 
 from webapp2 import uri_for
 from models.users import RunkeeperUserModel
 from lib.apis.runkeeperapi import RunkeeperAPI
+from google.appengine.api import users
+
 from oauth2client.client import OAuth2WebServerFlow
 from config.config import get_api_keys
 
@@ -24,11 +30,13 @@ class RunkeeperAuthHandler(webapp2.RequestHandler):
 
 
 class RunkeeperAuthCallHandler(RunkeeperAuthHandler):
+    @register_required
     def get(self):
         self.redirect(str(self.get_oauth2_flow().step1_get_authorize_url()))
 
 
 class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
+    @register_required
     def get(self):
         if self.request.params.get('error'):
             self.request.response.out.write(self.request.params.get('error'))
@@ -37,9 +45,9 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        credentials = self.get_oauth2_flow().step2_exchange(code=self.request.get('code'))
-        access_token = credentials.access_token
-        access_token_type = credentials.token_response['token_type']
+        runkeeper_credentials = self.get_oauth2_flow().step2_exchange(code=self.request.get('code'))
+        access_token = runkeeper_credentials.access_token
+        access_token_type = runkeeper_credentials.token_response['token_type']
 
         runkeeper_api = RunkeeperAPI(
             access_token=access_token,
@@ -47,29 +55,15 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
             debug=True
         )
         runkeeper_user = runkeeper_api.get_user()
-        runkeeper_user_profile = runkeeper_user.profile()
 
         # Get or insert the model update tokens etc
-        runkeeper_auth_model = RunkeeperUserModel.get_or_insert(
-            str(runkeeper_user.user_id),
-            access_token=access_token,
-            access_token_type=access_token_type,
-            name=runkeeper_user_profile['name'],
-            profile=runkeeper_user_profile['profile'],
-            large_picture=runkeeper_user_profile.get('large_picture')
+        runkeeper_user_model = RunkeeperUserModel.get_or_insert(
+            users.get_current_user().user_id(),
+            credentials=runkeeper_credentials,
+            runkeeper_user_id=str(runkeeper_user.user_id)
         )
-
         # Update
-        runkeeper_auth_model.populate(
-            access_token=access_token,
-            access_token_type=access_token_type,
-            name=runkeeper_user_profile['name'],
-            profile=runkeeper_user_profile['profile'],
-            large_picture=runkeeper_user_profile.get('large_picture')
-        )
+        runkeeper_user_model.populate(credentials=runkeeper_credentials, runkeeper_user_id=str(runkeeper_user.user_id))
+        runkeeper_user_model.put()
 
-        # Write blind again
-        runkeeper_auth_model.put()
-
-        # Write the result
         self.response.out.write('Success')
