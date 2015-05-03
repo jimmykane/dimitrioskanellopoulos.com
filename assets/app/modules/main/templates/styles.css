@@ -72,7 +72,7 @@
 }
 
 .bordered {
-    border: 1px dotted lightgray;
+    border: 1px solid lightgray;
 }
 
 .border--bottom{
