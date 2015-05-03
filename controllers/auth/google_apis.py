@@ -1,4 +1,5 @@
 import webapp2
+import pickle,json
 
 from webapp2 import uri_for
 from config.config import get_client_secrets_filename
@@ -36,11 +37,10 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
         if not self.request.params.get('code'):
             return
         # Get the auth session
-        google_auth_session = self.get_oauth2_flow().step2_exchange(self.request.params.get('code'))
-        access_token = google_auth_session.access_token
-        access_token_type = google_auth_session.token_response['token_type']
-        service = build('plus', 'v1',credentials=google_auth_session)
+        google_credentials = self.get_oauth2_flow().step2_exchange(self.request.params.get('code'))
+        service = build('plus', 'v1', credentials=google_credentials)
         google_request = service.people().get(userId='me').execute()
+        pass
         # runkeeper_api = RunkeeperAPI(
         #     access_token=access_token,
         #     access_token_type=access_token_type,
