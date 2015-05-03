@@ -1,3 +1,5 @@
+import logging
+
 from models.users import UserModel
 
 import webapp2
@@ -12,3 +14,14 @@ class LoginHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         user = UserModel.get_or_insert(user.user_id())
     pass
+
+
+class LogoutHandler(webapp2.RequestHandler):
+
+    def get(self):
+        try:
+            return self.redirect(users.create_logout_url('/'))
+        except Exception as e:
+            logging.exception('Could not Logout user\n' + repr(e))
+            self.redirect('/')
+            return

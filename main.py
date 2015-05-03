@@ -18,6 +18,10 @@ app = webapp2.WSGIApplication(
             '/login',
             handler=login.LoginHandler
         ),
+        webapp2.Route(
+            '/logout',
+            handler=login.LogoutHandler
+        ),
 
         # Authentication Google
         webapp2.Route(
