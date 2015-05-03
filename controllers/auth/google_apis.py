@@ -1,5 +1,7 @@
+import logging
 import webapp2
 
+from controllers.server import register_required
 from models.users import GooglePlusUserModel, UserModel
 
 from webapp2 import uri_for
@@ -10,7 +12,6 @@ from oauth2client.appengine import CredentialsNDBProperty
 from google.appengine.api import users
 
 from oauth2client.client import flow_from_clientsecrets
-from webapp2_extras.appengine.users import login_required
 
 
 
@@ -20,6 +21,7 @@ class GoogleAuthHandler(webapp2.RequestHandler):
         return flow_from_clientsecrets(
             get_client_secrets_filename(),
             # Should use the above var but now is off due to sec concerns
+            # @todo build dynamic routes to callbacks
             scope='https://www.googleapis.com/auth/plus.login',
             redirect_uri=self.request.host_url + uri_for('google_auth_callback')
         )
@@ -28,14 +30,14 @@ class GoogleAuthHandler(webapp2.RequestHandler):
 
 class GoogleAuthCallHandler(GoogleAuthHandler):
 
-    @login_required
+    @register_required
     def get(self, scope):
         self.redirect(str(self.get_oauth2_flow().step1_get_authorize_url()))
         pass
 
 
 class GoogleAuthCallbackHandler(GoogleAuthHandler):
-    @login_required
+    @register_required
     def get(self):
         if self.request.params.get('error'):
             self.request.response.out.write(self.request.params.get('error'))
@@ -45,6 +47,7 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
             return
         # Get Credentials
         google_credentials = self.get_oauth2_flow().step2_exchange(self.request.params.get('code'))
+        # @todo remove google plus stub
         # Build the Service
         google_plus_service = build('plus', 'v1', credentials=google_credentials)
         # Get the profile
@@ -55,4 +58,8 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
             credentials=google_credentials,
             google_plus_id=google_plus_profile['id']
         )
+        if not google_plus_user:
+            logging.error('Error creating google plus user')
+            self.response.out.write('Error creating user')
+            return
         self.response.out.write('Success')

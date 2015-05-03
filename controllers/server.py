@@ -8,6 +8,21 @@ import jinja2
 from google.appengine.api import users
 from webapp2_extras.appengine.users import login_required
 
+
+"""
+A decorator to wrap the login_required decorator
+"""
+def register_required(handler_method):
+    @login_required
+    def check_register(self, *args, **kwargs):
+        if not UserModel.get_or_insert(users.get_current_user().user_id()):
+            logging.error('Could not register user')
+            return
+        handler_method(self, *args, **kwargs)
+
+    return check_register
+
+
 class RootPageHandler(webapp2.RequestHandler):
     def get(self):
         jinja_environment = self.jinja_environment
@@ -27,15 +42,9 @@ class RootPageHandler(webapp2.RequestHandler):
         return jinja_environment
 
 
-class LoginHandler(webapp2.RequestHandler):
-
-    @login_required
-    def get(self):
-        user = UserModel.get_or_insert(users.get_current_user().user_id())
-
-
 class LogoutHandler(webapp2.RequestHandler):
 
+    @register_required
     def get(self):
         try:
             return self.redirect(users.create_logout_url('/'))
