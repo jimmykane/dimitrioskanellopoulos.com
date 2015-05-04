@@ -48,7 +48,7 @@ class MemcachedHandler(webapp2.RequestHandler):
         return memcache.add(cache_key, data, 36000)
 
     def get_from_memcache(self, user_id, call, id_=None):
-        memcache.get(self.get_cache_key(user_id, call, id_))
+        return memcache.get(self.get_cache_key(user_id, call, id_))
 
 
 
