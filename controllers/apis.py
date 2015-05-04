@@ -18,7 +18,7 @@ class GooglePlusAPIHandler(webapp2.RequestHandler):
         if not is_dev_server() and call in self.disallowed_calls:
             self.response.out.write('Call not allowed')
             return
-        google_plus_user_model = GooglePlusUserModel.get_by_id(user_id)
+        google_plus_user_model = GooglePlusUserModel.query().filter(GooglePlusUserModel.google_plus_user_id == user_id).get()
         if not google_plus_user_model:
             self.response.out.write('No user found')
             return
