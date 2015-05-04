@@ -1,6 +1,6 @@
 from config.config import is_dev_server
 from models.users import RunkeeperUserModel
-from controllers.server import JSONReplyHandler
+from controllers.server import MemcachedHandler, JSONReplyHandler
 from lib.apis.runkeeperapi import RunkeeperAPI
 
 from google.appengine.api import memcache
@@ -11,7 +11,7 @@ Acts like a proxy with caching
 """
 
 
-class RunkeeperMetricsHandler(JSONReplyHandler):
+class RunkeeperMetricsHandler(MemcachedHandler, JSONReplyHandler):
     disallowed_calls = [
         'team',
         'diabetes',
@@ -65,12 +65,3 @@ class RunkeeperMetricsHandler(JSONReplyHandler):
 
         # Run the call and echo it
         self.json_dumps_response(response)
-
-    def get_cache_key(self, user_id, call, id_=None):
-        return str(user_id) + str(call) + (id_ if id_ else '')
-
-    def add_to_memcache(self, cache_key, data):
-        # Only on production
-        if is_dev_server():
-            return True
-        return memcache.add(cache_key, data, 36000)

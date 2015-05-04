@@ -4,16 +4,14 @@ import json
 from config.config import is_dev_server
 from lib.apis.google_plus_api import GooglePlusAPI
 from models.users import GooglePlusUserModel
-from controllers.server import JSONReplyHandler
+from controllers.server import MemcachedHandler, JSONReplyHandler
 
 
-
-import webapp2
 from google.appengine.api import memcache
 
 
 
-class GooglePlusAPIHandler(JSONReplyHandler):
+class GooglePlusAPIHandler(MemcachedHandler, JSONReplyHandler):
     allowed_calls = [
         'profile'
     ]
@@ -44,14 +42,3 @@ class GooglePlusAPIHandler(JSONReplyHandler):
 
         # Run the call and echo it
         self.json_dumps_response(response)
-
-    def get_cache_key(self, user_id, call, id_=None):
-        return str(user_id) + str(call) + (id_ if id_ else '')
-
-    def add_to_memcache(self, cache_key, data):
-        # Only on production
-        if is_dev_server():
-            return True
-        return memcache.add(cache_key, data, 36000)
-
-

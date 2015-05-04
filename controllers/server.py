@@ -3,11 +3,15 @@ import logging
 import json
 
 from models.users import UserModel, RunkeeperUserModel, GooglePlusUserModel
+from config.config import is_dev_server
+
 
 import webapp2
 import jinja2
 from google.appengine.api import users
 from webapp2_extras.appengine.users import login_required
+from google.appengine.api import memcache
+
 
 
 """
@@ -30,6 +34,18 @@ class JSONReplyHandler(webapp2.RequestHandler):
         self.response.headers.add_header('Access-Control-Allow-Origin', '*')
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(json.dumps(response))
+
+class MemcachedHandler(webapp2.RequestHandler):
+
+    def get_cache_key(self, user_id, call, id_=None):
+        return str(user_id) + str(call) + (id_ if id_ else '')
+
+    def add_to_memcache(self, cache_key, data):
+        # Only on production
+        if is_dev_server():
+            return True
+        return memcache.add(cache_key, data, 36000)
+
 
 
 class RootPageHandler(webapp2.RequestHandler):
