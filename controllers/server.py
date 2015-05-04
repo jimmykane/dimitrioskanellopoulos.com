@@ -2,7 +2,7 @@ import os
 import logging
 import json
 
-from models.users import UserModel, RunkeeperUserModel
+from models.users import UserModel, RunkeeperUserModel, GooglePlusUserModel
 
 import webapp2
 import jinja2
@@ -36,12 +36,16 @@ class RootPageHandler(webapp2.RequestHandler):
     def get(self):
         jinja_environment = self.jinja_environment
         template = jinja_environment.get_template("/index.html")
-        # Add analytics and render template
+        # Add user id's if available or fallback to my ids
         runkeeper_user_id = RunkeeperUserModel.get_by_id(users.get_current_user().user_id()).runkeeper_user_id \
             if users.get_current_user() else '29509824'
+        google_plus_user_id = GooglePlusUserModel.get_by_id(users.get_current_user().user_id()).google_plus_user_id \
+            if users.get_current_user() else '102445631084043565507'
+        # Add vars and render
         self.response.out.write(template.render({
             "project": self.app.config['project'],
-            "user_id": runkeeper_user_id
+            "runkeeper_user_id": runkeeper_user_id,
+            "google_plus_user_id": google_plus_user_id
         }))
 
 
