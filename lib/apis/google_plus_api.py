@@ -3,6 +3,7 @@ import logging
 import json
 
 from lib.logger import Logger
+from apiclient.discovery import build
 
 
 class GooglePlusAPI(object):

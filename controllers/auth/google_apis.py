@@ -7,7 +7,6 @@ from models.users import GooglePlusUserModel, UserModel
 from webapp2 import uri_for
 from config.config import get_client_secrets_filename
 from apiclient.discovery import build
-from oauth2client.appengine import CredentialsNDBProperty
 
 from google.appengine.api import users
 
