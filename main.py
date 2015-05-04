@@ -57,7 +57,7 @@ app = webapp2.WSGIApplication(
 
         # Google+ API
         webapp2.Route(
-            r'/apis/google+/<user_id:\d+>/<call:\w+>/<id_:\d+>',
+            r'/apis/google+/<user_id:\d+>/<call:\w+>',
             handler=apis.GooglePlusAPIHandler,
             name='google+_api'
         ),
