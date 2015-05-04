@@ -1,7 +1,7 @@
 from config.config import is_dev_server
 from models.users import RunkeeperUserModel
 from controllers.server import MemcachedHandler, JSONReplyHandler
-from lib.apis.runkeeperapi import RunkeeperAPI
+from lib.apis.runkeeper_api import RunkeeperAPI
 
 """
 Acts like a proxy with caching

@@ -7,7 +7,7 @@ import webapp2
 
 from webapp2 import uri_for
 from models.users import RunkeeperUserModel
-from lib.apis.runkeeperapi import RunkeeperAPI
+from lib.apis.runkeeper_api import RunkeeperAPI
 from google.appengine.api import users
 
 from oauth2client.client import OAuth2WebServerFlow
