@@ -6,7 +6,6 @@ import webapp2
 
 
 class GooglePlusAPIHandler(webapp2.RequestHandler):
-    # @todo implement this better with auth scopes...
     disallowed_calls = [
 
     ]
@@ -16,3 +15,5 @@ class GooglePlusAPIHandler(webapp2.RequestHandler):
         if not is_dev_server() and call in self.disallowed_calls:
             self.response.out.write('Call not allowed')
             return
+
+        
