@@ -1,15 +1,11 @@
 "use strict";
 
-
-//@todo Check it this belongs to this main modules
 angular.module('app.main').factory('fitnessService', function ($http, $q) {
 
     var fitnessService = {};
 
-    // @todo combine calls to one
     fitnessService.getUserRunkeeperMetrics = function (userId, call) {
         var deffered = $q.defer();
-        // Get some weight
         $http.get('/metrics/runkeeper/' + userId + '/' + call)
             .success(function (data, status, headers, config) {
                 if (status !== 200) {
