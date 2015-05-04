@@ -42,8 +42,9 @@ class MemcachedHandler(webapp2.RequestHandler):
 
     def add_to_memcache(self, cache_key, data):
         # Only on production use cache
-        if is_dev_server():
-            return True
+        # if is_dev_server():
+        #     return True
+        logging.debug('Writing to memcache key')
         return memcache.add(cache_key, data, 36000)
 
     def get_from_memcache(self, user_id, call, id_=None):
