@@ -4,7 +4,7 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-default_expiration: "0d 0h 5m"
+default_expiration: "0d 0h 30m"
 
 builtins:
 - appstats: on
@@ -15,9 +15,6 @@ libraries:
   version: latest
 
 - name: webapp2
-  version: latest
-
-- name: PIL
   version: latest
 
 handlers:
@@ -32,7 +29,6 @@ handlers:
 - url: /favicon.ico
   static_files: assets/img/favicon.png
   upload: assets/img/favicon.png
-
 
 - url: .*
   script: main.app
