@@ -24,7 +24,7 @@ angular.module('app.main').factory('fitnessService', function ($http, $q) {
     };
 
     fitnessService.getWeightMeasurements = function (userId) {
-        fitnessService.weightMeasurements = fitnessService.getWeightMeasurements || {};
+        fitnessService.weightMeasurements = fitnessService.weightMeasurements || {};
         fitnessService.getUserRunkeeperMetrics(userId, 'weightMeasurements');
         return fitnessService.weightMeasurements;
     };
