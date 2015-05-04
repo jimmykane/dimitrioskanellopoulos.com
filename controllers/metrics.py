@@ -12,7 +12,6 @@ Acts like a proxy with caching
 
 
 class RunkeeperMetricsHandler(JSONReplyHandler):
-    # @todo implement this better with auth scopes...
     disallowed_calls = [
         'team',
         'diabetes',

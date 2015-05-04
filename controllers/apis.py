@@ -16,4 +16,4 @@ class GooglePlusAPIHandler(webapp2.RequestHandler):
             self.response.out.write('Call not allowed')
             return
 
-        
+
