@@ -21,7 +21,6 @@ class GooglePlusAPI(object):
         self.credentials = credentials
         self.google_plus_service = build('plus', 'v1', credentials=credentials)
 
-
     def get_user(self):
         return GooglePlusUser(self)
 

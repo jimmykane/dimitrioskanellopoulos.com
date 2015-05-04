@@ -23,7 +23,7 @@ class GooglePlusAPIHandler(webapp2.RequestHandler):
             self.response.out.write('No user found')
             return
         google_plus_api = GooglePlusAPI(credentials=google_plus_user_model.credentials)
-        google_plus_user = GooglePlusAPI.get_user()
+        google_plus_user = google_plus_api.get_user()
         pass
 
 
