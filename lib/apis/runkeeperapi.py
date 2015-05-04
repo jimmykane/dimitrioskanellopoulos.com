@@ -52,8 +52,6 @@ class RunkeeperAPI(object):
         return json.loads(result.content)
 
     def get_user(self):
-        # @todo create the following properties from the user iteratable
-        # Should return user
         return RunkeeperUser(self)
 
 
