@@ -5,6 +5,7 @@ var app = angular.module(
         'ngRoute',
         'ngResource',
         'ngSanitize',
+        'ngAnimate',
         'app.main',
         'app.jsonService'
     ]
