@@ -11,6 +11,9 @@
             data-ng-if="getProfileImageUrl()" />
         </p>
         <div class="aboutMe" data-ng-bind-html="getAboutMe()"></div>
+        <p>
+            {{ googlePlusProfile.braggingRights }}
+        </p>
     </article>
 
     <aside class="aside aside-1" data-ng-controller="socialLinksController">
