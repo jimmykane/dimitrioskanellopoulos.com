@@ -7,10 +7,6 @@ from models.users import GooglePlusUserModel
 from controllers.server import MemcachedHandler, JSONReplyHandler
 
 
-from google.appengine.api import memcache
-
-
-
 class GooglePlusAPIHandler(MemcachedHandler, JSONReplyHandler):
     allowed_calls = [
         'profile'
@@ -34,7 +30,7 @@ class GooglePlusAPIHandler(MemcachedHandler, JSONReplyHandler):
             return
 
         # Check if we can get from the cache
-        response = memcache.get(self.get_cache_key(user_id, call))
+        response = self.get_from_memcache(user_id, call)
         if not response:
             # If not found call and write to cache
             response = getattr(google_plus_user, call)

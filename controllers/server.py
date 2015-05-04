@@ -41,10 +41,13 @@ class MemcachedHandler(webapp2.RequestHandler):
         return str(user_id) + str(call) + (id_ if id_ else '')
 
     def add_to_memcache(self, cache_key, data):
-        # Only on production
+        # Only on production use cache
         if is_dev_server():
             return True
         return memcache.add(cache_key, data, 36000)
+
+    def get_from_memcache(self, user_id, call, id_=None):
+        memcache.get(self.get_cache_key(user_id, call, id_))
 
 
 

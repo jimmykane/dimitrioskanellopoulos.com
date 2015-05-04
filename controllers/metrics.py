@@ -3,9 +3,6 @@ from models.users import RunkeeperUserModel
 from controllers.server import MemcachedHandler, JSONReplyHandler
 from lib.apis.runkeeperapi import RunkeeperAPI
 
-from google.appengine.api import memcache
-
-
 """
 Acts like a proxy with caching
 """
@@ -57,7 +54,7 @@ class RunkeeperMetricsHandler(MemcachedHandler, JSONReplyHandler):
             return
 
         # Check if we can get from the cache
-        response = memcache.get(self.get_cache_key(user_id, call, id_))
+        response = self.get_from_memcache(user_id, call, id_)
         if not response:
             # If not found call and write to cache
             response = getattr(runkeeper_user, call)()
