@@ -1,21 +1,16 @@
 "use strict";
 
-angular.module('app.main').controller('mainController', function ($scope, googlePlusService, $sce) {
+angular.module('app.main').controller('mainController', function ($scope, googlePlusService) {
 
     var googlePlusUserID = window.googlePlusUserID;
 
-    // Profile
+    // The whole profile
     $scope.googlePlusProfile = googlePlusService.getProfile(googlePlusUserID);
 
-    $scope.getAboutMe = function (){
-         return $sce.trustAsHtml($scope.googlePlusProfile.aboutMe);
-    };
+    // About me to be rendered via service
+    $scope.getAboutMe = googlePlusService.getAboutMe;
 
-    $scope.getProfileImageUrl = function(){
-        if (!$scope.googlePlusProfile.image){
-            return;
-        }
-        return $scope.googlePlusProfile.image.url.slice(0, -2) + '100';
-    }
+    // Image to be resized via service
+    $scope.getProfileImageUrl = googlePlusService.getProfileImageUrl;
 
 });
