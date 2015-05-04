@@ -6,19 +6,11 @@
     <article class="main">
         <p><b>Welcome visitor</b>
             <img
-            src="{{ profileImage }}"
-            style="float: left; margin-right: 10px;"/>
+            data-ng-src="{{ getProfileImageUrl() }}"
+            style="float: left; margin-right: 10px;"
+            data-ng-if="getProfileImageUrl()" />
         </p>
-        <p>
-            Hi there!<br/>
-            I am Dimitrios Kanellopoulos, a being and this is a my personal website.</p>
-        <p>
-            I was born in Greece in a small town called
-            <a href="//www.google.nl/maps/place/Ioannina,+Greece" target="_blank">Ioannina</a>
-            but currently I like to live in the Netherlands and enjoy life in Amsterdam.
-        </p>
-        <p>I usually work in the field of Computer Science and specifically in I.T.</p>
-        <p>Besides that, I like to sport, especially running, photography, Jazz guitar and traveling.</p>
+        <div class="aboutMe" data-ng-bind-html="getAboutMe()"></div>
     </article>
 
     <aside class="aside aside-1" data-ng-controller="socialLinksController">
