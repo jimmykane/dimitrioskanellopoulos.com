@@ -19,9 +19,9 @@
     </article>
 
     <aside class="aside aside-1" data-ng-controller="socialLinksController">
-        <p><b>Contact - Social Networks</b></p>
+        <p><b>Other links and profiles</b></p>
         <ul class="columns__2">
-            <li data-ng-repeat="link in links"><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
+            <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
         </ul>
     </aside>
 
