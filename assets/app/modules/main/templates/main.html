@@ -61,11 +61,11 @@
         </div>
     </aside>
 
-    <aside class="under" data-ng-controller="fitnessController" data-ng-if="weightMeasurements.weight">
-        <p><b>Fitness Data</b> <span style="font-size: 0.6em;">powered by <a
+    <aside class="under" data-ng-controller="fitnessController">
+        <p data-ng-if="weightMeasurements.weight"><b>Fitness Data</b> <span style="font-size: 0.6em;">powered by <a
                 href="http://developer.runkeeper.com/healthgraph/home" target="_blank">Health Graph</a></span></p>
 
-        <div class="border--bottom">
+        <div class="border--bottom" data-ng-if="weightMeasurements.weight">
             <p>Body Measurements</p>
             <ul class="columns__2">
                 <li>
