@@ -51,9 +51,8 @@
                 <span style="font-size: 0.9em;">{{ googlePlusProfile.skills }}</span>
             </p>
         </div>
-        <div class="border--bottom">
+        <div>
             <p>Places lived</p>
-
             <ul class="columns__2">
                 <li data-ng-repeat="placeLived in googlePlusProfile.placesLived" style="font-size: 0.9em;">
                     {{ placeLived.value }} <span style="font-size: 0.7em;" data-ng-if="placeLived.primary">(currently living)</span>
