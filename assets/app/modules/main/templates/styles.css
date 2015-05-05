@@ -39,6 +39,11 @@
     background: rgb(255, 155, 0);
 }
 
+.under {
+    text-align: left;
+    background: #b7c4c9;
+}
+
 .footer {
     background: rgb(149, 214, 65);
 }
@@ -66,8 +71,12 @@
         order: 3;
     }
 
-    .footer {
+    .under {
         order: 4;
+    }
+
+    .footer {
+        order: 5;
     }
 }
 
