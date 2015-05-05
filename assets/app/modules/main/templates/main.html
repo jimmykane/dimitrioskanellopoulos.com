@@ -4,7 +4,8 @@
 <div class="flex-container bordered">
     <header class="header"><b>Dimitrios Kanellopoulos</b></header>
     <article class="main">
-        <div>
+
+        <div class="picture">
             <p>
                 <b>Welcome visitor</b>
                 <img data-ng-src="{{ getProfileImageUrl(100) }}"
@@ -12,10 +13,16 @@
                     />
             </p>
         </div>
-        <div data-ng-bind-html="getAboutMe()"></div>
-        <p>
-            {{ googlePlusProfile.braggingRights }}
-        </p>
+
+        <div class="aboutMe">
+            <p data-ng-bind-html="getAboutMe()"></p>
+            <p>
+                {{ googlePlusProfile.skills }}
+            </p>
+            <p>
+                {{ googlePlusProfile.braggingRights }}
+            </p>
+        </div>
     </article>
 
     <aside class="aside aside-1" data-ng-controller="socialLinksController">
