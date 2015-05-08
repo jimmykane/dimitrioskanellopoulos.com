@@ -1,12 +1,12 @@
 <!-- Module stylesheet -->
 <link rel="stylesheet" href="/assets/app/modules/main/templates/styles.css">
 
-<div class="flex-container bordered">
+<div class="flex-container bordered" data-ng-controller="mainController">
 
     <!-- @todo break these to components -->
 
-    <header class="header"><b>Dimitrios Kanellopoulos</br>{{ googlePlusProfile.tagline }}</b></header>
-    <article class="main" data-ng-if="googlePlusProfile.isPlusUser">
+    <header class="header" ><b>Dimitrios Kanellopoulos</br>{{ googlePlusProfile.tagline }}</b></header>
+    <article class="main" data-ng-controller="googlePlusController" >
 
         <div class="picture">
             <p>
@@ -23,14 +23,14 @@
         </div>
     </article>
 
-    <aside class="aside aside-1" data-ng-if="googlePlusProfile.isPlusUser">
+    <aside class="aside aside-1" data-ng-controller="googlePlusController">
         <p><b>Other links and profiles</b></p>
         <ul class="columns__2">
             <li data-ng-repeat="url in googlePlusProfile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
         </ul>
     </aside>
 
-    <aside class="aside aside-2" data-ng-if="googlePlusProfile.isPlusUser">
+    <aside class="aside aside-2" data-ng-controller="googlePlusController">
         <p>
             <b>Information</b>
         </p>
