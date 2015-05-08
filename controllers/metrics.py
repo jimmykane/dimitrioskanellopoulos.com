@@ -57,7 +57,7 @@ class RunkeeperMetricsHandler(MemcachedHandler, JSONReplyHandler):
         response = self.get_from_memcache(user_id, call, id_)
         if not response:
             # If not found call and write to cache
-            response = getattr(runkeeper_user, call)()
+            response = getattr(runkeeper_user, call)(id_)
             self.add_to_memcache(self.get_cache_key(user_id, call, id_), response)
 
         # Run the call and echo it
