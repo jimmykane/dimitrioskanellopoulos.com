@@ -12,16 +12,16 @@ class RunkeeperMetricsHandler(MemcachedHandler, JSONReplyHandler):
     disallowed_calls = [
         'team',
         'diabetes',
-        # 'background_activities',
-        # 'fitness_activities',
-        'nutrition',
+        # 'backgroundActivities',
+        # 'fitnessActivities',
+        # 'nutrition',
         'profile',
         # 'records',
-        # 'general_measurements',
+        # 'generalMeasurements',
         # 'settings',
         # 'weight',
-        # 'change_log',
-        'strength_training_activities',
+        # 'changeLog',
+        # 'strengthTrainingActivities',
         # 'sleep',
     ]
 
