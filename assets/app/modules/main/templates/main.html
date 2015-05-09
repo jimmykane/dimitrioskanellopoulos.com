@@ -42,7 +42,6 @@
         <div class="border--bottom">
             <p>
                 My main profession is in the field of {{ googlePlusProfile.occupation }}.<br/>
-                I've worked in the following organizations
             </p>
             <ul class="columns__1">
                 <li data-ng-repeat="organization in googlePlusProfile.organizations | filter:{ type: 'work' }" style="font-size: 0.8em;">
@@ -54,7 +53,7 @@
             </ul>
         </div>
         <div class="border--bottom">
-            <p>My education so far</p>
+            <p>My education</p>
             <ul class="columns__1">
                 <li data-ng-repeat="organization in googlePlusProfile.organizations | filter:{ type: 'school' }" style="font-size: 0.8em;">
                     {{ organization.title }} at {{ organization.name }}
@@ -71,7 +70,7 @@
             </p>
         </div>
         <div>
-            <p>Some places I lived</p>
+            <p>Places I lived</p>
             <ul class="columns__2">
                 <li data-ng-repeat="placeLived in googlePlusProfile.placesLived" style="font-size: 0.9em;">
                     {{ placeLived.value }} <span style="font-size: 0.7em;" data-ng-if="placeLived.primary">(currently living)</span>
