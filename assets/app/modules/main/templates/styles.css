@@ -39,12 +39,12 @@
     background: rgb(255, 155, 0);
 }
 
-.aside-3 {
+.under-1 {
     text-align: left;
     background: rgba(103, 158, 55, 1);
 }
 
-.under {
+.under-2 {
     text-align: left;
     background: rgba(0, 171, 192, 1);
 }
@@ -55,6 +55,9 @@
 
 @media all and (min-width: 600px) {
     .aside {
+        flex: 1 auto;
+    }
+    .under {
         flex: 1 auto;
     }
 }
@@ -76,11 +79,11 @@
         order: 3;
     }
 
-    .aside-3 {
+    .under-1 {
         order: 4;
     }
 
-    .under {
+    .under-2 {
         order: 5;
     }
 
@@ -130,4 +133,27 @@ ul.columns__4 {
 
 .float--right{
     float: right;
+}
+
+
+/*
+Animations
+*/
+
+.main.ng-hide-add.ng-hide-add-active,
+.main.ng-hide-remove.ng-hide-remove-active,
+.aside.ng-hide-add.ng-hide-add-active,
+.aside.ng-hide-remove.ng-hide-remove-active,
+.under.ng-hide-add.ng-hide-add-active,
+.under.ng-hide-remove.ng-hide-remove-active{
+  -webkit-transition: all linear 0.7s;
+  transition: all linear 0.7s;
+}
+
+.main.ng-hide,
+.aside.ng-hide,
+.under.ng-hide {
+  line-height: 0;
+  opacity: 0.3;
+  padding: 0 3em;
 }
