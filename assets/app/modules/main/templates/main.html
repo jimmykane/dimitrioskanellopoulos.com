@@ -29,13 +29,6 @@
     </article>
 
     <aside class="aside aside-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
-        <p><b>Other links and profiles</b></p>
-        <ul class="columns__2">
-            <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
-        </ul>
-    </aside>
-
-    <aside class="aside aside-2" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
         <p>
             <b>Information</b>
         </p>
@@ -60,6 +53,13 @@
                 </li>
             </ul>
         </div>
+    </aside>
+
+    <aside class="aside aside-2" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
+        <p><b>Contact and profiles</b></p>
+        <ul class="columns__2">
+            <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
+        </ul>
     </aside>
 
     <aside class="under under-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">

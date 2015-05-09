@@ -54,6 +54,9 @@
 }
 
 @media all and (min-width: 600px) {
+    .main{
+        flex: 1 100%;
+    }
     .aside {
         flex: 1 auto;
     }
@@ -64,14 +67,14 @@
 
 @media all and (min-width: 800px) {
     .main {
-        flex: 1 0px;
-    }
-
-    .aside-1 {
-        order: 1;
+        flex: 1 auto;
     }
 
     .main {
+        order: 1;
+    }
+
+    .aside-1 {
         order: 2;
     }
 
