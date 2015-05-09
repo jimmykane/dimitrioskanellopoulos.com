@@ -30,7 +30,10 @@
 
     <aside class="aside aside-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
         <p>
-            <b>Information</b>
+            <b>Personal Data</b>
+            <span style="font-size: 0.7em;">
+                via <a href="{{ profile.url }}" target="_blank">Google+</a>
+            </span>
         </p>
         <div class="border--bottom">
             <p>
@@ -62,7 +65,7 @@
     </aside>
 
     <aside class="aside aside-2" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
-        <p><b>About this project</b></p>
+        <p><b>Project Data</b></p>
         <div class="border--bottom">
             <p>Technologies/APIs</p>
             <p><span style="font-size: 0.7em;">The content of this website is generated dynamic :-p</span></p>
@@ -91,11 +94,14 @@
 
     <aside class="under under-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
         <p>
-            <b>Education/Skills</b>
+            <b>Brain data</b>
+            <span style="font-size: 0.7em;">
+                via <a href="{{ profile.url }}" target="_blank">Google+</a>
+            </span>
         </p>
         <div class="border--bottom">
             <p>My skills</p>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 0.8em;">
                 <span>{{ profile.skills }}</span>
             </p>
         </div>
@@ -115,8 +121,8 @@
     <aside class="under under-2" data-ng-controller="fitnessController" data-ng-show="isFitnessDataReady()">
         <p>
             <b>Fitness Data</b>
-            <span style="font-size: 0.6em;">
-                powered by <a href="http://developer.runkeeper.com/healthgraph/home" target="_blank">Health Graph</a>
+            <span style="font-size: 0.7em;">
+                via <a href="http://developer.runkeeper.com/healthgraph/home" target="_blank">Health Graph</a>
             </span>
         </p>
 
