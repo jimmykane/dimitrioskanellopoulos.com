@@ -56,10 +56,23 @@
     </aside>
 
     <aside class="aside aside-2" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
-        <p><b>Contact and profiles</b></p>
-        <ul class="columns__2">
-            <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
-        </ul>
+        <p><b>About - Profiles</b></p>
+        <div class="border--bottom">
+            <p>The content of this website is dynamic :-P ...</p>
+            <p>...using API calls via the following technologies</p>
+            <ul>
+                <li><span style="font-size: 0.9em;">Google Plus</span></li>
+                <li><span style="font-size: 0.9em;">Health Graph</span></li>
+                <li><span style="font-size: 0.9em;">Google App Engine</span></li>
+                <li><span style="font-size: 0.9em;">Angular JS</span></li>
+            </ul>
+        </div>
+        <div>
+            <p>My profiles</p>
+            <ul class="columns__2">
+                <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank" style="font-size: 0.9em;">{{ url.label }}</a></li>
+            </ul>
+        </div>
     </aside>
 
     <aside class="under under-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
