@@ -39,9 +39,14 @@
     background: rgb(255, 155, 0);
 }
 
+.aside-3 {
+    text-align: left;
+    background: rgba(103, 158, 55, 1);
+}
+
 .under {
     text-align: left;
-    background: #b7c4c9;
+    background: rgba(0, 171, 192, 1);
 }
 
 .footer {
@@ -56,7 +61,7 @@
 
 @media all and (min-width: 800px) {
     .main {
-        flex: 3 0px;
+        flex: 1 0px;
     }
 
     .aside-1 {
@@ -71,12 +76,16 @@
         order: 3;
     }
 
-    .under {
+    .aside-3 {
         order: 4;
     }
 
-    .footer {
+    .under {
         order: 5;
+    }
+
+    .footer {
+        order: 6;
     }
 }
 
