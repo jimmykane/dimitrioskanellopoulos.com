@@ -13,4 +13,9 @@ angular.module('app.main').controller('fitnessController', function ($scope, $ht
     // Activities Records
     $scope.records = fitnessService.getActivityRecords(runkeeperUserID);
 
+    // @todo Should it just check one?
+    $scope.isFitnessDataReady = function () {
+        return !angular.equals({}, $scope.weightMeasurements) && !angular.equals({}, $scope.getLatestActivity) && !angular.equals({}, $scope.getLatestActivity);
+    };
+
 });
