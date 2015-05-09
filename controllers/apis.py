@@ -24,8 +24,8 @@ class GooglePlusAPIHandler(MemcachedHandler, JSONReplyHandler):
         google_plus_api = GooglePlusAPI(credentials=google_plus_user_model.credentials)
         google_plus_user = google_plus_api.get_user()
 
-        # Check if the call is listed
-        if not hasattr(google_plus_user, call):
+        # Check if the call is an attribute
+        if call not in dir(google_plus_user):
             self.response.out.write('Unknown call')
             return
 
