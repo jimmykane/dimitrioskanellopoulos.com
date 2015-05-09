@@ -26,14 +26,12 @@ class GooglePlusAPI(object):
 
 
 class GooglePlusUser(object):
-    user_id = None
 
     def __init__(self, master):
         self.master = master
-        self.user_id = self.master.google_plus_service.people().get(userId='me').execute()['id']
 
     def get_user_id(self):
-        return self.user_id
+        return self.master.google_plus_service.people().get(userId='me').execute()['id']
 
     @property
     def profile(self):
