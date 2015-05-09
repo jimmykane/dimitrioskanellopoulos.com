@@ -24,10 +24,8 @@ angular.module('app.main').factory('googlePlusService', function ($http, $q, $sc
     };
 
     googlePlusService.getProfile = function (userId) {
-        if (!googlePlusService.profile){
-            googlePlusService.profile = {};
-            googlePlusService.getGooglePlusData(userId, 'profile');
-        }
+        googlePlusService.profile = googlePlusService.profile || {};
+        googlePlusService.getGooglePlusData(userId, 'profile');
         return googlePlusService.profile;
     };
 
