@@ -5,13 +5,13 @@
 
     <!-- @todo break these to components -->
 
-    <header class="header" data-ng-controller="googlePlusController">
+    <header class="header" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
         <b>
             Dimitrios Kanellopoulos</br>
-            {{ googlePlusProfile.tagline }}
+            {{ profile.tagline }}
         </b>
     </header>
-    <article class="main" data-ng-controller="googlePlusController">
+    <article class="main" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
 
         <div class="picture">
             <p>
@@ -24,27 +24,27 @@
 
         <div class="aboutMe">
             <p data-ng-bind-html="getAboutMe()"></p>
-            <p>P.S. {{ googlePlusProfile.braggingRights }}</p>
+            <p>P.S. {{ profile.braggingRights }}</p>
         </div>
     </article>
 
-    <aside class="aside aside-1" data-ng-controller="googlePlusController">
+    <aside class="aside aside-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
         <p><b>Other links and profiles</b></p>
         <ul class="columns__2">
-            <li data-ng-repeat="url in googlePlusProfile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
+            <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank">{{ url.label }}</a></li>
         </ul>
     </aside>
 
-    <aside class="aside aside-2" data-ng-controller="googlePlusController">
+    <aside class="aside aside-2" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
         <p>
             <b>Information</b>
         </p>
         <div class="border--bottom">
             <p>
-                My main profession is in the field of {{ googlePlusProfile.occupation }}.<br/>
+                My main profession is in the field of {{ profile.occupation }}.<br/>
             </p>
             <ul class="columns__1">
-                <li data-ng-repeat="organization in googlePlusProfile.organizations | filter:{ type: 'work' }" style="font-size: 0.8em;">
+                <li data-ng-repeat="organization in profile.organizations | filter:{ type: 'work' }" style="font-size: 0.8em;">
                     {{ organization.title }} at {{ organization.name }}
                     <span style="font-size: 0.7em;" data-ng-if="organization.startDate">from {{ organization.startDate }}</span>
                     <span style="font-size: 0.7em;" data-ng-if="organization.endDate">until {{ organization.endDate }}</span>
@@ -55,7 +55,7 @@
         <div class="border--bottom">
             <p>My education</p>
             <ul class="columns__1">
-                <li data-ng-repeat="organization in googlePlusProfile.organizations | filter:{ type: 'school' }" style="font-size: 0.8em;">
+                <li data-ng-repeat="organization in profile.organizations | filter:{ type: 'school' }" style="font-size: 0.8em;">
                     {{ organization.title }} at {{ organization.name }}
                     <span style="font-size: 0.7em;" data-ng-if="organization.startDate">from {{ organization.startDate }}</span>
                     <span style="font-size: 0.7em;" data-ng-if="organization.endDate">until {{ organization.endDate }}</span>
@@ -66,20 +66,20 @@
         <div class="border--bottom">
             <p>My skills are</p>
             <p>
-                <span style="font-size: 0.9em;">{{ googlePlusProfile.skills }}</span>
+                <span style="font-size: 0.9em;">{{ profile.skills }}</span>
             </p>
         </div>
         <div>
             <p>Places I lived</p>
             <ul class="columns__2">
-                <li data-ng-repeat="placeLived in googlePlusProfile.placesLived" style="font-size: 0.9em;">
+                <li data-ng-repeat="placeLived in profile.placesLived" style="font-size: 0.9em;">
                     {{ placeLived.value }} <span style="font-size: 0.7em;" data-ng-if="placeLived.primary">(currently living)</span>
                 </li>
             </ul>
         </div>
     </aside>
 
-    <aside class="under" data-ng-controller="fitnessController">
+    <aside class="under" data-ng-controller="fitnessController" data-ng-show="isFitnessDataReady()">
         <p>
             <b>Fitness Data</b>
             <span style="font-size: 0.6em;">
@@ -87,7 +87,7 @@
             </span>
         </p>
 
-        <div class="border--bottom" data-ng-if="weightMeasurements.weight">
+        <div class="border--bottom">
             <p>Body Measurements</p>
             <ul class="columns__2">
                 <li>
@@ -99,7 +99,7 @@
             </ul>
         </div>
 
-        <div data-ng-if="latestActivity.type">
+        <div>
             <p>Latest activity I did was {{ latestActivity.type }} at {{ latestActivity.start_time }}</p>
 
             <div class="border--bottom">
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <div data-ng-if="records[0]">
+        <div>
             <p>Records</p>
             <ul class="columns__2">
                 <li data-ng-repeat="record in records" style="font-size: 0.8em;" data-ng-if="record.stats.length > 1">
