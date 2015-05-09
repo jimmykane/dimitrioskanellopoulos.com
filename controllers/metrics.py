@@ -49,7 +49,7 @@ class RunkeeperMetricsHandler(MemcachedHandler, JSONReplyHandler):
         runkeeper_user = runkeeper_api.get_user()
 
         # Check if the call is listed
-        if not hasattr(runkeeper_user, call):
+        if call not in dir(runkeeper_user):
             self.response.out.write('Unknown call')
             return
 
