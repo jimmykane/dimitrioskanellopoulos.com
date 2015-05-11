@@ -37,3 +37,7 @@ class GooglePlusUser(object):
     @property
     def profile(self):
         return self.master.google_plus_service.people().get(userId='me').execute()
+
+    @property
+    def latest_activity(self, collection='public'):
+        return self.master.google_plus_service.activities().list(userId='me', collection=collection, maxResults='1').execute()
