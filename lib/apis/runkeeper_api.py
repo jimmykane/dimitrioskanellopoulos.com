@@ -56,7 +56,7 @@ class RunkeeperAPI(object):
 
 
 class RunkeeperUser(object):
-    user_id = None
+    _user_id = None
 
     def __init__(self, master):
         self.master = master
@@ -65,7 +65,7 @@ class RunkeeperUser(object):
         for user_method, call in self.master.query('/user').iteritems():
             if user_method == 'userID':
                 # Assign the userID to the object
-                self.user_id = call
+                self._user_id = call
                 continue
             # add them also with the camelcase
             setattr(
@@ -79,8 +79,9 @@ class RunkeeperUser(object):
         setattr(self, 'weightMeasurements', self.get_weight_measurements)
         setattr(self, 'latestActivity', self.get_latest_activity)
 
-    def get_user_id(self):
-        return self.user_id
+    @property
+    def user_id(self):
+        return self._user_id
 
     """
     Wrapper to pass the latest and save data

@@ -30,7 +30,8 @@ class GooglePlusUser(object):
     def __init__(self, master):
         self.master = master
 
-    def get_user_id(self):
+    @property
+    def user_id(self):
         return self.master.google_plus_service.people().get(userId='me').execute()['id']
 
     @property
