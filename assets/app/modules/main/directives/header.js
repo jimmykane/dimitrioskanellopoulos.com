@@ -1,4 +1,4 @@
-angular.module('app.main').directive('introduction', function(googlePlusService) {
+angular.module('app.main').directive('header', function(googlePlusService) {
     return {
         restrict: 'A', // only activate on element attribute
         scope: true, // New scope to use but rest inherit proto from parent
@@ -29,6 +29,6 @@ angular.module('app.main').directive('introduction', function(googlePlusService)
         link: function(scope, elm, attrs, ctrl) {
 
         },
-        templateUrl: '/assets/app/modules/main/templates/introduction.html'
+        templateUrl: '/assets/app/modules/main/templates/header.html'
     }
 });

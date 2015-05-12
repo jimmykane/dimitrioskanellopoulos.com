@@ -1,1 +1,15 @@
-<div>test</div>
+<div class="picture">
+    <p>
+        <b>Welcome visitor</b>
+
+        <img data-ng-src="{{ getProfileImageUrl(100) }}"
+             style="float: left; margin-right: 10px;"
+                />
+    </p>
+</div>
+
+<div class="aboutMe">
+    <p data-ng-bind-html="getAboutMe()"></p>
+
+    <p>P.S. {{ profile.braggingRights }}</p>
+</div>

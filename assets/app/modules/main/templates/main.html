@@ -5,32 +5,10 @@
 
     <!-- @todo break these to components -->
 
-    <header class="header" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
-        <b>
-            Dimitrios Kanellopoulos</br>
-            {{ profile.tagline }}
-        </b>
-    </header>
-    <article class="main" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
+    <header header class="header" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()"></header>
+    <article introduction class="main" data-ng-show="isProfileReady()"></article>
 
-        <div class="picture">
-            <p>
-                <b>Welcome visitor</b>
-                <introduction></introduction>
-
-                <img data-ng-src="{{ getProfileImageUrl(100) }}"
-                    style="float: left; margin-right: 10px;"
-                    />
-            </p>
-        </div>
-
-        <div class="aboutMe">
-            <p data-ng-bind-html="getAboutMe()"></p>
-            <p>P.S. {{ profile.braggingRights }}</p>
-        </div>
-    </article>
-
-    <aside class="aside aside-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
+    <aside class="aside aside-1" data-ng-show="isProfileReady()">
         <p>
             <b>Personal Data</b>
             <span style="font-size: 0.7em;">
