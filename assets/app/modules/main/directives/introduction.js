@@ -6,10 +6,10 @@ angular.module('app.main').directive('introduction', function(googlePlusService)
         },
         controller: function($scope, $sce, $element, $attrs) {
 
-            var googlePlusUserID = window.googlePlusUserID;
+            var googlePlusUserID = window.googlePlusUserId;
 
             // The whole profile
-            $scope.profile = googlePlusService.profile || googlePlusService.getProfile(googlePlusUserID);
+            $scope.profile = googlePlusService.profile || googlePlusService.getProfile(googlePlusUserId);
 
             // About me to be rendered via service
             $scope.getAboutMe = function (){

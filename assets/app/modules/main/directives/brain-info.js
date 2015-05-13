@@ -6,10 +6,10 @@ angular.module('app.main').directive('brainInfo', function(googlePlusService) {
         },
         controller: function($scope, $element, $attrs) {
 
-            var googlePlusUserID = window.googlePlusUserID;
+            var googlePlusUserID = window.googlePlusUserId;
 
             // The whole profile
-            $scope.profile = googlePlusService.profile || googlePlusService.getProfile(googlePlusUserID);
+            $scope.profile = googlePlusService.profile || googlePlusService.getProfile(googlePlusUserId);
 
         },
         link: function(scope, elm, attrs, ctrl) {

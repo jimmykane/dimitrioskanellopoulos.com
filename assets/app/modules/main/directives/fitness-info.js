@@ -6,16 +6,16 @@ angular.module('app.main').directive('fitnessInfo', function(fitnessService) {
         },
         controller: function($scope, $element, $attrs) {
 
-            var runkeeperUserID = window.runkeeperUserID;
+            var runkeeperUserID = window.runkeeperUserId;
 
             // Weight
-            $scope.weightMeasurements = fitnessService.getWeightMeasurements(runkeeperUserID);
+            $scope.weightMeasurements = fitnessService.getWeightMeasurements(runkeeperUserId);
 
             // Latest Activity
-            $scope.latestActivity = fitnessService.getLatestActivity(runkeeperUserID);
+            $scope.latestActivity = fitnessService.getLatestActivity(runkeeperUserId);
 
             // Activities Records
-            $scope.records = fitnessService.getActivityRecords(runkeeperUserID);
+            $scope.records = fitnessService.getActivityRecords(runkeeperUserId);
 
             // @todo Should it just check one?
             $scope.isFitnessDataReady = function () {
