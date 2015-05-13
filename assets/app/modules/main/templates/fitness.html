@@ -1,8 +1,8 @@
 <p>
     <b>Fitness Data</b>
-            <span style="font-size: 0.7em;">
-                via <a href="http://developer.runkeeper.com/healthgraph/home" target="_blank">Health Graph</a>
-            </span>
+    <span style="font-size: 0.7em;">
+        via <a href="http://developer.runkeeper.com/healthgraph/home" target="_blank">Health Graph</a>
+    </span>
 </p>
 
 <div class="border--bottom">
@@ -40,9 +40,9 @@
     <ul class="columns__2">
         <li data-ng-repeat="record in records" style="font-size: 0.8em;" data-ng-if="record.stats.length > 1">
             {{ record.activity_type }}:
-                    <span data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">
-                        {{ (stat.value/1000).toFixed(2) }}km
-                    </span>
+            <span data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">
+                {{ (stat.value/1000).toFixed(2) }}km
+            </span>
         </li>
     </ul>
 </div>

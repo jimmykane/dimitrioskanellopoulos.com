@@ -9,115 +9,14 @@
 
     <article introduction class="main" data-ng-show="isProfileReady()"></article>
 
-    <aside class="aside aside-1" data-ng-show="isProfileReady()">
-        <p>
-            <b>Personal Data</b>
-            <span style="font-size: 0.7em;">
-                via <a href="{{ profile.url }}" target="_blank">Google+</a>
-            </span>
-        </p>
-        <div class="border--bottom">
-            <p>
-                My main profession is in the field of {{ profile.occupation }}.<br/>
-            </p>
-            <ul class="columns__1">
-                <li data-ng-repeat="organization in profile.organizations | filter:{ type: 'work' }" style="font-size: 0.8em;">
-                    {{ organization.title }} at {{ organization.name }}
-                    <span style="font-size: 0.7em;" data-ng-if="organization.startDate">from {{ organization.startDate }}</span>
-                    <span style="font-size: 0.7em;" data-ng-if="organization.endDate">until {{ organization.endDate }}</span>
-                    <span style="font-size: 0.6em;" data-ng-if="organization.primary">(currently working)</span>
-                </li>
-            </ul>
-        </div>
-        <div class="border--bottom">
-            <p>Places I lived</p>
-            <ul class="columns__2">
-                <li data-ng-repeat="placeLived in profile.placesLived" style="font-size: 0.9em;">
-                    {{ placeLived.value }} <span style="font-size: 0.7em;" data-ng-if="placeLived.primary">(currently living)</span>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <p>My web profiles</p>
-            <ul class="columns__2">
-                <li data-ng-repeat="url in profile.urls"><a href="{{ url.value }}" target="_blank" style="font-size: 0.9em;">{{ url.label }}</a></li>
-            </ul>
-        </div>
-    </aside>
+    <aside personal class="aside aside-1" data-ng-show="isProfileReady()"></aside>
 
-    <aside class="aside aside-2" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
-        <p><b>Project Data</b></p>
-        <div class="border--bottom">
-            <p>Technologies/APIs</p>
-            <p><span style="font-size: 0.7em;">The content of this website is generated dynamic :-p</span></p>
-            <ul>
-                <li><span style="font-size: 0.8em;">Google App Engine</span></li>
-                <li><span style="font-size: 0.8em;">HTML5</span></li>
-                <li><span style="font-size: 0.8em;">CSS3</span></li>
-                <li><span style="font-size: 0.8em;">Google Plus</span></li>
-                <li><span style="font-size: 0.8em;">Health Graph</span></li>
-            </ul>
-        </div>
-        <div>
-            <p>Languages/Frameworks</p>
-            <ul>
-                <li><span style="font-size: 0.8em;">Python</span></li>
-                <li><span style="font-size: 0.8em;">Angular JS</span></li>
-                <li><span style="font-size: 0.8em;">NDB</span></li>
-                <li><span style="font-size: 0.8em;">WebAPP2</span></li>
-                <li><span style="font-size: 0.8em;">OAuth2</span></li>
-                <li><span style="font-size: 0.8em;">HTML5</span></li>
-                <li><span style="font-size: 0.8em;">CSS3</span></li>
-            </ul>
-        </div>
+    <aside project class="aside aside-2" data-ng-show="isProfileReady()"></aside>
 
-    </aside>
-
-    <aside class="under under-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()">
-        <p>
-            <b>Brain data</b>
-            <span style="font-size: 0.7em;">
-                via <a href="{{ profile.url }}" target="_blank">Google+</a>
-            </span>
-        </p>
-        <div class="border--bottom">
-            <p>My skills</p>
-            <p style="font-size: 0.8em;">
-                <span>{{ profile.skills }}</span>
-            </p>
-        </div>
-        <div>
-            <p>My education</p>
-            <ul class="columns__1">
-                <li data-ng-repeat="organization in profile.organizations | filter:{ type: 'school' }" style="font-size: 0.8em;">
-                    {{ organization.title }} at {{ organization.name }}
-                    <span style="font-size: 0.7em;" data-ng-if="organization.startDate">from {{ organization.startDate }}</span>
-                    <span style="font-size: 0.7em;" data-ng-if="organization.endDate">until {{ organization.endDate }}</span>
-                    <span style="font-size: 0.6em;" data-ng-if="organization.primary">(currently working)</span>
-                </li>
-            </ul>
-        </div>
-    </aside>
+    <aside brain class="under under-1" data-ng-controller="googlePlusController" data-ng-show="isProfileReady()"></aside>
 
     <aside fitness class="under under-2"  data-ng-show="isFitnessDataReady()"></aside>
 
-    <footer class="footer">
-        <p><b>Project info (under construction)</b></p>
-
-        <p><a href="//github.com/jimmykane/dimitrioskanellopoulos.com" target="_blank">@GitHub</a></p>
-
-        <p>
-            <a href="http://angularjs.org/" target="_blank"><img width="50" src="/assets/img/angularjs_logo.png"
-                                                                 title="Uses AngularJS"/></a>
-            <a href="http://nl.wikipedia.org/wiki/HTML5" target="_blank"><img width="100"
-                                                                              src="/assets/img/html_css3.png"
-                                                                              title="Uses HTML5 & CSS3"/></a>
-            <a href="http://www.python.org/" target="_blank"><img width="100" src="/assets/img/python.png"
-                                                                  title="Uses Python"/></a>
-            <a href="https://cloud.google.com/" target="_blank"><img width="150"
-                                                                     src="/assets/img/google_cloud_platform.png"
-                                                                     title="Uses Google Cloud Platform"/></a>
-        </p>
-    </footer>
+    <footer footer class="footer"></footer>
 
 </div>
