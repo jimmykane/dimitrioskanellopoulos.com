@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('app').factory('userService', function ($http, $q) {
+angular.module('app.services').factory('userService', function ($http, $q) {
 
     var userService = {};
 

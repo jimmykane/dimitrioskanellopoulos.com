@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('app').factory('fitnessService', function ($http, $q) {
+angular.module('app.services').factory('fitnessService', function ($http, $q) {
 
     var fitnessService = {};
 

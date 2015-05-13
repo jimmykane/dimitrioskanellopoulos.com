@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('app').factory('googlePlusService', function ($http, $q) {
+angular.module('app.services').factory('googlePlusService', function ($http, $q) {
 
     var googlePlusService = {};
 
