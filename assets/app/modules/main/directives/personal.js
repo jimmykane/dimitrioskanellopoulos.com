@@ -1,7 +1,7 @@
 angular.module('app.main').directive('personal', function(googlePlusService) {
     return {
-        restrict: 'A', // only activate on element attribute
-        scope: true, // New scope to use but rest inherit proto from parent
+        restrict: 'A',
+        scope: {},
         compile: function(element, attrs) {
             //player_service.bootstrap();
         },
