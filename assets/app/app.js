@@ -7,7 +7,10 @@ var app = angular.module(
         'ngSanitize',
         'ngAnimate',
         'app.main',
-        'app.jsonService'
+        'app.jsonService',
+        'app.userService',
+        'app.googlePlusService',
+        'app.fitnessService'
     ]
 );
 
