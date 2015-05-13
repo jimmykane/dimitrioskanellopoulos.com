@@ -1,4 +1,4 @@
-angular.module('app.main').directive('project', function() {
+angular.module('app.main').directive('projectInfo', function() {
     return {
         restrict: 'A',
         scope: {},

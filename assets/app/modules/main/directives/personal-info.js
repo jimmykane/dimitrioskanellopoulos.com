@@ -1,4 +1,4 @@
-angular.module('app.main').directive('personal', function(googlePlusService) {
+angular.module('app.main').directive('personalInfo', function(googlePlusService) {
     return {
         restrict: 'A',
         scope: {},

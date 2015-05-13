@@ -1,4 +1,4 @@
-angular.module('app.main').directive('fitness', function(fitnessService) {
+angular.module('app.main').directive('fitnessInfo', function(fitnessService) {
     return {
         restrict: 'A',
         scope: {},

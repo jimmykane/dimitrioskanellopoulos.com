@@ -1,4 +1,4 @@
-angular.module('app.main').directive('brain', function(googlePlusService) {
+angular.module('app.main').directive('brainInfo', function(googlePlusService) {
     return {
         restrict: 'A',
         scope: {},
