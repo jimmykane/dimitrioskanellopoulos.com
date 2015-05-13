@@ -11,7 +11,6 @@ angular.module('app.main').directive('personalInfo', function(googlePlusService)
 
             // The whole profile
             $scope.profile = googlePlusService.profile || googlePlusService.getProfile(googlePlusUserID);
-
         },
         link: function(scope, elm, attrs, ctrl) {
 

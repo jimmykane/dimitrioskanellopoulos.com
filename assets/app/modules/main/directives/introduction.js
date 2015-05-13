@@ -4,7 +4,7 @@ angular.module('app.main').directive('introduction', function(googlePlusService)
         scope: {},
         compile: function(element, attrs) {
         },
-        controller: function($scope, $element, $attrs) {
+        controller: function($scope, $sce, $element, $attrs) {
 
             var googlePlusUserID = window.googlePlusUserID;
 
@@ -12,7 +12,9 @@ angular.module('app.main').directive('introduction', function(googlePlusService)
             $scope.profile = googlePlusService.profile || googlePlusService.getProfile(googlePlusUserID);
 
             // About me to be rendered via service
-            $scope.getAboutMe = googlePlusService.getAboutMe;
+            $scope.getAboutMe = function (){
+                return $sce.trustAsHtml($scope.profile.aboutMe);
+            };
 
             // Image to be resized via service
             $scope.getProfileImageUrl = googlePlusService.getProfileImageUrl;
