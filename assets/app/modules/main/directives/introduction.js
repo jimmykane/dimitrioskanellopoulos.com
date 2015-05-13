@@ -17,11 +17,6 @@ angular.module('app.main').directive('introduction', function(googlePlusService)
             // Image to be resized via service
             $scope.getProfileImageUrl = googlePlusService.getProfileImageUrl;
 
-            // Check if it's ready (used to show/hide the html)
-            $scope.isProfileReady = function (){
-                return !angular.equals({}, $scope.profile);
-            };
-
         },
         link: function(scope, elm, attrs, ctrl) {
 

@@ -40,6 +40,10 @@ angular.module('app.main').factory('googlePlusService', function ($http, $q, $sc
         return googlePlusService.profile.image.url.slice(0, -2) + imageSize;
     };
 
+    googlePlusService.isProfileReady = function (){
+        return !angular.equals({}, $scope.profile);
+    };
+
     return googlePlusService;
 
 });
