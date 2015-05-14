@@ -17,11 +17,11 @@
 
 .flex-container > * {
     padding: 0.8em;
-    margin: 0.1em;
+    margin: 0.06em;
     flex: 1 100%;
-    -webkit-box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.75);
-    box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
