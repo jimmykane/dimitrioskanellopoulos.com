@@ -2,7 +2,11 @@ body {
     padding: 0.4em;
 }
 
-html, html a {
+html, html {
     -webkit-font-smoothing: antialiased;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    background-color: #faf8ef;
+}
+
+.hidden{
+    display: none;
 }

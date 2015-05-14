@@ -2,6 +2,4 @@
 
 angular.module('app.main').controller('mainController', function ($scope) {
 
-
-
 });

@@ -35,8 +35,8 @@
 
         <!-- Custom Vars for debug for now -->
         <script>
-            window.runkeeperUserID = '{{ runkeeper_user_id }}';
-            window.googlePlusUserID = '{{ google_plus_user_id }}';
+            window.runkeeperUserId = '{{ runkeeper_user_id }}';
+            window.googlePlusUserId = '{{ google_plus_user_id }}';
         </script>
     </head>
     <body>
@@ -52,19 +52,26 @@
         <script src="/assets/app/app.js"></script>
 
         <!-- App services -->
-        <script src="/assets/app/services/json.js"></script>
+        <script src="/assets/app/services/app.services.js"></script>
+        <script src="/assets/app/services/app.services.user.js"></script>
+        <script src="/assets/app/services/app.services.fitness.js"></script>
+        <script src="/assets/app/services/app.services.googlePlus.js"></script>
 
         <!-- Main module -->
-        <script src="/assets/app/modules/main/main.js"></script>
-
-            <!-- Services -->
-            <script src="/assets/app/modules/main/services/fitness.js"></script>
-            <script src="/assets/app/modules/main/services/googlePlus.js"></script>
+        <script src="/assets/app/modules/main/app.main.js"></script>
 
             <!-- Controllers -->
             <script src="/assets/app/modules/main/controllers/main.js"></script>
-            <script src="/assets/app/modules/main/controllers/fitness.js"></script>
-            <script src="/assets/app/modules/main/controllers/googlePlus.js"></script>
+
+            <!-- Directives -->
+            <script src="/assets/app/modules/main/directives/header.js"></script>
+            <script src="/assets/app/modules/main/directives/introduction.js"></script>
+            <script src="/assets/app/modules/main/directives/personal-info.js"></script>
+            <script src="/assets/app/modules/main/directives/project-info.js"></script>
+            <script src="/assets/app/modules/main/directives/brain-info.js"></script>
+            <script src="/assets/app/modules/main/directives/footer.js"></script>
+            <script src="/assets/app/modules/main/directives/fitness-info.js"></script>
+
 
 
         <!-- Analytics code -->

@@ -1,0 +1,48 @@
+<p>
+    <b>Fitness Data</b>
+    <span style="font-size: 0.7em;">
+        via <a href="http://developer.runkeeper.com/healthgraph/home" target="_blank">Health Graph</a>
+    </span>
+</p>
+
+<div class="border--bottom">
+    <p>Body Measurements</p>
+    <ul class="columns__2">
+        <li>
+            Weight: {{ weightMeasurements.weight }}kg
+        </li>
+        <li>
+            Body Fat: {{ weightMeasurements.fat_percent }}%
+        </li>
+    </ul>
+</div>
+
+<div>
+    <p>Latest activity I did was {{ latestActivity.type }} at {{ latestActivity.start_time }}</p>
+
+    <div class="border--bottom">
+        <ul class="columns__3">
+            <li>
+                Distance: {{ (latestActivity.total_distance/1000).toFixed(2) }}km
+            </li>
+            <li>
+                Duration: {{ (latestActivity.duration/60).toFixed(2) }}min
+            </li>
+            <li>
+                Calories: {{ latestActivity.total_calories }}kcal
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <p>Records</p>
+    <ul class="columns__2">
+        <li data-ng-repeat="record in records" style="font-size: 0.8em;" data-ng-if="record.stats.length > 1">
+            {{ record.activity_type }}:
+            <span data-ng-repeat="stat in record.stats" data-ng-if="stat.stat_type === 'OVERALL'">
+                {{ (stat.value/1000).toFixed(2) }}km
+            </span>
+        </li>
+    </ul>
+</div>

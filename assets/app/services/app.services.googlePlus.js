@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('app.main').factory('googlePlusService', function ($http, $q, $sce) {
+angular.module('app.services').factory('googlePlusService', function ($http, $q) {
 
     var googlePlusService = {};
 
@@ -29,15 +29,15 @@ angular.module('app.main').factory('googlePlusService', function ($http, $q, $sc
         return googlePlusService.profile;
     };
 
-    googlePlusService.getAboutMe = function (){
-         return $sce.trustAsHtml(googlePlusService.profile.aboutMe);
-    };
-
     googlePlusService.getProfileImageUrl = function(imageSize){
         if (!googlePlusService.profile.image){
             return;
         }
         return googlePlusService.profile.image.url.slice(0, -2) + imageSize;
+    };
+
+    googlePlusService.isProfileReady = function (){
+        return !angular.equals({}, $scope.profile);
     };
 
     return googlePlusService;
