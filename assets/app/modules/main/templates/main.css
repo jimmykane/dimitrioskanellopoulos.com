@@ -1,9 +1,16 @@
 /* @todo make them sass */
 .header {
     background: tomato;
+    margin: 0;
+    text-align: center;
+    padding: 0.8em;
+    -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
 }
 
 .flex-container {
+    margin-top: 0.2em;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -17,11 +24,8 @@
 
 .flex-container > * {
     padding: 0.8em;
-    margin: 0.06em;
+    margin: 0.00em;
     flex: 1 100%;
-    -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
-    box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
