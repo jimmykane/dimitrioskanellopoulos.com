@@ -10,6 +10,6 @@ angular.module('app.main').directive('personalInfo', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/personal.html'
+        templateUrl: '/assets/app/modules/main/templates/personal-info.html'
     }
 });

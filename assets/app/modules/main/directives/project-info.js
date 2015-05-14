@@ -8,6 +8,6 @@ angular.module('app.main').directive('projectInfo', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/project.html'
+        templateUrl: '/assets/app/modules/main/templates/project-info.html'
     }
 });

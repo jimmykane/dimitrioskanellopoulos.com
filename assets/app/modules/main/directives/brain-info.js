@@ -9,6 +9,6 @@ angular.module('app.main').directive('brainInfo', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/brain.html'
+        templateUrl: '/assets/app/modules/main/templates/brain-info.html'
     }
 });
