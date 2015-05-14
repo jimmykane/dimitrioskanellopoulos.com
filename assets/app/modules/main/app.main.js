@@ -1,3 +1,7 @@
 "use strict";
 
-angular.module('app.main', []);
+angular.module('app.main',
+    [
+        'app.services'
+    ]
+);
