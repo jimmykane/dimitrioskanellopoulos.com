@@ -4,6 +4,16 @@
     margin: 0;
     text-align: center;
     padding: 0.8em;
+    -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+}
+
+.footer {
+    margin: 0;
+    text-align: center;
+    padding: 0.8em;
+    background: rgb(149, 214, 65);
 
     -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
@@ -67,16 +77,6 @@
 .under-2 {
     text-align: left;
     background: rgba(0, 171, 192, 1);
-}
-
-.footer {
-    text-align: center;
-    padding: 0.8em;
-    background: rgb(149, 214, 65);
-
-    -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
-    box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
 }
 
 @media all and (min-width: 600px) {
