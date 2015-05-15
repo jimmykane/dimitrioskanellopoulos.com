@@ -50,7 +50,7 @@ app = webapp2.WSGIApplication(
             name='runkeeper_metrics'
         ),
         webapp2.Route(
-            r'/metrics/runkeeper/<user_id:\d+>/<call:\w+>/<id_:[\d\w-]+>',
+            r'/metrics/runkeeper/<user_id:\d+>/<call:\w+>/<id_:[\d\w&=-]+>',
             handler=metrics.RunkeeperMetricsHandler,
             name='runkeeper_metrics'
         ),
