@@ -4,6 +4,7 @@
     margin: 0;
     text-align: center;
     padding: 0.8em;
+
     -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
@@ -13,11 +14,13 @@
     margin-left: 0.4em;
     margin-right: 0.4em;
     margin-top: 0.4em;
+
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
     font-weight: normal;
@@ -27,7 +30,10 @@
 .flex-container > * {
     padding: 0.8em;
     margin-bottom: 0.4em;
+
+    -webkit-flex: 1 100%;
     flex: 1 100%;
+
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
@@ -67,6 +73,7 @@
     text-align: center;
     padding: 0.8em;
     background: rgb(149, 214, 65);
+
     -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
     box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
@@ -74,18 +81,22 @@
 
 @media all and (min-width: 600px) {
     .main{
+        -webkit-flex: 1 100%;
         flex: 1 100%;
     }
     .aside {
+        -webkit-flex: 1 auto;
         flex: 1 auto;
     }
     .under {
+        -webkit-flex: 1 auto;
         flex: 1 auto;
     }
 }
 
 @media all and (min-width: 800px) {
     .main {
+        -webkit-flex: 1 auto;
         flex: 1 auto;
     }
 
