@@ -1,6 +1,5 @@
 /* @todo make them sass */
 .header {
-    width: 100%;
     background: tomato;
     margin: 0;
     text-align: center;
@@ -11,8 +10,8 @@
 }
 
 .footer {
-    width: 100%;
     margin: 0;
+    margin-top: 0.2em;
     text-align: center;
     padding: 0.8em;
     background: rgb(149, 214, 65);
@@ -23,10 +22,9 @@
 }
 
 .flex-container {
-    margin-left: 0.4em;
-    margin-right: 0.4em;
     margin-top: 0.4em;
-
+    margin-left: 0.2em;
+    margin-right: 0.2em;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -42,13 +40,14 @@
 .flex-container > * {
     padding: 0.8em;
     margin-bottom: 0.4em;
-
+    margin-left: 0.2em;
+    margin-right: 0.2em;
     -webkit-flex: 1 100%;
     flex: 1 100%;
 
-    border-radius: 4px 4px 4px 4px;
-    -moz-border-radius: 4px 4px 4px 4px;
-    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
     border: 0px solid #000000;
 }
 
