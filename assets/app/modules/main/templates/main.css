@@ -10,7 +10,9 @@
 }
 
 .flex-container {
-    margin: 0.4em;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    margin-top: 0.4em;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -24,7 +26,7 @@
 
 .flex-container > * {
     padding: 0.8em;
-    margin: 0.00em;
+    margin-bottom: 0.4em;
     flex: 1 100%;
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
@@ -62,7 +64,12 @@
 }
 
 .footer {
+    text-align: center;
+    padding: 0.8em;
     background: rgb(149, 214, 65);
+    -webkit-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 19px -4px rgba(0,0,0,0.75);
 }
 
 @media all and (min-width: 600px) {
@@ -100,10 +107,6 @@
 
     .under-2 {
         order: 5;
-    }
-
-    .footer {
-        order: 6;
     }
 }
 
@@ -162,9 +165,7 @@ Animations
 .aside.ng-hide-add.ng-hide-add-active,
 .aside.ng-hide-remove.ng-hide-remove-active,
 .under.ng-hide-add.ng-hide-add-active,
-.under.ng-hide-remove.ng-hide-remove-active,
-.footer.ng-hide-add.ng-hide-add-active,
-.footer.ng-hide-remove.ng-hide-remove-active{
+.under.ng-hide-remove.ng-hide-remove-active{
   -webkit-transition: all ease 0.6s;
   transition: all ease 0.6s;
 }
@@ -172,8 +173,7 @@ Animations
 .header.ng-hide,
 .main.ng-hide,
 .aside.ng-hide,
-.under.ng-hide,
-.footer.ng-hide {
+.under.ng-hide{
   line-height: 0;
   opacity: 0.5;
   padding: 0 2em;
