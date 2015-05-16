@@ -1,4 +1,4 @@
-angular.module('app.main').directive('flares', function() {
+angular.module('app.main').directive('badges', function() {
     return {
         restrict: 'A',
         scope: {},
@@ -8,6 +8,6 @@ angular.module('app.main').directive('flares', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/flares.html'
+        templateUrl: '/assets/app/modules/main/templates/badges.html'
     }
 });
