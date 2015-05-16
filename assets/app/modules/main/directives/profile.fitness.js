@@ -1,4 +1,4 @@
-angular.module('app.main').directive('fitnessInfo', function() {
+angular.module('app.main').directive('profileFitness', function() {
     return {
         restrict: 'A',
         scope: {},
@@ -18,6 +18,6 @@ angular.module('app.main').directive('fitnessInfo', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/fitness-info.html'
+        templateUrl: '/assets/app/modules/main/templates/profile.fitness.html'
     }
 });

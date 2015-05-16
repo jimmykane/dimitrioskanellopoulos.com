@@ -1,4 +1,4 @@
-angular.module('app.main').directive('introduction', function() {
+angular.module('app.main').directive('profileIntroduction', function() {
     return {
         restrict: 'A',
         scope: {},
@@ -14,6 +14,6 @@ angular.module('app.main').directive('introduction', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/introduction.html'
+        templateUrl: '/assets/app/modules/main/templates/profile.introduction.html'
     }
 });
