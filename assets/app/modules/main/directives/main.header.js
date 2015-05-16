@@ -1,4 +1,4 @@
-angular.module('app.main').directive('footer', function() {
+angular.module('app.main').directive('header', function() {
     return {
         restrict: 'A',
         scope: {},
@@ -8,6 +8,6 @@ angular.module('app.main').directive('footer', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/footer.html'
+        templateUrl: '/assets/app/modules/main/templates/main.header.html'
     }
 });
