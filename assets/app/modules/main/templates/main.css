@@ -80,6 +80,11 @@
     background: rgba(0, 171, 192, 1);
 }
 
+.under-3 {
+    text-align: left;
+    background: rgb(78, 192, 188);
+}
+
 @media all and (min-width: 600px) {
     .main{
         -webkit-flex: 1 100%;
@@ -119,6 +124,10 @@
 
     .under-2 {
         order: 5;
+    }
+
+    .under-3 {
+        order: 6;
     }
 }
 
