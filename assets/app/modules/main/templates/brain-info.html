@@ -14,7 +14,7 @@
     <p>My education</p>
     <ul class="columns__1">
         <li data-ng-repeat="organization in profile.organizations | filter:{ type: 'school' }" style="font-size: 0.8em;">
-            {{ organization.title }} at {{ organization.name }}
+            {{ organization.title }} at {{ organization.name }}<br/>
             <span style="font-size: 0.7em;" data-ng-if="organization.startDate">from {{ organization.startDate }}</span>
             <span style="font-size: 0.7em;" data-ng-if="organization.endDate">until {{ organization.endDate }}</span>
             <span style="font-size: 0.6em;" data-ng-if="organization.primary">(currently working)</span>
