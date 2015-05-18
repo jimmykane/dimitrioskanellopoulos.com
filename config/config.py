@@ -44,7 +44,7 @@ project = {
             'image': get_meta_og_image()
         },
     },
-    'google_analytics': 'UA-61188889-1'
+    'google_analytics': 'UA-61188889-1' if not is_dev_server() else ''
 }
 
 config = {
