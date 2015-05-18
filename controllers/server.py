@@ -60,7 +60,7 @@ class RootPageHandler(webapp2.RequestHandler):
         self.response.out.write(template.render({
             "project": self.app.config['project'],
             "runkeeper_user_id": self.app.config['runkeeper_user_id'],
-            "google_plus_user_id": self.app.config['google_plus_api_user_id']
+            "google_plus_user_id": self.app.config['google_plus_user_id']
         }))
 
 
