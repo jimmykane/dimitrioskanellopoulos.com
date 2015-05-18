@@ -7,7 +7,7 @@
 
 <div class="border--bottom">
     <p>Body Measurements</p>
-    <ul class="columns__2">
+    <ul class="columns__2" style="font-size: 0.8em;">
         <li>
             Weight: {{ weightMeasurements.weight }}kg
         </li>
@@ -21,7 +21,7 @@
     <p>Latest activity I did was {{ latestActivity.type }} at {{ latestActivity.start_time }}</p>
 
     <div class="border--bottom">
-        <ul class="columns__3">
+        <ul class="columns__3" style="font-size: 0.8em;">
             <li>
                 Distance: {{ (latestActivity.total_distance/1000).toFixed(2) }}km
             </li>
