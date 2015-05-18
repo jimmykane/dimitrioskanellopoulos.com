@@ -63,7 +63,7 @@ class RunkeeperAuthCallbackHandler(RunkeeperAuthHandler):
             runkeeper_user_id=str(runkeeper_user.user_id)
         )
         # Update
-        runkeeper_user_model.populate(credentials=runkeeper_credentials, runkeeper_user_id=str(runkeeper_user.user_id))
+        runkeeper_user_model.credentials = runkeeper_credentials
         runkeeper_user_model.put()
 
         self.response.out.write('Success')

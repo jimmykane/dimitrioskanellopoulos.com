@@ -57,6 +57,6 @@ class GoogleAuthCallbackHandler(GoogleAuthHandler):
             credentials=google_credentials,
             google_plus_user_id=google_plus_profile['id']
         )
-        google_plus_user.populate(credentials=google_credentials)
+        google_plus_user.credentials = google_credentials
         google_plus_user.put()
         self.response.out.write('Success')
