@@ -1,9 +1,8 @@
 import os
 import json
 
-from lib.apis import google_plus_api
 
-
+# @todo move to class
 def is_dev_server():
     return os.environ['SERVER_SOFTWARE'].startswith('Dev')
 
@@ -26,9 +25,8 @@ def get_client_secrets_filename():
 
 
 def get_meta_og_image():
-    # returns the background in 500w
-    pass
-
+    # Should cache and return the actual scrapbook photo
+    return 'https://lh4.googleusercontent.com/-6rAfK4qJZVE/VDfxy3vpInI/AAAAAAAAb2w/A_q6LXMzhVU/w1000-h562-no/tumblr_nd6gt098tO1tchubjo1_500.gif'
 
 project = {
     'title': 'Dimitrios Kanellopoulos',
@@ -51,7 +49,6 @@ project = {
 
 config = {
     'project': project,
-    # Hardcode some id's
-    'google_plus_api_user_id': '102445631084043565507',
+    'google_plus_user_id': '102445631084043565507',
     'runkeeper_user_id': '29509824'
 }
