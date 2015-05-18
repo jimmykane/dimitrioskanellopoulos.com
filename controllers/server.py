@@ -56,16 +56,11 @@ class RootPageHandler(webapp2.RequestHandler):
     def get(self):
         jinja_environment = self.jinja_environment
         template = jinja_environment.get_template("/index.html")
-        # Add user id's if available or fallback to my ids
-        runkeeper_user_id = RunkeeperUserModel.get_by_id(users.get_current_user().user_id()).runkeeper_user_id \
-            if users.get_current_user() else self.app.config['runkeeper_user_id']
-        google_plus_user_id = GooglePlusUserModel.get_by_id(users.get_current_user().user_id()).google_plus_user_id \
-            if users.get_current_user() else self.app.config['google_plus_api_user_id']
         # Add vars and render
         self.response.out.write(template.render({
             "project": self.app.config['project'],
-            "runkeeper_user_id": runkeeper_user_id,
-            "google_plus_user_id": google_plus_user_id
+            "runkeeper_user_id": self.app.config['runkeeper_user_id'],
+            "google_plus_user_id": self.app.config['google_plus_api_user_id']
         }))
 
 
