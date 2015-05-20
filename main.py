@@ -15,6 +15,10 @@ app = webapp2.WSGIApplication(
             handler=server.RootPageHandler
         ),
         webapp2.Route(
+            '/blog',
+            handler=server.RootPageHandler
+        ),
+        webapp2.Route(
             '/logout',
             handler=server.LogoutHandler
         ),
