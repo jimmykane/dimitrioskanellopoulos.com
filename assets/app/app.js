@@ -4,7 +4,8 @@ var app = angular.module(
     'app', [
         'ngRoute',
         'ngAnimate',
-        'app.main'
+        'app.main',
+        'app.blog'
     ]
 );
 
@@ -24,5 +25,9 @@ app.config(function ($locationProvider, $routeProvider) {
     $routeProvider.when('/', {
         templateUrl: '/assets/app/modules/main/templates/main.html',
         controller: 'mainController'
+    })
+    .when('/blog', {
+        templateUrl: '/assets/app/modules/blog/templates/blog.html',
+        controller: 'blogController'
     }).otherwise({redirectTo: '/404'});
 });
