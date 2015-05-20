@@ -25,7 +25,7 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
 
     googlePlusService.getProfile = function (userId) {
         googlePlusService.profile = googlePlusService.profile || {};
-        googlePlusService.getGooglePlusData(userId, 'profile');
+        googlePlusService.getGooglePlusData(userId, 'get_profile');
         return googlePlusService.profile;
     };
 
@@ -34,6 +34,10 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
             return;
         }
         return googlePlusService.profile.image.url.slice(0, -2) + imageSize;
+    };
+
+    googlePlusService.listActivities = function(userId){
+        return googlePlusService.getGooglePlusData(userId, 'list_activities');
     };
 
     googlePlusService.isProfileReady = function (){
