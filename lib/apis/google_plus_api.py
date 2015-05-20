@@ -38,6 +38,9 @@ class GooglePlusUser(object):
     def profile(self):
         return self.master.google_plus_service.people().get(userId='me').execute()
 
-    @property
-    def latest_activity(self, collection='public'):
-        return self.master.google_plus_service.activities().list(userId='me', collection=collection, maxResults='1').execute()
+    def list_activities(self, collection='public', max_results=20):
+        return self.master.google_plus_service.activities().list(userId='me', collection=collection, maxResults=max_results).execute()
+
+    def get_latest_activity(self, collection='public'):
+        # @todo should return the actual activity
+        return self.list_activities(collection=collection, max_results=1)
