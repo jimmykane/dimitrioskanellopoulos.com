@@ -27,13 +27,21 @@ class GooglePlusAPI(object):
 
 class GooglePlusUser(object):
 
+    _profile = None
+
     def __init__(self, master):
         self.master = master
 
-    @property
-    def user_id(self):
-        return self.master.google_plus_service.people().get(userId='me').execute()['id']
-
+    # Caches to instance
     @property
     def profile(self):
-        return self.master.google_plus_service.people().get(userId='me').execute()
+        self._profile = self._profile or self.get_profile()
+        return self._profile
+
+    # Also sets the profile
+    def get_profile(self):
+        self._profile = self.master.google_plus_service.people().get(userId='me').execute()
+        return self._profile
+
+    def latest_activity(self, collection='public'):
+        return self.master.google_plus_service.activities().list(userId='me', collection=collection, maxResults='1').execute()
