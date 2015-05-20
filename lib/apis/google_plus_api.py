@@ -34,8 +34,7 @@ class GooglePlusUser(object):
     def user_id(self):
         return self.master.google_plus_service.people().get(userId='me').execute()['id']
 
-    @property
-    def profile(self):
+    def get_profile(self):
         return self.master.google_plus_service.people().get(userId='me').execute()
 
     def list_activities(self, collection='public', max_results=20):

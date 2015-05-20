@@ -33,7 +33,7 @@ class GooglePlusAPIHandler(MemcachedHandler, JSONReplyHandler):
         response = self.get_from_memcache(user_id, call)
         if not response:
             # If not found call and write to cache
-            response = getattr(google_plus_user, call)
+            response = getattr(google_plus_user, call)()
             self.add_to_memcache(self.get_cache_key(user_id, call), response)
 
         # Run the call and echo it
