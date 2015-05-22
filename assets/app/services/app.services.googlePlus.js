@@ -39,7 +39,7 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
 
     googlePlusService.listActivities = function(userId){
         googlePlusService.activitiesList = googlePlusService.activitiesList || {};
-        googlePlusService.getGooglePlusData(userId, 'list_activities', 'activitiesList');
+        googlePlusService.getGooglePlusData(userId, 'get_activities', 'activitiesList');
         return googlePlusService.activitiesList;
     };
 

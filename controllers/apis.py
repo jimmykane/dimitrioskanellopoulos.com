@@ -9,7 +9,8 @@ from controllers.server import MemcachedHandler, JSONReplyHandler
 
 class GooglePlusAPIHandler(MemcachedHandler, JSONReplyHandler):
     allowed_calls = [
-        'profile'
+        'get_profile',
+        'get_activities'
     ]
 
     def get(self, user_id, call):
