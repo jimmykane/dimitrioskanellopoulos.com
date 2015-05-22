@@ -14,7 +14,6 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
                     return;
                 }
                 // Extend with new data
-                debugger;
                 angular.extend(googlePlusService[servicePropertyName], data);
                 deffered.resolve(status);
             })
