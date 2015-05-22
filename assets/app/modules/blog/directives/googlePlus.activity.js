@@ -1,14 +1,15 @@
 angular.module('app.blog').directive('googlePlusActivity', function() {
     return {
         restrict: 'A',
-        scope: {},
+        scope: {
+            googlePlusActivity: '='
+        },
         compile: function(element, attrs) {
         },
-        controller: function($scope, $element, $attrs, userService, googlePlusService) {
-            $scope.profile = googlePlusService.profile || googlePlusService.getProfile(userService.googlePlusUserId);
+        controller: function($scope, $element, $attrs) {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/googlePlus.activity.html'
+        templateUrl: '/assets/app/modules/blog/templates/googlePlus.activity.html'
     }
 });
