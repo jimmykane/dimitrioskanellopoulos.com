@@ -4,7 +4,8 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
 
     var googlePlusService = {};
 
-    googlePlusService.getGooglePlusData = function (userId, call) {
+    googlePlusService.getGooglePlusData = function (userId, call, servicePropertyName) {
+        servicePropertyName = servicePropertyName || call;
         var deffered = $q.defer();
         $http.get('/apis/google+/' + userId + '/' + call)
             .success(function (data, status, headers, config) {
@@ -13,7 +14,8 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
                     return;
                 }
                 // Extend with new data
-                angular.extend(googlePlusService[call], data);
+                debugger;
+                angular.extend(googlePlusService[servicePropertyName], data);
                 deffered.resolve(status);
             })
             .error(function (data, status, headers, config) {
@@ -37,7 +39,9 @@ angular.module('app.services').factory('googlePlusService', function ($http, $q)
     };
 
     googlePlusService.listActivities = function(userId){
-        return googlePlusService.getGooglePlusData(userId, 'list_activities');
+        googlePlusService.activitiesList = googlePlusService.activitiesList || {};
+        googlePlusService.getGooglePlusData(userId, 'list_activities', 'activitiesList');
+        return googlePlusService.activitiesList;
     };
 
     googlePlusService.isProfileReady = function (){
