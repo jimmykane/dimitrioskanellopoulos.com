@@ -38,7 +38,7 @@ class GooglePlusUser(object):
         return self.master.google_plus_service.people().get(userId='me').execute()
 
     def list_activities(self, collection='public', max_results=20):
-        return self.master.google_plus_service.activities().list(userId='me', collection=collection, maxResults=max_results).execute()
+        return self.master.google_plus_service.activities().list(userId='me', collection=collection, maxResults=max_results).execute()['items']
 
     def get_latest_activity(self, collection='public'):
         return self.list_activities(collection=collection, max_results=1)
