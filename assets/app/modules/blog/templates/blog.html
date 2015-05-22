@@ -1,9 +1,10 @@
 <!-- Module stylesheet -->
+<link rel="stylesheet" href="/assets/css/flex.css">
 <link rel="stylesheet" href="/assets/app/modules/blog/templates/blog.css">
 
 
 <div class="flex-container" data-ng-controller="blogController">
 
-    <article class="main"></article>
+    <article google-plus-activity="googlePlusActivity" class="main" data-ng-repeat="googlePlusActivity in googlePlusActivities"></article>
 
 </div>
