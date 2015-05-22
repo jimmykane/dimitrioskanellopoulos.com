@@ -7,9 +7,6 @@ angular.module('app.blog').directive('googlePlusActivity', function() {
         compile: function(element, attrs) {
         },
         controller: function($scope, $element, $attrs, $sce) {
-            $scope.googlePlusActivity.getContent = function (){
-                return $sce.trustAsHtml($scope.googlePlusActivity.object.content);
-            };
         },
         link: function(scope, elm, attrs, ctrl) {
         },

@@ -1,4 +1,4 @@
 <div>
     <p>{{ googlePlusActivity.published | date:"d/M/yy  h:mma"}}</p>
-        <p data-ng-bind-html="googlePlusActivity.getContent()"></p>
+        <p data-ng-bind-html="googlePlusActivity.object.content"></p>
 </div>
