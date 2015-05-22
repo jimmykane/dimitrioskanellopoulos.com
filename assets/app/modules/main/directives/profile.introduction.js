@@ -6,9 +6,6 @@ angular.module('app.main').directive('profileIntroduction', function() {
         },
         controller: function($scope, $element, $attrs, $sce, userService, googlePlusService) {
             $scope.profile = googlePlusService.profile || googlePlusService.getProfile(userService.googlePlusUserId);
-            $scope.getAboutMe = function (){
-                return $sce.trustAsHtml($scope.profile.aboutMe);
-            };
             $scope.getProfileImageUrl = googlePlusService.getProfileImageUrl;
 
         },
