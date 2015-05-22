@@ -4,7 +4,7 @@ angular.module('app.main').directive('profileIntroduction', function() {
         scope: {},
         compile: function(element, attrs) {
         },
-        controller: function($scope, $sce, $element, $attrs, userService, googlePlusService) {
+        controller: function($scope, $element, $attrs, $sce, userService, googlePlusService) {
             $scope.profile = googlePlusService.profile || googlePlusService.getProfile(userService.googlePlusUserId);
             $scope.getAboutMe = function (){
                 return $sce.trustAsHtml($scope.profile.aboutMe);
