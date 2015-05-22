@@ -4,3 +4,13 @@
     width: 100%;
     height: 100%;
 }
+
+.activity{
+    background-color: #f3fbe4;
+}
+
+.activity__image--wrapper{
+   -webkit-border-radius: 50em;
+	-moz-border-radius: 50em;
+	border-radius: 50em;
+}

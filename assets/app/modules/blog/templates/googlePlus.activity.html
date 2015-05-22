@@ -1,5 +1,3 @@
-<div class="activity">
-    <p>{{ googlePlusActivity.published | date:"d/M/yy  h:mma"}}</p>
-    <p data-ng-bind-html="googlePlusActivity.object.content"></p>
-    <img class="activity__image" data-ng-src="{{ attachment.image.url }}" data-ng-repeat="attachment in googlePlusActivity.object.attachments"/>
-</div>
+<p><b>{{ googlePlusActivity.published | date:"d/M/yy  h:mma"}}</b></p>
+<p data-ng-bind-html="googlePlusActivity.object.content"></p>
+<a href="{{ googlePlusActivity.url }}" target="_blank"><img class="activity__image" data-ng-src="{{ attachment.image.url }}" data-ng-repeat="attachment in googlePlusActivity.object.attachments"/></a>
