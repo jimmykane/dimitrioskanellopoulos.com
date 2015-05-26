@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="/assets/app/modules/blog/templates/blog.css">
 
 
-<div class="flex-container" data-ng-controller="blogController">
+<div class="flex-container">
 
-    <article google-plus-activity="googlePlusActivity" class="aside activity" data-ng-repeat="googlePlusActivity in googlePlusActivities"></article>
+    <article google-plus-activity="googlePlusActivity" class="aside activity" data-ng-repeat="googlePlusActivity in googlePlusActivities | orderBy:'-published'"></article>
 
 </div>
