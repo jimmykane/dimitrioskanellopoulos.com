@@ -1,4 +1,4 @@
-angular.module('app.main').directive('footer', function() {
+angular.module('app').directive('footer', function() {
     return {
         restrict: 'A',
         scope: {},

@@ -1,4 +1,4 @@
-angular.module('app.main').directive('header', function() {
+angular.module('app').directive('header', function() {
     return {
         restrict: 'A',
         scope: {},
