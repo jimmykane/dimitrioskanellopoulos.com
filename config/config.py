@@ -33,7 +33,7 @@ project = {
     'domain': 'dimitrioskanellopoulos.com',
     'meta': {
         'description': 'Personal website of Dimitrios Kanellopoulos',
-        'keywords': 'Dimitrios Kanellopoulos, Dimitrios, Kanellopoulos, dimitrios, kanellopoulos, dimitrioskanellopoulos.com',
+        'keywords': 'Dimitrios Kanellopoulos, Dimitrios, Kanellopoulos, dimitrios, kanellopoulos, dimitrioskanellopoulos.com, Δημήτριος Κανελλόπουλος, Δημήτριος, Κανελλόπουλος',
         'author': 'Dimitrios Kanellopoulos',
         'theme_color': '#3FC3FF',
         'og': {
