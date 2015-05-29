@@ -8,6 +8,6 @@ angular.module('app').directive('header', function() {
         },
         link: function(scope, elm, attrs, ctrl) {
         },
-        templateUrl: '/assets/app/modules/main/templates/main.header.html'
+        templateUrl: '/assets/app/templates/app.header.html'
     }
 });
