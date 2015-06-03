@@ -14,3 +14,36 @@
 	-moz-border-radius: 50em;
 	border-radius: 50em;
 }
+
+.aside.ng-enter,
+.aside.ng-leave,
+.aside.ng-move {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+  position:relative;
+}
+
+.aside.ng-enter {
+  left:-10px;
+  opacity:0;
+}
+.aside.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.aside.ng-leave {
+  left:0;
+  opacity:1;
+}
+.aside.ng-leave.ng-leave-active {
+  left:-10px;
+  opacity:0;
+}
+
+.aside.ng-move {
+  opacity:0.5;
+}
+.aside.ng-move.ng-move-active {
+  opacity:1;
+}
